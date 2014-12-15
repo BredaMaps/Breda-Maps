@@ -8,16 +8,16 @@ using Windows.Foundation;
 
 namespace Breda_Maps.Model
 {
-    class Route
+    public class Route
     {
         private List<Sight> points = new List<Sight>();
-
-        private Route()
+        private string _name;
+        public Route(string name)
         {
-           
+            _name = name;
         }
 
-        private void addpoint(Sight point)
+        public void addpoint(Sight point)
         {
             
             //Geopoint testpoint = new Geopoint(new BasicGeoposition() { Latitude = 51.59380, Longitude = 4.77963 }); // point van VVV Breda
@@ -27,7 +27,12 @@ namespace Breda_Maps.Model
             //points.Add(testpoint2);
         }
 
-        private List<Sight> getRoute()
+        public string GetName()
+        {
+            return _name;
+        }
+
+        public List<Sight> getRoute()
         {
             return points;
         }
