@@ -13,6 +13,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Windows.UI.Xaml.Controls.Maps;
+using Windows.Devices.Geolocation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -26,6 +28,20 @@ namespace Breda_Maps.View
         public MainPage()
         {
             this.InitializeComponent();
+
+
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            MapControl1.Center =
+                new Geopoint(new BasicGeoposition()
+                {
+                    Latitude = 51.5666667,
+                    Longitude = 4.775
+                });
+            MapControl1.ZoomLevel = 15;
+            MapControl1.LandmarksVisible = true;
         }
 
         /// <summary>
@@ -33,8 +49,8 @@ namespace Breda_Maps.View
         /// </summary>
         /// <param name="e">Event data that describes how this page was reached.
         /// This parameter is typically used to configure the page.</param>
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-        }
+        //protected override void OnNavigatedTo(NavigationEventArgs e)
+        //{
+        //}
     }
 }
