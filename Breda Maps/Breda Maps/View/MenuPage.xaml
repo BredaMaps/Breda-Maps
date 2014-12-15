@@ -8,17 +8,14 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-    <local:GUI.Resources>
-        <MenuFlyout x:Key="MainFlyOut"/>
-    </local:GUI.Resources>
 
-    <Grid FlyoutBase.AttachedFlyout="{StaticResource MainFlyOut}">
+    <Grid>
         <TextBlock HorizontalAlignment="Center" Margin="0,10,0,0" TextWrapping="Wrap" Text="MenuPage" VerticalAlignment="Top"/>
 
-        <Button Name="Bn_Rou"  Content="Routebeschrijving" HorizontalAlignment="Center" Margin="0,80,0,0" VerticalAlignment="Top" Click="Bn_Rou_Click"/>
-        <Button Name="Bn_Bez"  Content="Bezienswaardigheden" HorizontalAlignment="Center" Margin="0,160,0,0" VerticalAlignment="Top" Click="Bn_Bez_Click"/>
-        <Button Name="Bn_Cat"  Content="Categorieeën" HorizontalAlignment="Center" Margin="0,240,0,0" VerticalAlignment="Top" Click="Bn_Cat_Click"/>
+        <Button Name="Bn_Rou"  Content="Routebeschrijving" HorizontalAlignment="Center" Margin="0,160,0,0" VerticalAlignment="Top" Click="Bn_Rou_Click"/>
+        <Button Name="Bn_Bez"  Content="Bezienswaardigheden" HorizontalAlignment="Center" Margin="0,240,0,0" VerticalAlignment="Top" Click="Bn_Bez_Click"/>
         <Button Name="Bn_Ins"  Content="Instellingen" HorizontalAlignment="Center" Margin="0,320,0,0" VerticalAlignment="Top" Click="Bn_Ins_Click"/>
         <Button Name="Bn_Afs"  Content="Afsluiten" HorizontalAlignment="Center" Margin="0,400,0,0" VerticalAlignment="Top" Click="Bn_Afs_Click"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,60,0,0" TextWrapping="Wrap" Text="Breda Maps" VerticalAlignment="Top" FontSize="32"/>
     </Grid>
 </src:GUI>
