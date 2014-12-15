@@ -37,10 +37,10 @@ namespace Breda_Maps.View
             MapControl1.Center =
                 new Geopoint(new BasicGeoposition()
                 {
-                    Latitude = 51.5666667,
-                    Longitude = 4.775
+                    Latitude = 51.5938D,
+                    Longitude = 4.77963D
                 });
-            MapControl1.ZoomLevel = 15;
+            MapControl1.ZoomLevel = 16;
             MapControl1.LandmarksVisible = true;
         }
 

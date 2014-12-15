@@ -11,10 +11,6 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <!--<TextBlock HorizontalAlignment="Center" Margin="0,10,0,0" TextWrapping="Wrap" Text="MainPage" VerticalAlignment="Top"/>-->
-        <StackPanel HorizontalAlignment="Stretch" Margin="8,8,8,8" VerticalAlignment="Stretch" >
-            <TextBlock TextWrapping="NoWrap" Text="Map control" FontSize="36" Margin="8,0,0,16" />
-            <Maps:MapControl x:Name="MapControl1" MapServiceToken="" Height="560" Margin="0,0,0,0" />
-        </StackPanel>
+        <Maps:MapControl HorizontalAlignment="Stretch" x:Name="MapControl1" MapServiceToken="" Margin="0" />
     </Grid>
 </src:GUI>
