@@ -10,14 +10,14 @@ namespace Breda_Maps.Model
 {
     class Route
     {
-        private List<Sight> points = new List<Sight>();
+        public List<Sight> points = new List<Sight>();
 
-        private Route()
+        public Route()
         {
            
         }
 
-        private void addpoint(Sight point)
+        public void addpoint(Sight point)
         {
             
             //Geopoint testpoint = new Geopoint(new BasicGeoposition() { Latitude = 51.59380, Longitude = 4.77963 }); // point van VVV Breda
@@ -27,7 +27,7 @@ namespace Breda_Maps.Model
             //points.Add(testpoint2);
         }
 
-        private List<Sight> getRoute()
+        public List<Sight> getRoute()
         {
             return points;
         }

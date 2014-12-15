@@ -10,21 +10,21 @@ namespace Breda_Maps.Model
     class Sight
     {
         private String description;
-        private Geoposition location;
+        private Geopoint location;
 
-        private Sight(String description, Geoposition location)
+        public Sight(String description, Geopoint location)
         {
             this.description = description;
             this.location = location;
         }
 
-        private Geoposition getLocation()
+        public Geopoint getLocation()
         {
 
             return location;
         }
 
-        private String getDescription()
+        public String getDescription()
         {
             return this.description;
         }

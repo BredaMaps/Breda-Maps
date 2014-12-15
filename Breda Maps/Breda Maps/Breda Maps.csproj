@@ -80,13 +80,13 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
-    <Folder Include="Controller\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controller\RouteController.cs" />
+    <Compile Include="database\DataBase.cs" />
     <Compile Include="Model\Route.cs" />
     <Compile Include="Model\Sight.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
