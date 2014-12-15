@@ -16,6 +16,7 @@ using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Controls.Maps;
 using Windows.Devices.Geolocation;
 using System.Diagnostics;
+using Windows.Devices.Geolocation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -26,37 +27,35 @@ namespace Breda_Maps.View
     /// </summary>
     public sealed partial class MainPage : GUI
     {
+        BasicGeoposition StartPosition = new BasicGeoposition()
+                {
+                    Latitude = 51.5938D,
+                    Longitude = 4.77963D            
+                };
+        Geolocator geo = null;
+
         public MainPage()
         {
             this.InitializeComponent();
-
-
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            MapControl1.Center =
-                new Geopoint(new BasicGeoposition()
-                {
-                    Latitude = 51.5938D,
-                    Longitude = 4.77963D
-                });
+            MapControl1.Center = new Geopoint(StartPosition);
             MapControl1.ZoomLevel = 18;
             MapControl1.LandmarksVisible = true;
-            AddMapIcon();
+
+            AddCurrentPositionIcon(StartPosition);
         }
 
-        private void AddMapIcon()
+        private void AddCurrentPositionIcon(BasicGeoposition CurrentPosition)
         {
             MapIcon MapIcon1 = new MapIcon();
-            MapIcon1.Location = new Geopoint(new BasicGeoposition()
-            {
-                Latitude = 51.5938D,
-                Longitude = 4.77963D
-            });
+            MapIcon1.Location = new Geopoint(CurrentPosition);
             MapIcon1.NormalizedAnchorPoint = new Point(0.5, 1.0);
-            MapIcon1.Title = "Space Needle";
+            MapIcon1.Title = "";
             MapControl1.MapElements.Add(MapIcon1);
+            MapControl1.Center = new Geopoint(StartPosition);
         }
 
         private void Bn_Menu_Click(object sender, RoutedEventArgs e)
@@ -65,10 +64,17 @@ namespace Breda_Maps.View
             this.Frame.Navigate(typeof(View.MenuPage), e);
         }
 
-        private void Bn_Loc_Click(object sender, RoutedEventArgs e)
+        private async void Bn_Loc_Click(
+            object sender, RoutedEventArgs e)
         {
+            
             Debug.WriteLine("GOTO own Location");
-            //ToDo
+            if (geo == null)
+            {
+                geo = new Geolocator();
+            }
+            Geoposition pos = await geo.GetGeopositionAsync();
+            AddCurrentPositionIcon(pos.Coordinate.Point.Position);
         }
 
         /// <summary>
