@@ -10,8 +10,8 @@ namespace Breda_Maps.database
 {
     class TestDatabase
     {
-        private List<Sight> sights;
-        private List<Route> routes;
+        private List<Sight> sights = new List<Sight>();
+        private List<Route> routes = new List<Route>();
         public TestDatabase()
         {
             sights.Add(new Sight("VVV Breda", new Geopoint(new BasicGeoposition() { Latitude = 51.59380,Longitude = 4.77963})));
@@ -30,6 +30,14 @@ namespace Breda_Maps.database
             temp = new Route();
             temp.addpoint(sights[2]);
             temp.addpoint(sights[3]);
+            routes.Add(temp);
+            temp = new Route();
+            temp.addpoint(sights[4]);
+            temp.addpoint(sights[5]);
+            routes.Add(temp);
+            temp = new Route();
+            temp.addpoint(sights[6]);
+            temp.addpoint(sights[7]);
             routes.Add(temp);
         }
 
