@@ -11,14 +11,13 @@
 
     <Grid>
         <TextBlock HorizontalAlignment="Center" Margin="0,10,0,0" TextWrapping="Wrap" Text="SightPage" VerticalAlignment="Top"/>
-        
-        <CheckBox Content="Categorie 1" HorizontalAlignment="Left" Margin="10,80,-0,0" VerticalAlignment="Top" Checked="Cat1_Checked"/>
-        <CheckBox Content="Categorie 2" HorizontalAlignment="Left" Margin="10,120,-0,0" VerticalAlignment="Top" Checked="Cat2_Checked"/>
-        <CheckBox Content="Categorie 3" HorizontalAlignment="Left" Margin="10,160,-0,0" VerticalAlignment="Top" Checked="Cat3_Checked"/>
-        <AutoSuggestBox HorizontalAlignment="Left" Margin="87,287,0,0" VerticalAlignment="Top" Width="206" Height="22">
-            <AutoSuggestBox Height="100" Width="100"/>
-        </AutoSuggestBox>
 
+
+        <CheckBox Content="Categorie 1" HorizontalAlignment="Left" Margin="10,80,-0,0" VerticalAlignment="Top" Checked="Cat1_Checked" Unchecked="cat1_unchecked"/>
+        <CheckBox Content="Categorie 2" HorizontalAlignment="Left" Margin="10,120,-0,0" VerticalAlignment="Top" Checked="Cat2_Checked" Unchecked="cat2_unchecked" />
+        <CheckBox Content="Categorie 3" HorizontalAlignment="Left" Margin="10,160,-0,0" VerticalAlignment="Top" Checked="Cat3_Checked" Unchecked="cat3_unchecked"/>
+        <ListView x:Name="ListView1" HorizontalAlignment="Left" Height="411" Margin="47,219,0,0" VerticalAlignment="Top" Width="343"/>
+        <ListView x:Name="ListView2" HorizontalAlignment="Left" Height="411" Margin="47,219,0,0" VerticalAlignment="Top" Width="343"/>
 
     </Grid>
 </src:GUI>
