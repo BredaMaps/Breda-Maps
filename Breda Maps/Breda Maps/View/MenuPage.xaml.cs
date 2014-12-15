@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Phone.UI.Input;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -25,8 +27,22 @@ namespace Breda_Maps.View
         public MenuPage()
         {
             this.InitializeComponent();
+            this.NavigationCacheMode = NavigationCacheMode.Required;
+            HardwareButtons.BackPressed += HardwareButtons_BackPressed;
         }
 
+        private void HardwareButtons_BackPressed(object sender, BackPressedEventArgs e)
+        {
+            try
+            {
+                Frame.GoBack();
+                e.Handled = true;
+            }
+            catch
+            {
+                Application.Current.Exit();
+            }
+        }
         /// <summary>
         /// Invoked when this page is about to be displayed in a Frame.
         /// </summary>
@@ -34,6 +50,36 @@ namespace Breda_Maps.View
         /// This parameter is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+        }
+
+        private void Bn_Rou_Click(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine("GOTO MainPage");
+            this.Frame.Navigate(typeof(View.MainPage), e);
+        }
+
+        private void Bn_Bez_Click(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine("GOTO SightPage");
+            this.Frame.Navigate(typeof(View.SightPage), e);
+        }
+
+        private void Bn_Cat_Click(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine("GOTO SightPage");
+            this.Frame.Navigate(typeof(View.SightPage), e);
+        }
+
+        private void Bn_Ins_Click(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine("GOTO SettingsPage");
+            this.Frame.Navigate(typeof(View.SettingsPage), e);
+        }
+
+        private void Bn_Afs_Click(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine("EXIT");
+            Application.Current.Exit();
         }
     }
 }
