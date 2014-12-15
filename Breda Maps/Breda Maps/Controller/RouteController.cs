@@ -17,7 +17,7 @@ namespace Breda_Maps.Controller
         {
             
         }
-        private Void addRoute(Route route)
+        private void addRoute(Route route)
         {
             routes.Add(route);
         }
