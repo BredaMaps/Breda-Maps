@@ -20,9 +20,9 @@ namespace Breda_Maps.View
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class RoutePage : GUI
+    public sealed partial class CategoryPage : GUI
     {
-        public RoutePage()
+        public CategoryPage()
         {
             this.InitializeComponent();
         }
@@ -36,13 +36,19 @@ namespace Breda_Maps.View
         {
         }
 
-        private void Bn_Cat_Click(object sender, RoutedEventArgs e)
+        private void Cat1_Checked(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(View.CategoryPage), e);
+            //TODO: make categories selectable
         }
-        private void Bn_Sta_Click(object sender, RoutedEventArgs e)
+
+        private void Cat2_Checked(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(View.MainPage), e);
+
+        }
+
+        private void Cat3_Checked(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

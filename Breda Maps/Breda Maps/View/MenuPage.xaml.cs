@@ -55,16 +55,10 @@ namespace Breda_Maps.View
         private void Bn_Rou_Click(object sender, RoutedEventArgs e)
         {
             Debug.WriteLine("GOTO MainPage");
-            this.Frame.Navigate(typeof(View.MainPage), e);
+            this.Frame.Navigate(typeof(View.RoutePage), e);
         }
 
         private void Bn_Bez_Click(object sender, RoutedEventArgs e)
-        {
-            Debug.WriteLine("GOTO SightPage");
-            this.Frame.Navigate(typeof(View.SightPage), e);
-        }
-
-        private void Bn_Cat_Click(object sender, RoutedEventArgs e)
         {
             Debug.WriteLine("GOTO SightPage");
             this.Frame.Navigate(typeof(View.SightPage), e);
