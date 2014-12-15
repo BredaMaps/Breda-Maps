@@ -35,5 +35,19 @@ namespace Breda_Maps.View
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
         }
+        private void Cat1_Checked(object sender, RoutedEventArgs e)
+        {
+            //TODO: make categories selectable
+        }
+
+        private void Cat2_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Cat3_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
