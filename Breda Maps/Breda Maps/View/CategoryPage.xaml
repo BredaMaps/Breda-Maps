@@ -10,6 +10,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
+        
         <CheckBox Content="Categorie 1" HorizontalAlignment="Left" Margin="10,80,-0,0" VerticalAlignment="Top" Checked="Cat1_Checked"/>
         <CheckBox Content="Categorie 2" HorizontalAlignment="Left" Margin="10,120,-0,0" VerticalAlignment="Top" Checked="Cat2_Checked"/>
         <CheckBox Content="Categorie 3" HorizontalAlignment="Left" Margin="10,160,-0,0" VerticalAlignment="Top" Checked="Cat3_Checked"/>
