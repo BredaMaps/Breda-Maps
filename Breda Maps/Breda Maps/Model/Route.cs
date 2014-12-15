@@ -17,6 +17,11 @@ namespace Breda_Maps.Model
             _name = name;
         }
 
+        public Route()
+        {
+
+        }
+
         public void addpoint(Sight point)
         {
             
