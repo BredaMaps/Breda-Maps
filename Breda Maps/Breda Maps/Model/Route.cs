@@ -14,18 +14,22 @@ namespace Breda_Maps.Model
 
         private Route()
         {
-            addpoint();
+           
         }
 
-        private void addpoint()
+        private void addpoint(Geopoint point)
         {
 
-            Geopoint testpoint = new Geopoint(new BasicGeoposition() { Latitude = 51.59380, Longitude = 4.77963 }); // point van VVV Breda
-            Geopoint testpoint2 = new Geopoint(new BasicGeoposition() { Latitude = 51.59307 , Longitude =4.77969 }); // point van Liefdeszuster
+            //Geopoint testpoint = new Geopoint(new BasicGeoposition() { Latitude = 51.59380, Longitude = 4.77963 }); // point van VVV Breda
+            //Geopoint testpoint2 = new Geopoint(new BasicGeoposition() { Latitude = 51.59307 , Longitude =4.77969 }); // point van Liefdeszuster
 
-            points.Add(testpoint);
-            points.Add(testpoint2);
+            points.Add(point);
+            //points.Add(testpoint2);
         }
 
+        private List<Geopoint> getRoute()
+        {
+            return points;
+        }
     }
 }
