@@ -35,5 +35,19 @@ namespace Breda_Maps.View
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
         }
+
+        public void setImage(ImageSource image)
+        {
+            mainImage.Source = image;
+        }
+        public void SetInformation(String information)
+        {
+            mainInformation.Text = information;
+        }
+
+        private void Sight_Sel_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(View.SightPage), e);
+        }
     }
 }
