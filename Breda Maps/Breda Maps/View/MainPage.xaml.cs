@@ -18,6 +18,7 @@ using Windows.Devices.Geolocation;
 using System.Diagnostics;
 using Windows.Devices.Geolocation;
 using Windows.Storage.Streams;
+using Windows.UI.Core;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -51,6 +52,7 @@ namespace Breda_Maps.View
             MapControl1.Center = new Geopoint(StartPosition);
             MapControl1.ZoomLevel = 18;
             MapControl1.LandmarksVisible = true;
+            AddCurrentPositionIcon();
         }
 
         private void AddStartPositionIcon(BasicGeoposition CurrentStartPosition)
@@ -78,9 +80,10 @@ namespace Breda_Maps.View
             CurrentPosition.Latitude = geoPosition.Coordinate.Point.Position.Latitude;
             CurrentPosition.Longitude = geoPosition.Coordinate.Point.Position.Longitude;
             Debug.WriteLine(CurrentPosition.Latitude + " en " + CurrentPosition.Longitude);
-            //currentPosIcon.Location = new Geopoint(CurrentPosition);
-            // MapControl1.Center = new Geopoint(CurrentPosition);
-           // MapControl1.UpdateLayout();
+            Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>{
+            currentPosIcon.Location = new Geopoint(CurrentPosition);
+            MapControl1.Center = new Geopoint(CurrentPosition);
+            });
         }
 
         private void Bn_Menu_Click(object sender, RoutedEventArgs e)
