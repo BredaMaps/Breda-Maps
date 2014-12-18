@@ -29,7 +29,14 @@ namespace Breda_Maps.Controller
 
         public Geoposition getPosition()
         {
-            return geoPosition;
+            if (geoPosition != null)
+            {
+                return geoPosition;
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 
