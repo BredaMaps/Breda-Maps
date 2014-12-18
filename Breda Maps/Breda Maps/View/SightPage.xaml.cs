@@ -40,8 +40,12 @@ namespace Breda_Maps.View
         }
         private void Cat1_Checked(object sender, RoutedEventArgs e)
         {
+            String test = getCategory(EnumCat.FACILITY).ToString();
+            Debug.WriteLine(test);
             ListView1.Items.Add(getCategory(EnumCat.FACILITY));
 
+            //var facilities = this.getCategory(EnumCat.FACILITY);
+            //Debug.WriteLine(getCategory(EnumCat.FACILITY).ToString());
         }
 
         private void Cat2_Checked(object sender, RoutedEventArgs e)
