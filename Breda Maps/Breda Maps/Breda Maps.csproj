@@ -85,6 +85,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controller\GpsLocalizer.cs" />
     <Compile Include="Controller\RouteController.cs" />
     <Compile Include="database\TestDatabase.cs" />
     <Compile Include="database\DataBase.cs" />

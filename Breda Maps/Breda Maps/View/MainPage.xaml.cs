@@ -28,13 +28,13 @@ namespace Breda_Maps.View
     /// </summary>
     public sealed partial class MainPage : GUI
     {
+        private MapIcon currentPosIcon;
         BasicGeoposition StartPosition = new BasicGeoposition()
                 {
                     Latitude = 51.5938D,
                     Longitude = 4.77963D            
                 };
         BasicGeoposition CurrentPosition;
-        Geolocator geo = null;
 
         public MainPage()
         {
@@ -48,6 +48,7 @@ namespace Breda_Maps.View
             MapControl1.LandmarksVisible = true;
 
             AddStartPositionIcon(StartPosition);
+            AddCurrentPositionIcon();
         }
 
         private void AddStartPositionIcon(BasicGeoposition CurrentStartPosition)
@@ -60,16 +61,23 @@ namespace Breda_Maps.View
             MapControl1.Center = new Geopoint(StartPosition);
         }
 
-        private void AddCurrentPositionIcon(double CurrentPositionLati, double CurrentPositionLong)
+        private void AddCurrentPositionIcon()
         {
-            MapIcon MapIcon1 = new MapIcon();
-            CurrentPosition.Latitude = CurrentPositionLati;
-            CurrentPosition.Longitude = CurrentPositionLong;
-            MapIcon1.Location = new Geopoint(CurrentPosition);
-            MapIcon1.NormalizedAnchorPoint = new Point(0.5, 1.0);
-            MapIcon1.Title = "";
-            MapControl1.MapElements.Add(MapIcon1);
+            currentPosIcon = new MapIcon();
+            currentPosIcon.Location = new Geopoint(StartPosition);
+            currentPosIcon.NormalizedAnchorPoint = new Point(0.5, 1.0);
+            currentPosIcon.Title = "";
+            MapControl1.MapElements.Add(currentPosIcon);
+            MapControl1.Center = new Geopoint(StartPosition);
+        }
+
+        public void SetNewPosition(Geoposition geoPosition)
+        {
+            CurrentPosition.Latitude = geoPosition.Coordinate.Latitude;
+            CurrentPosition.Longitude = geoPosition.Coordinate.Longitude;
+            currentPosIcon.Location = new Geopoint(CurrentPosition);
             MapControl1.Center = new Geopoint(CurrentPosition);
+            MapControl1.UpdateLayout();
         }
 
         private void Bn_Menu_Click(object sender, RoutedEventArgs e)
@@ -82,14 +90,14 @@ namespace Breda_Maps.View
             object sender, RoutedEventArgs e)
         {
             
-            Debug.WriteLine("GOTO own Location");
-            if (geo == null)
-            {
-                geo = new Geolocator();
-            }
-            Geoposition pos = await geo.GetGeopositionAsync();
-            AddCurrentPositionIcon(pos.Coordinate.Point.Position.Latitude, pos.Coordinate.Point.Position.Longitude);
-            Debug.WriteLine("Latitude: " + pos.Coordinate.Point.Position.Latitude + " Longitude: " + pos.Coordinate.Point.Position.Longitude);
+            //Debug.WriteLine("GOTO own Location");
+            //if (geo == null)
+            //{
+            //    geo = new Geolocator();
+            //}
+            //Geoposition pos = await geo.GetGeopositionAsync();
+            //AddCurrentPositionIcon(pos.Coordinate.Point.Position.Latitude, pos.Coordinate.Point.Position.Longitude);
+            //Debug.WriteLine("Latitude: " + pos.Coordinate.Point.Position.Latitude + " Longitude: " + pos.Coordinate.Point.Position.Longitude);
         }
 
         /// <summary>
