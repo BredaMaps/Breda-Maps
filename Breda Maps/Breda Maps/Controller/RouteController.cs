@@ -8,24 +8,29 @@ using Breda_Maps.Model;
 
 namespace Breda_Maps.Controller
 {
-    class RouteController
+    public class RouteController
     {
         private List<Route> routes = new List<Route>(); 
         private List<Sight> sights = new List<Sight>();
 
-        private RouteController()
+        public RouteController()
         {
             
         }
-        private void addRoute(Route route)
+        public void addRoute(Route route)
         {
             routes.Add(route);
         }
 
-        private Route selectRoute(Route route)
+        public Route selectRoute(Route route)
         {
             //selecteer een route ?
             return route;
         }
+
+        public List<Sight> getSights()
+        {
+            return sights;
+        } 
     }
 }

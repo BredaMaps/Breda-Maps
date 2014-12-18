@@ -14,6 +14,9 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
+using Breda_Maps.Controller;
+using Breda_Maps.Controller.Enums;
+using Breda_Maps.Model;
 
 namespace Breda_Maps.View
 {
@@ -22,6 +25,7 @@ namespace Breda_Maps.View
     /// </summary>
     public sealed partial class CategoryPage : GUI
     {
+       
         public CategoryPage()
         {
             this.InitializeComponent();
@@ -49,6 +53,35 @@ namespace Breda_Maps.View
         private void Cat3_Checked(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        // methode voor filteren van categorien
+        // var kroegen = from sights
+        public IOrderedEnumerable<IGrouping<EnumCat, Sight>> getAllCategories()
+        {
+            var temp = _rc.getSights();
+
+            var categories =
+                from cat in temp
+                group cat by cat.Category
+                into categorie
+                orderby categorie
+                select categorie;
+
+            return categories;
+        }
+
+        public IOrderedEnumerable<Sight> getCategory(EnumCat type)
+        {
+            var temp = _rc.getSights();
+
+            var park =
+                from cat in temp
+                where cat.Category == type
+                orderby cat.Category
+                select cat;
+
+            return park;
         }
     }
 }

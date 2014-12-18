@@ -8,7 +8,7 @@ using Windows.Foundation;
 
 namespace Breda_Maps.Model
 {
-    class Route
+    public class Route
     {
         private List<Sight> points = new List<Sight>();
 
