@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -14,6 +15,8 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
+using Breda_Maps.Controller.Enums;
+using Breda_Maps.Model;
 
 namespace Breda_Maps.View
 {
@@ -37,8 +40,8 @@ namespace Breda_Maps.View
         }
         private void Cat1_Checked(object sender, RoutedEventArgs e)
         {
-            ListView1.Items.Add("1");
-            
+            ListView1.Items.Add(getCategory(EnumCat.FACILITY));
+
         }
 
         private void Cat2_Checked(object sender, RoutedEventArgs e)
@@ -66,6 +69,38 @@ namespace Breda_Maps.View
         {
             ListView1.Items.Clear();
             //ListView1.Items.Remove();
+        }
+        public IOrderedEnumerable<IGrouping<EnumCat, Sight>> getAllCategories()
+        {
+            var temp = _rc.getSights();
+            foreach (Sight s in temp)
+            {
+                if (s.Category == EnumCat.ROUTEPOINT)
+                {
+                    temp.Remove(s);
+                }
+            }
+
+            var categories =
+                from cat in temp
+                group cat by cat.Category
+                    into categorie
+                    orderby categorie
+                    select categorie;
+
+            return categories;
+        }
+        public IOrderedEnumerable<Sight> getCategory(EnumCat type)
+        {
+            var temp = _rc.getSights();
+
+            var park =
+                from cat in temp
+                where cat.Category == type
+                orderby cat.Category
+                select cat;
+
+            return park;
         }
     }
 }

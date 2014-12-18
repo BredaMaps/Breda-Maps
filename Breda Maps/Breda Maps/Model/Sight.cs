@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ using Breda_Maps.Controller.Enums;
 
 namespace Breda_Maps.Model
 {
-    public class Sight
+    public class Sight : IEnumerable
     {
         private String _description;
         private EnumCat _category;
@@ -34,6 +35,10 @@ namespace Breda_Maps.Model
         {
             return this._description;
         }
-        
+
+        public IEnumerator GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
