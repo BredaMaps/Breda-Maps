@@ -20,24 +20,40 @@ namespace Breda_Maps.Controller
         {
             sendLocation = new Task(sendNewLocation);
             sendLocation.Start();
+
+            routes.Add(new Route("Test 1"));
+            routes.Add(new Route("Test 2"));
+            routes.Add(new Route("Test 3"));
+            routes.Add(new Route("Test 4"));
         }
         public void addRoute(Route route)
         {
             routes.Add(route);
         }
 
-        public Route selectRoute(Route route)
-
         private async void sendNewLocation()
         {
             //later gps doorsturen.
         }
 
-        private Route selectRoute(Route route)
+        public Route selectRoute(Route route)
         {
             //selecteer een route ?
             return route;
         }
+        public Route selectRoute(String routeNaam)
+        {
+            //selecteer een route ?
+            foreach (Route r in routes)
+            {
+                if(r.GetName() == routeNaam)
+                {
+                    return r;
+                }
+            }
+            return null;
+        }
+
 
         public List<Route> GetRoutes() 
         {

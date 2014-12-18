@@ -12,9 +12,6 @@ namespace Breda_Maps.Model
     {
         private String description;
         private EnumCat category;
-        private Geoposition location;
-
-        private Sight(String description, Geoposition location, EnumCat category)
         private Geopoint location;
 
         public Sight(String description, Geopoint location)
@@ -27,12 +24,11 @@ namespace Breda_Maps.Model
         {
             get { return category; }
         }
-        private Geoposition getLocation()
 
         public Geopoint getLocation()
         {
 
-            return location;
+            return this.location;
         }
 
         public String getDescription()
