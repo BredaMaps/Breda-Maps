@@ -31,16 +31,26 @@ namespace Breda_Maps.Controller
         {
             map = mp;
             init();
+            initLocation();
+        }
+
+        public void SetMap(MainPage mp)
+        {
+            map = mp;
+            initLocation();
         }
 
         private void init()
         {
-            sendLocation = new Task(sendNewLocation);
-            sendLocation.Start();
-
             //DEBUG
             TestFillSights();
             TestFillRoutes();
+        }
+
+        private void initLocation()
+        {
+            sendLocation = new Task(sendNewLocation);
+            sendLocation.Start();
         }
 
         public void addRoute(Route route)

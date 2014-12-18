@@ -42,11 +42,12 @@ namespace Breda_Maps.View
         public MainPage()
         {
             this.InitializeComponent();
+            _rc.SetMap(this);
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            _rc = new Controller.RouteController(this);
+            Debug.WriteLine("Navigated to mainpage");
             MapControl1.Center = new Geopoint(StartPosition);
             MapControl1.ZoomLevel = 18;
             MapControl1.LandmarksVisible = true;
