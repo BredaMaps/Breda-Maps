@@ -39,6 +39,7 @@ namespace Breda_Maps.View
             Latitude = 51.5938D,
             Longitude = 4.77963D  
         };
+        private Boolean scrolled = true;
 
         public MainPage()
         {
@@ -82,7 +83,10 @@ namespace Breda_Maps.View
             Debug.WriteLine(CurrentPosition.Latitude + " en " + CurrentPosition.Longitude);
             Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>{
             currentPosIcon.Location = new Geopoint(CurrentPosition);
-            MapControl1.Center = new Geopoint(CurrentPosition);
+            if (!scrolled)
+            {
+                MapControl1.Center = new Geopoint(CurrentPosition);
+            }
             });
         }
 
@@ -95,7 +99,7 @@ namespace Breda_Maps.View
         private async void Bn_Loc_Click(
             object sender, RoutedEventArgs e)
         {
-            
+            scrolled = false;            
             //Debug.WriteLine("GOTO own Location");
             //if (geo == null)
             //{
@@ -104,6 +108,12 @@ namespace Breda_Maps.View
             //Geoposition pos = await geo.GetGeopositionAsync();
             //AddCurrentPositionIcon(pos.Coordinate.Point.Position.Latitude, pos.Coordinate.Point.Position.Longitude);
             //Debug.WriteLine("Latitude: " + pos.Coordinate.Point.Position.Latitude + " Longitude: " + pos.Coordinate.Point.Position.Longitude);
+        }
+        
+        private void MapControl1_PointerPressed(MapControl sender, object args)
+        {
+            Debug.WriteLine("hoi");
+            scrolled = true;
         }
 
         /// <summary>
