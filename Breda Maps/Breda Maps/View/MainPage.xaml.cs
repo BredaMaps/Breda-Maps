@@ -46,6 +46,7 @@ namespace Breda_Maps.View
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            _rc = new Controller.RouteController(this);
             MapControl1.Center = new Geopoint(StartPosition);
             MapControl1.ZoomLevel = 18;
             MapControl1.LandmarksVisible = true;

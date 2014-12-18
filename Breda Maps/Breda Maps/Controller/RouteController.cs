@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Breda_Maps.Model;
+using Breda_Maps.View;
 
 namespace Breda_Maps.Controller
 {
@@ -15,8 +16,24 @@ namespace Breda_Maps.Controller
 
         private Task sendLocation;
         GpsLocalizer gpsLoc = new GpsLocalizer();
-        View.MainPage map = new View.MainPage();
+        MainPage map;
         public RouteController()
+        {
+            init();
+           
+            routes.Add(new Route("Test 1"));
+            routes.Add(new Route("Test 2"));
+            routes.Add(new Route("Test 3"));
+            routes.Add(new Route("Test 4"));
+        }
+
+        public RouteController(MainPage mp)
+        {
+            map = mp;
+            init();
+        }
+
+        private void init()
         {
             sendLocation = new Task(sendNewLocation);
             sendLocation.Start();
@@ -24,10 +41,6 @@ namespace Breda_Maps.Controller
             //DEBUG
             TestFillSights();
             TestFillRoutes();
-            routes.Add(new Route("Test 1"));
-            routes.Add(new Route("Test 2"));
-            routes.Add(new Route("Test 3"));
-            routes.Add(new Route("Test 4"));
         }
 
         public void addRoute(Route route)
@@ -78,12 +91,12 @@ namespace Breda_Maps.Controller
 #region TEST
         private void TestFillRoutes()
         {
-            throw new NotImplementedException();
+            // create and fill routes
         }
 
         private void TestFillSights()
         {
-            throw new NotImplementedException();
+            // create and fill sights
         }
 #endregion
     }
