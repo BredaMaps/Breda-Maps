@@ -15,7 +15,7 @@
 
         <Button x:Name="Sight_Sel" Content="Selecteer bezienswaardigheid" HorizontalAlignment="Left" Margin="64,582,0,0" VerticalAlignment="Top" Click="Sight_Sel_Click"/>
         <TextBox HorizontalAlignment="Left" Margin="199,389,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top"/>
-        <TextBlock x:Name="mainInformation" HorizontalAlignment="Left" Height="344" Margin="10,203,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="380"/>
+        <TextBlock x:Name="mainInformation" HorizontalAlignment="Left" Height="344" Margin="10,190,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="380"/>
 
     </Grid>
 </src:GUI>

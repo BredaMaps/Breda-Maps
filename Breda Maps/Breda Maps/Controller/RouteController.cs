@@ -13,9 +13,13 @@ namespace Breda_Maps.Controller
         private List<Route> routes = new List<Route>(); 
         private List<Sight> sights = new List<Sight>();
 
+        private Task sendLocation;
+        GpsLocalizer gpsLoc = new GpsLocalizer();
+        View.MainPage map;
         public RouteController()
         {
-            
+            sendLocation = new Task(sendNewLocation);
+            sendLocation.Start();
         }
         public void addRoute(Route route)
         {
@@ -23,6 +27,13 @@ namespace Breda_Maps.Controller
         }
 
         public Route selectRoute(Route route)
+
+        private async void sendNewLocation()
+        {
+            //later gps doorsturen.
+        }
+
+        private Route selectRoute(Route route)
         {
             //selecteer een route ?
             return route;
