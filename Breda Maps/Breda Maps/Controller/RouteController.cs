@@ -15,25 +15,35 @@ namespace Breda_Maps.Controller
 
         private Task sendLocation;
         GpsLocalizer gpsLoc = new GpsLocalizer();
-        View.MainPage map;
+        View.MainPage map = new View.MainPage();
         public RouteController()
         {
             sendLocation = new Task(sendNewLocation);
             sendLocation.Start();
 
+            //DEBUG
+            TestFillSights();
+            TestFillRoutes();
             routes.Add(new Route("Test 1"));
             routes.Add(new Route("Test 2"));
             routes.Add(new Route("Test 3"));
             routes.Add(new Route("Test 4"));
         }
+
         public void addRoute(Route route)
         {
             routes.Add(route);
         }
 
-        private async void sendNewLocation()
+        private void sendNewLocation()
         {
-            //later gps doorsturen.
+            while(true)
+            {
+                if (gpsLoc.getPosition() != null)
+                {
+                    map.SetNewPosition(gpsLoc.getPosition());
+                }
+            }
         }
 
         public Route selectRoute(Route route)
@@ -63,6 +73,18 @@ namespace Breda_Maps.Controller
         public List<Sight> getSights()
         {
             return sights;
-        } 
+        }
+
+#region TEST
+        private void TestFillRoutes()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void TestFillSights()
+        {
+            throw new NotImplementedException();
+        }
+#endregion
     }
 }

@@ -27,7 +27,6 @@ namespace Breda_Maps.Model
 
         public Geopoint getLocation()
         {
-
             return this._location;
         }
 
