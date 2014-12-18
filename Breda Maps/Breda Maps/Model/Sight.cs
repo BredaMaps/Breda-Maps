@@ -10,30 +10,29 @@ namespace Breda_Maps.Model
 {
     public class Sight
     {
-        private String description;
-        private EnumCat category;
-        private Geopoint location;
+        private String _description;
+        private EnumCat _category;
+        private Geopoint _location;
 
-        public Sight(String description, Geopoint location)
+        public Sight(String description, Geopoint location, EnumCat category)
         {
-            this.description = description;
-            this.category = category;
-            this.location = location;
+            this._description = description;
+            this._category = category;
+            this._location = location;
 	}
         public EnumCat Category
         {
-            get { return category; }
+            get { return _category; }
         }
 
         public Geopoint getLocation()
         {
-
-            return this.location;
+            return this._location;
         }
 
         public String getDescription()
         {
-            return this.description;
+            return this._description;
         }
         
     }

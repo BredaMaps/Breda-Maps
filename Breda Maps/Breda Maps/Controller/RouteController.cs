@@ -21,11 +21,15 @@ namespace Breda_Maps.Controller
             sendLocation = new Task(sendNewLocation);
             sendLocation.Start();
 
+            //DEBUG
+            TestFillSights();
+            TestFillRoutes();
             routes.Add(new Route("Test 1"));
             routes.Add(new Route("Test 2"));
             routes.Add(new Route("Test 3"));
             routes.Add(new Route("Test 4"));
         }
+
         public void addRoute(Route route)
         {
             routes.Add(route);
@@ -63,6 +67,18 @@ namespace Breda_Maps.Controller
         public List<Sight> getSights()
         {
             return sights;
-        } 
+        }
+
+#region TEST
+        private void TestFillRoutes()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void TestFillSights()
+        {
+            throw new NotImplementedException();
+        }
+#endregion
     }
 }
