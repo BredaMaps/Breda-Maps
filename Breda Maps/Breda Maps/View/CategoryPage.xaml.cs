@@ -56,21 +56,19 @@ namespace Breda_Maps.View
 
         }
 
-        // methode voor filteren van categorien
-        // var kroegen = from sights
-        public IOrderedEnumerable<IGrouping<EnumCat, Sight>> getAllCategories()
-        {
-            var temp = _rc.getSights();
+        //public IOrderedEnumerable<IGrouping<EnumCat, Sight>> getAllCategories()
+        //{
+        //    var temp = _rc.getSights();
 
-            var categories =
-                from cat in temp
-                group cat by cat.Category
-                into categorie
-                orderby categorie
-                select categorie;
+        //    var categories =
+        //        from cat in temp
+        //        group cat by cat.Category
+        //        into categorie
+        //        orderby categorie
+        //        select categorie;
 
-            return categories;
-        }
+        //    return categories;
+        //}
 
         public IOrderedEnumerable<Sight> getCategory(EnumCat type)
         {
