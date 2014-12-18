@@ -42,6 +42,7 @@ namespace Breda_Maps.View
 
         private void Cat1_Checked(object sender, RoutedEventArgs e)
         {
+            getCategory(EnumCat.PARK);
             //TODO: make categories selectable
         }
 
