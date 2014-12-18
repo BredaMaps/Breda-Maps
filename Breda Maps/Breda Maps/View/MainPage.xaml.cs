@@ -34,7 +34,10 @@ namespace Breda_Maps.View
                     Latitude = 51.5938D,
                     Longitude = 4.77963D            
                 };
-        BasicGeoposition CurrentPosition;
+        BasicGeoposition CurrentPosition = new BasicGeoposition(){
+            Latitude = 51.5938D,
+            Longitude = 4.77963D  
+        };
 
         public MainPage()
         {
@@ -46,9 +49,6 @@ namespace Breda_Maps.View
             MapControl1.Center = new Geopoint(StartPosition);
             MapControl1.ZoomLevel = 18;
             MapControl1.LandmarksVisible = true;
-
-            AddStartPositionIcon(StartPosition);
-            AddCurrentPositionIcon();
         }
 
         private void AddStartPositionIcon(BasicGeoposition CurrentStartPosition)
@@ -73,11 +73,12 @@ namespace Breda_Maps.View
 
         public void SetNewPosition(Geoposition geoPosition)
         {
-            CurrentPosition.Latitude = geoPosition.Coordinate.Latitude;
-            CurrentPosition.Longitude = geoPosition.Coordinate.Longitude;
-            currentPosIcon.Location = new Geopoint(CurrentPosition);
-            MapControl1.Center = new Geopoint(CurrentPosition);
-            MapControl1.UpdateLayout();
+            CurrentPosition.Latitude = geoPosition.Coordinate.Point.Position.Latitude;
+            CurrentPosition.Longitude = geoPosition.Coordinate.Point.Position.Longitude;
+            Debug.WriteLine(CurrentPosition.Latitude + " en " + CurrentPosition.Longitude);
+            //currentPosIcon.Location = new Geopoint(CurrentPosition);
+            // MapControl1.Center = new Geopoint(CurrentPosition);
+           // MapControl1.UpdateLayout();
         }
 
         private void Bn_Menu_Click(object sender, RoutedEventArgs e)
