@@ -32,6 +32,7 @@ namespace Breda_Maps.View
             //listView = new ListView();
             //listView.m
         }
+        
 
         /// <summary>
         /// Invoked when this page is about to be displayed in a Frame.
