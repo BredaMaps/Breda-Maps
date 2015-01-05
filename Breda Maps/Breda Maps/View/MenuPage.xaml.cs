@@ -70,6 +70,12 @@ namespace Breda_Maps.View
             this.Frame.Navigate(typeof(View.SettingsPage), e);
         }
 
+        private void Bn_Abt_Click(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine("GOTO AboutPage");
+            this.Frame.Navigate(typeof(View.AboutPage), e);
+        }
+
         private void Bn_Afs_Click(object sender, RoutedEventArgs e)
         {
             Debug.WriteLine("EXIT");
