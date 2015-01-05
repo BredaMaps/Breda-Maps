@@ -16,9 +16,11 @@ using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Controls.Maps;
 using Windows.Devices.Geolocation;
 using System.Diagnostics;
-using Windows.Devices.Geolocation;
 using Windows.Storage.Streams;
 using Windows.UI.Core;
+using Windows.Services.Maps;
+using Breda_Maps.Model;
+using Windows.UI;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -54,6 +56,7 @@ namespace Breda_Maps.View
             MapControl1.ZoomLevel = 18;
             MapControl1.LandmarksVisible = true;
             AddCurrentPositionIcon();
+            InitRoute();
         }
 
         private void AddStartPositionIcon(BasicGeoposition CurrentStartPosition)
@@ -74,6 +77,31 @@ namespace Breda_Maps.View
             currentPosIcon.Title = "";
             MapControl1.MapElements.Add(currentPosIcon);
             MapControl1.Center = new Geopoint(StartPosition);
+        }
+
+        public async void InitRoute()
+        {
+            //Debug.WriteLine(_rc.GetCurrentRoute().getRoute()[0].getLocation().Position.Latitude);
+            Geopoint startpoint = _rc.GetCurrentRoute().getRoute()[0].getLocation();
+            Geopoint endpoint =  _rc.GetCurrentRoute().getRoute()[1].getLocation();
+            MapRouteFinderResult routeResult = await MapRouteFinder.GetDrivingRouteAsync(
+                startpoint,
+                endpoint,
+                MapRouteOptimization.Time,
+                MapRouteRestrictions.None,
+                 290);
+            DisplayRoute(routeResult);
+        }
+
+        public async void DisplayRoute(MapRouteFinderResult routeResult)
+        {
+            MapRouteView routeView = new MapRouteView(routeResult.Route);
+            routeView.RouteColor = Colors.Blue;
+            routeView.OutlineColor = Colors.Red;
+
+            MapControl1.Routes.Add(routeView);
+            await MapControl1.TrySetViewBoundsAsync(routeResult.Route.BoundingBox,
+                null, MapAnimationKind.None);
         }
 
         public void SetNewPosition(Geoposition geoPosition)

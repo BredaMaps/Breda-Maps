@@ -76,8 +76,9 @@ namespace Breda_Maps.Controller
             //selecteer een route ?
             foreach (Route r in routes)
             {
-                if(r.GetName() == routeNaam)
+                if(r.GetName() == routeNaam && r != null)
                 {
+                    Debug.WriteLine("Route set");
                     _currentRoute = r;
                 }
             }
@@ -85,7 +86,15 @@ namespace Breda_Maps.Controller
 
         public Route GetCurrentRoute()
         {
-            return _currentRoute;
+            if(_currentRoute != null)
+            {
+                return _currentRoute;
+            }
+            else
+            {
+                Debug.WriteLine("CURRENT ROUTE IS NULL");
+                return null;
+            }
         }
 
 
