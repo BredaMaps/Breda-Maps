@@ -39,7 +39,7 @@ namespace Breda_Maps.View
             Latitude = 51.5938D,
             Longitude = 4.77963D  
         };
-        private Boolean scrolled = true;
+        private Boolean scrolled = false;
 
         public MainPage()
         {
@@ -108,11 +108,20 @@ namespace Breda_Maps.View
             //Geoposition pos = await geo.GetGeopositionAsync();
             //AddCurrentPositionIcon(pos.Coordinate.Point.Position.Latitude, pos.Coordinate.Point.Position.Longitude);
             //Debug.WriteLine("Latitude: " + pos.Coordinate.Point.Position.Latitude + " Longitude: " + pos.Coordinate.Point.Position.Longitude);
-        }
-        
-        private void MapControl1_PointerPressed(MapControl sender, object args)
+        }   
+
+        private void MapScrolled(object sender, RoutedEventArgs e)
         {
-            Debug.WriteLine("hoi");
+            scrolled = true;
+        }
+
+        private void MapScrolled(MapControl sender, object args)
+        {
+            scrolled = true;
+        }
+
+        private void MapScrolled(object sender, PointerRoutedEventArgs e)
+        {
             scrolled = true;
         }
 
