@@ -25,6 +25,7 @@ namespace Breda_Maps.View
         public InformationPage()
         {
             this.InitializeComponent();
+            ItemName.Text = "hallo";
         }
 
         /// <summary>
