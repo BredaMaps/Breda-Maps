@@ -50,5 +50,6 @@
                 </Style>
             </ListView.ItemContainerStyle>
         </ListView>
+        <TextBlock Name="WarningBlock" HorizontalAlignment="Left" Visibility="Collapsed" Foreground="Red" Margin="105,61,0,0" FontSize="20" TextWrapping="Wrap" Text="NO ROUTE SELECTED" VerticalAlignment="Top"/>
     </Grid>
 </src:GUI>
