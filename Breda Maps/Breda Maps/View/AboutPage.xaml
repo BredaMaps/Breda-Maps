@@ -1,0 +1,21 @@
+﻿<src:GUI
+    xmlns:src="using:Breda_Maps.View"
+    x:Class="Breda_Maps.View.AboutPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Breda_Maps.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <TextBlock HorizontalAlignment="Center" Margin="0,10,0,0" TextWrapping="Wrap" Text="AboutPage" VerticalAlignment="Top"/>
+        <ScrollViewer
+            Margin="10,40,20,10"
+                  VerticalScrollBarVisibility="Visible"
+                  x:Name="Scroller">
+            <TextBlock Name="aboutTextBlock" FontSize="20" HorizontalAlignment="Center" Margin="0,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center"/>
+        </ScrollViewer>
+    </Grid>
+</src:GUI>

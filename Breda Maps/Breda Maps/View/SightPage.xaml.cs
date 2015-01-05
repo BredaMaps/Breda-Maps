@@ -40,40 +40,80 @@ namespace Breda_Maps.View
         }
         private void Cat1_Checked(object sender, RoutedEventArgs e)
         {
-            String test = getCategory(EnumCat.FACILITY).ToString();
-            Debug.WriteLine(test);
-            ListView1.Items.Add(getCategory(EnumCat.FACILITY));
-
-            //var facilities = this.getCategory(EnumCat.FACILITY);
-            //Debug.WriteLine(getCategory(EnumCat.FACILITY).ToString());
+            foreach (Sight facility in this.getCategory(EnumCat.FACILITY))
+            {
+                ListView1.Items.Add(facility.getDescription());
+            }
         }
 
         private void Cat2_Checked(object sender, RoutedEventArgs e)
         {
-            ListView1.Items.Add("23");
+            foreach (Sight bar in this.getCategory(EnumCat.BAR))
+            {
+                ListView1.Items.Add(bar.getDescription());
+            }
         }
 
         private void Cat3_Checked(object sender, RoutedEventArgs e)
         {
-            ListView1.Items.Add("2");
-            ListView1.Items.Add("4");
+            foreach (Sight church in this.getCategory(EnumCat.CHURCH))
+            {
+                ListView1.Items.Add(church.getDescription());
+            }
+        }
+        private void Cat4_Checked(object sender, RoutedEventArgs e)
+        {
+            foreach (Sight park in this.getCategory(EnumCat.PARK))
+            {
+                ListView1.Items.Add(park.getDescription());
+            }
+        }
+        private void Cat5_Checked(object sender, RoutedEventArgs e)
+        {
+            foreach (Sight culture in this.getCategory(EnumCat.CULTURE))
+            {
+                ListView1.Items.Add(culture.getDescription());
+            }
         }
 
         private void cat1_unchecked(object sender, RoutedEventArgs e)
         {
-            ListView1.Items.Clear();
+            foreach (Sight facility in this.getCategory(EnumCat.FACILITY))
+            {
+                ListView1.Items.Remove(facility.getDescription());
+            }
             // clear the list view corresponding with this checkbox
         }
         private void cat2_unchecked(object sender, RoutedEventArgs e)
         {
-            ListView1.Items.Clear();
+            foreach (Sight bar in this.getCategory(EnumCat.BAR))
+            {
+                ListView1.Items.Remove(bar.getDescription());
+            }
             
         }
         private void cat3_unchecked(object sender, RoutedEventArgs e)
         {
-            ListView1.Items.Clear();
-            //ListView1.Items.Remove();
+            foreach (Sight church in this.getCategory(EnumCat.CHURCH))
+            {
+                ListView1.Items.Remove(church.getDescription());
+            }
         }
+        private void cat4_unchecked(object sender, RoutedEventArgs e)
+        {
+            foreach (Sight park in this.getCategory(EnumCat.PARK))
+            {
+                ListView1.Items.Remove(park.getDescription());
+            }
+        }
+        private void cat5_unchecked(object sender, RoutedEventArgs e)
+        {
+            foreach (Sight culture in this.getCategory(EnumCat.CULTURE))
+            {
+                ListView1.Items.Remove(culture.getDescription());
+            }
+        }
+        
         public IOrderedEnumerable<IGrouping<EnumCat, Sight>> getAllCategories()
         {
             var temp = _rc.getSights();
@@ -98,13 +138,14 @@ namespace Breda_Maps.View
         {
             var temp = _rc.getSights();
 
-            var park =
+            var sight =
                 from cat in temp
                 where cat.Category == type
+                //where cat.Category == type
                 orderby cat.Category
-                select cat;
+                ascending select cat;
 
-            return park;
+            return sight;
         }
     }
 }

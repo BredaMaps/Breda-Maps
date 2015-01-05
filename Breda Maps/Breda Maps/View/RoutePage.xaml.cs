@@ -22,9 +22,11 @@ namespace Breda_Maps.View
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
+    /// 
     public sealed partial class RoutePage : GUI
     {
         List<Route> _routes;
+        private string _routeNaam;
         //ListView listView;
         public RoutePage()
         {
@@ -69,12 +71,20 @@ namespace Breda_Maps.View
         }
         private void Bn_Sta_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(View.MainPage), e);
+            if(_routeNaam != null)
+            {
+                this.Frame.Navigate(typeof(View.MainPage), _routeNaam);
+            }
+            else
+            {
+                WarningBlock.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            }
         }
 
         private void listView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            _rc.selectRoute((string)listView.SelectedItems[0]);
+            WarningBlock.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            _routeNaam = (string)listView.SelectedItems[0];
             Debug.WriteLine("Route selected: " + listView.SelectedItems[0]);
         }
     }
