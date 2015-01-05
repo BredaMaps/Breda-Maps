@@ -96,7 +96,7 @@ namespace Breda_Maps.View
             this.Frame.Navigate(typeof(View.MenuPage), e);
         }
 
-        private async void Bn_Loc_Click(
+        private void Bn_Loc_Click(
             object sender, RoutedEventArgs e)
         {
             scrolled = false;            
