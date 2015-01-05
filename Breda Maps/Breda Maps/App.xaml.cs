@@ -96,7 +96,7 @@ namespace Breda_Maps
                     throw new Exception("Failed to create initial page");
                 }
             }
-
+            new Controller.RouteController();
             // Ensure the current window is active
             Window.Current.Activate();
         }

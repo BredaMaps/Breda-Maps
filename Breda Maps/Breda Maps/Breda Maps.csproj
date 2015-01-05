@@ -84,14 +84,19 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controller\Enums\EnumCat.cs" />
+    <Compile Include="Controller\GpsLocalizer.cs" />
     <Compile Include="Controller\RouteController.cs" />
     <Compile Include="database\TestDatabase.cs" />
     <Compile Include="database\DataBase.cs" />
     <Compile Include="Model\Route.cs" />
     <Compile Include="Model\Sight.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SQLite.cs" />
+<Compile Include="SQLite.cs" />
     <Compile Include="SQLiteAsync.cs" />
+<Compile Include="View\AboutPage.xaml.cs">
+      <DependentUpon>AboutPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\CategoryPage.xaml.cs">
       <DependentUpon>CategoryPage.xaml</DependentUpon>
     </Compile>
@@ -133,6 +138,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="View\AboutPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\CategoryPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

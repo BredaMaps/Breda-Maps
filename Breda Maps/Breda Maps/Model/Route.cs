@@ -22,14 +22,9 @@ namespace Breda_Maps.Model
 
         }
 
-        public void addpoint(Sight point)
+        public void addpoint(Sight sight)
         {
-            
-            //Geopoint testpoint = new Geopoint(new BasicGeoposition() { Latitude = 51.59380, Longitude = 4.77963 }); // point van VVV Breda
-            //Geopoint testpoint2 = new Geopoint(new BasicGeoposition() { Latitude = 51.59307 , Longitude =4.77969 }); // point van Liefdeszuster
-
-            points.Add(point);
-            //points.Add(testpoint2);
+            points.Add(sight);
         }
 
         public string GetName()

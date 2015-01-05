@@ -20,12 +20,39 @@ namespace Breda_Maps.View
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class InformationPage : GUI
+    public sealed partial class AboutPage : GUI
     {
-        public InformationPage()
+        private string aboutString =
+            "Breda Maps\n\n" +
+            "In opdracht van:\n" +
+            "Adaptive Guiding Systems (AGS) voor VVV Breda\n\n" +
+            "Geprogrammeerd door:\n" +
+            "Rudy Tjin-Kon-Koen\n" +
+            "Sander Nagtzaam\n" +
+            "Bart Groffen\n" +
+            "Kevin van den Akkerveken\n" +
+            "Gerjan Holsappel\n" +
+            "Corné Derijck\n\n" +
+            "Systeem gedefinieerd door:\n" +
+            "Joris Martens\n" +
+            "Jeroen van den Bergh\n" +
+            "Joost Mutsaers\n" +
+            "David Sterkenburg\n" +
+            "Stefan Antonissen\n" +
+            "Dennis Ping\n\n" +
+            "Innovatie door:\n" +
+            "Thomas Zaman\n" +
+            "Jerry Lotens\n" +
+            "Justin Brouwer\n" +
+            "Jasper van Megroot\n" +
+            "Jeroen den Hollander\n" +
+            "Remco van der Aa\n\n";
+
+
+        public AboutPage()
         {
             this.InitializeComponent();
-            ItemName.Text = "hallo";
+            this.aboutTextBlock.Text = aboutString;
         }
 
         /// <summary>
@@ -35,20 +62,6 @@ namespace Breda_Maps.View
         /// This parameter is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-        }
-
-        public void setImage(ImageSource image)
-        {
-            mainImage.Source = image;
-        }
-        public void SetInformation(String information)
-        {
-            mainInformation.Text = information;
-        }
-
-        private void Sight_Sel_Click(object sender, RoutedEventArgs e)
-        {
-            this.Frame.Navigate(typeof(View.SightPage), e);
         }
     }
 }

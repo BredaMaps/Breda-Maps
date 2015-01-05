@@ -57,7 +57,7 @@ namespace Breda_Maps.database
             try
             {
                 SQLiteConnection cnn = new SQLiteConnection(dbConnection);
-                List<Sight> sights = cnn.Query<Sight>("select * from [view]").ToList();
+                List<Sight> sights=null;//= cnn.Query<Sight>("select * from [view]").ToList();
                 //cnn.Open();
                 //SQLiteCommand mycommand = new SQLiteCommand(cnn);
                 //mycommand.CommandText = sql;

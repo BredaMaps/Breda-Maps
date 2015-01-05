@@ -1,46 +1,57 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Devices.Geolocation;
+using Breda_Maps.Controller.Enums;
 
 namespace Breda_Maps.Model
 {
-    public class Sight
+    public class Sight : IEnumerable
     {
         public string id { get; set; }
         public string description { get; set; }
         public double latitude { get; set; }
 
+        private EnumCat _category;
+
         private Geopoint location;
+
         private String site;
         private String media;
 
-        public Sight()
-        {
-        }
 
-        public Sight(String description, Geopoint location)
+        public Sight(String description, Geopoint location, EnumCat category)
         {
-            this.description = description;
-            this.location = location;
+            this._description = description;
+            this._category = category;
+            this._location = location;
+	}
+        public EnumCat Category
+        {
+            get { return _category; }
         }
 
         public Geopoint getLocation()
         {
-
-            return location;
+            return this._location;
         }
 
-        public String getSite()
+        public String getDescription()
         {
-            return this.site;
+            return this.description;
         }
 
-        public String getMedia()
+ 	public String getMedia()
         {
             return this.media;
+	}
+
+public IEnumerator GetEnumerator()
+        {
+            throw new NotImplementedException();
         }
     }
 }

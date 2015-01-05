@@ -22,9 +22,11 @@ namespace Breda_Maps.View
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
+    /// 
     public sealed partial class RoutePage : GUI
     {
         List<Route> _routes;
+        private string _routeNaam;
         //ListView listView;
         public RoutePage()
         {
@@ -32,6 +34,7 @@ namespace Breda_Maps.View
             //listView = new ListView();
             //listView.m
         }
+        
 
         /// <summary>
         /// Invoked when this page is about to be displayed in a Frame.
@@ -46,14 +49,10 @@ namespace Breda_Maps.View
         private void LoadRoutes()
         {
             //listView.FontSize = 50;
-            _routes = new List<Route>();
+            _routes = _rc.GetRoutes();
             //TextBox tb1 = new TextBox();
             //tb1.Text = "Test 1";
             //tb1.FontSize = 50;
-            _routes.Add(new Route("Test 1"));
-            _routes.Add(new Route("Test 2"));
-            _routes.Add(new Route("Test 3"));
-            _routes.Add(new Route("Test 4"));
             listView.FontSize = 50;
             foreach(Route r in _routes)
             {
@@ -72,12 +71,21 @@ namespace Breda_Maps.View
         }
         private void Bn_Sta_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(View.MainPage), e);
+            if(_routeNaam != null)
+            {
+                this.Frame.Navigate(typeof(View.MainPage), _routeNaam);
+            }
+            else
+            {
+                WarningBlock.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            }
         }
 
         private void listView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Debug.WriteLine("Selection changed to: " + listView.SelectedItems[0]);
+            WarningBlock.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            _routeNaam = (string)listView.SelectedItems[0];
+            Debug.WriteLine("Route selected: " + listView.SelectedItems[0]);
         }
     }
 }
