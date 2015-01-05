@@ -32,6 +32,7 @@ namespace Breda_Maps.View
     public sealed partial class MainPage : GUI
     {
         private MapIcon currentPosIcon;
+        private Color[] colors = new Color[]{Colors.Blue,Colors.Red, Colors.Green, Colors.Yellow, Colors.Orange};
         BasicGeoposition StartPosition = new BasicGeoposition()
                 {
                     Latitude = 51.5938D,
@@ -41,7 +42,7 @@ namespace Breda_Maps.View
             Latitude = 51.5938D,
             Longitude = 4.77963D  
         };
-        private Boolean scrolled = false;
+        private Boolean scrolled = true;
 
         public MainPage()
         {
@@ -84,22 +85,32 @@ namespace Breda_Maps.View
         public async void InitRoute()
         {
             //Debug.WriteLine(_rc.GetCurrentRoute().getRoute()[0].getLocation().Position.Latitude);
-            Geopoint startpoint = _rc.GetCurrentRoute().getRoute()[0].getLocation();
-            Geopoint endpoint =  _rc.GetCurrentRoute().getRoute()[1].getLocation();
-            MapRouteFinderResult routeResult = await MapRouteFinder.GetDrivingRouteAsync(
-                startpoint,
-                endpoint,
-                MapRouteOptimization.Time,
-                MapRouteRestrictions.None,
-                 290);
-            DisplayRoute(routeResult);
+            Geopoint startpoint;
+            Geopoint endpoint;
+            int colorChoice = 0;
+
+            for (int i = 0; i < _rc.GetCurrentRoute().getRoute().Count - 1; i++ )
+            {
+                startpoint = _rc.GetCurrentRoute().getRoute()[i].getLocation();
+                endpoint = _rc.GetCurrentRoute().getRoute()[i+1].getLocation();
+                MapRouteFinderResult routeResult = await MapRouteFinder.GetWalkingRouteAsync(
+                    startpoint,
+                    endpoint
+                  );
+                DisplayRoute(routeResult, colorChoice);
+                colorChoice++;
+                if (colorChoice == colors.Length)
+                {
+                    colorChoice = 0;
+                }
+            }
         }
 
-        public async void DisplayRoute(MapRouteFinderResult routeResult)
+        public async void DisplayRoute(MapRouteFinderResult routeResult, int colorChoice)
         {
             MapRouteView routeView = new MapRouteView(routeResult.Route);
-            routeView.RouteColor = Colors.Blue;
-            routeView.OutlineColor = Colors.Red;
+            routeView.RouteColor = colors[colorChoice];
+            routeView.OutlineColor = colors[colorChoice];
 
             MapControl1.Routes.Add(routeView);
             await MapControl1.TrySetViewBoundsAsync(routeResult.Route.BoundingBox,
@@ -126,7 +137,7 @@ namespace Breda_Maps.View
             this.Frame.Navigate(typeof(View.MenuPage), e);
         }
 
-        private async void Bn_Loc_Click(
+        private void Bn_Loc_Click(
             object sender, RoutedEventArgs e)
         {
             scrolled = false;            
