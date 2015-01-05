@@ -16,7 +16,6 @@ using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Controls.Maps;
 using Windows.Devices.Geolocation;
 using System.Diagnostics;
-using Windows.Devices.Geolocation;
 using Windows.Storage.Streams;
 using Windows.UI.Core;
 
@@ -49,6 +48,8 @@ namespace Breda_Maps.View
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            string routeName = e.Parameter as string;
+            _rc.selectRoute(routeName);
             Debug.WriteLine("Navigated to mainpage");
             MapControl1.Center = new Geopoint(StartPosition);
             MapControl1.ZoomLevel = 18;
@@ -96,7 +97,7 @@ namespace Breda_Maps.View
             this.Frame.Navigate(typeof(View.MenuPage), e);
         }
 
-        private void Bn_Loc_Click(
+        private async void Bn_Loc_Click(
             object sender, RoutedEventArgs e)
         {
             scrolled = false;            
