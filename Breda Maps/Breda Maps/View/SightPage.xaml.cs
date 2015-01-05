@@ -42,7 +42,7 @@ namespace Breda_Maps.View
         {
             foreach (Sight facility in this.getCategory(EnumCat.FACILITY))
             {
-                ListView1.Items.Add(facility.getDescription());
+                ListView0.Items.Add(facility.getDescription());
             }
         }
 
@@ -58,21 +58,21 @@ namespace Breda_Maps.View
         {
             foreach (Sight church in this.getCategory(EnumCat.CHURCH))
             {
-                ListView1.Items.Add(church.getDescription());
+                ListView2.Items.Add(church.getDescription());
             }
         }
         private void Cat4_Checked(object sender, RoutedEventArgs e)
         {
             foreach (Sight park in this.getCategory(EnumCat.PARK))
             {
-                ListView1.Items.Add(park.getDescription());
+                ListView3.Items.Add(park.getDescription());
             }
         }
         private void Cat5_Checked(object sender, RoutedEventArgs e)
         {
             foreach (Sight culture in this.getCategory(EnumCat.CULTURE))
             {
-                ListView1.Items.Add(culture.getDescription());
+                ListView4.Items.Add(culture.getDescription());
             }
         }
 
@@ -80,7 +80,7 @@ namespace Breda_Maps.View
         {
             foreach (Sight facility in this.getCategory(EnumCat.FACILITY))
             {
-                ListView1.Items.Remove(facility.getDescription());
+                ListView0.Items.Remove(facility.getDescription());
             }
             // clear the list view corresponding with this checkbox
         }
@@ -96,21 +96,21 @@ namespace Breda_Maps.View
         {
             foreach (Sight church in this.getCategory(EnumCat.CHURCH))
             {
-                ListView1.Items.Remove(church.getDescription());
+                ListView2.Items.Remove(church.getDescription());
             }
         }
         private void cat4_unchecked(object sender, RoutedEventArgs e)
         {
             foreach (Sight park in this.getCategory(EnumCat.PARK))
             {
-                ListView1.Items.Remove(park.getDescription());
+                ListView3.Items.Remove(park.getDescription());
             }
         }
         private void cat5_unchecked(object sender, RoutedEventArgs e)
         {
             foreach (Sight culture in this.getCategory(EnumCat.CULTURE))
             {
-                ListView1.Items.Remove(culture.getDescription());
+                ListView4.Items.Remove(culture.getDescription());
             }
         }
         
