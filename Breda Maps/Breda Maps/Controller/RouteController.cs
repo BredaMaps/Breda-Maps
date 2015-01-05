@@ -14,6 +14,7 @@ namespace Breda_Maps.Controller
     {
         private List<Route> routes = new List<Route>(); 
         private List<Sight> sights = new List<Sight>();
+        private Route _currentRoute;
 
         private Task sendLocation;
         GpsLocalizer gpsLoc = new GpsLocalizer();
@@ -70,17 +71,21 @@ namespace Breda_Maps.Controller
             //selecteer een route ?
             return route;
         }
-        public Route selectRoute(String routeNaam)
+        public void selectRoute(String routeNaam)
         {
             //selecteer een route ?
             foreach (Route r in routes)
             {
                 if(r.GetName() == routeNaam)
                 {
-                    return r;
+                    _currentRoute = r;
                 }
             }
-            return null;
+        }
+
+        public Route GetCurrentRoute()
+        {
+            return _currentRoute;
         }
 
 

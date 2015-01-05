@@ -25,7 +25,6 @@ namespace Breda_Maps.View
     public sealed partial class RoutePage : GUI
     {
         List<Route> _routes;
-        private Route _selectedRoute;
         //ListView listView;
         public RoutePage()
         {
@@ -75,7 +74,7 @@ namespace Breda_Maps.View
 
         private void listView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            _selectedRoute = _rc.selectRoute((string)listView.SelectedItems[0]);
+            _rc.selectRoute((string)listView.SelectedItems[0]);
             Debug.WriteLine("Route selected: " + listView.SelectedItems[0]);
         }
     }
