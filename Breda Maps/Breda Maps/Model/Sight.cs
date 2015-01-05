@@ -9,8 +9,17 @@ namespace Breda_Maps.Model
 {
     public class Sight
     {
-        private String description;
+        public string id { get; set; }
+        public string description { get; set; }
+        public double latitude { get; set; }
+
         private Geopoint location;
+        private String site;
+        private String media;
+
+        public Sight()
+        {
+        }
 
         public Sight(String description, Geopoint location)
         {
@@ -24,9 +33,14 @@ namespace Breda_Maps.Model
             return location;
         }
 
-        public String getDescription()
+        public String getSite()
         {
-            return this.description;
+            return this.site;
+        }
+
+        public String getMedia()
+        {
+            return this.media;
         }
     }
 }
