@@ -55,6 +55,14 @@ namespace Breda_Maps.View
         {
 
         }
+        private void Cat4_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void Cat5_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
 
         //public IOrderedEnumerable<IGrouping<EnumCat, Sight>> getAllCategories()
         //{
