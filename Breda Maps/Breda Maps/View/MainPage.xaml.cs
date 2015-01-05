@@ -18,6 +18,9 @@ using Windows.Devices.Geolocation;
 using System.Diagnostics;
 using Windows.Storage.Streams;
 using Windows.UI.Core;
+using Windows.Services.Maps;
+using Breda_Maps.Model;
+using Windows.UI;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -29,6 +32,7 @@ namespace Breda_Maps.View
     public sealed partial class MainPage : GUI
     {
         private MapIcon currentPosIcon;
+        private Color[] colors = new Color[]{Colors.Blue,Colors.Red, Colors.Green, Colors.Yellow, Colors.Orange};
         BasicGeoposition StartPosition = new BasicGeoposition()
                 {
                     Latitude = 51.5938D,
@@ -38,7 +42,7 @@ namespace Breda_Maps.View
             Latitude = 51.5938D,
             Longitude = 4.77963D  
         };
-        private Boolean scrolled = false;
+        private Boolean scrolled = true;
 
         public MainPage()
         {
@@ -55,6 +59,7 @@ namespace Breda_Maps.View
             MapControl1.ZoomLevel = 18;
             MapControl1.LandmarksVisible = true;
             AddCurrentPositionIcon();
+            InitRoute();
         }
 
         private void AddStartPositionIcon(BasicGeoposition CurrentStartPosition)
@@ -77,11 +82,47 @@ namespace Breda_Maps.View
             MapControl1.Center = new Geopoint(StartPosition);
         }
 
+        public async void InitRoute()
+        {
+            //Debug.WriteLine(_rc.GetCurrentRoute().getRoute()[0].getLocation().Position.Latitude);
+            Geopoint startpoint;
+            Geopoint endpoint;
+            int colorChoice = 0;
+
+            for (int i = 0; i < _rc.GetCurrentRoute().getRoute().Count - 2; i++ )
+            {
+                startpoint = _rc.GetCurrentRoute().getRoute()[i].getLocation();
+                endpoint = _rc.GetCurrentRoute().getRoute()[i+1].getLocation();
+                MapRouteFinderResult routeResult = await MapRouteFinder.GetWalkingRouteAsync(
+                    startpoint,
+                    endpoint
+                  );
+                DisplayRoute(routeResult, colorChoice);
+                colorChoice++;
+                if (colorChoice == colors.Length)
+                {
+                    colorChoice = 0;
+                }
+            }
+        }
+
+        public async void DisplayRoute(MapRouteFinderResult routeResult, int colorChoice)
+        {
+            MapRouteView routeView = new MapRouteView(routeResult.Route);
+            routeView.RouteColor = colors[colorChoice];
+            routeView.OutlineColor = colors[colorChoice];
+
+            MapControl1.Routes.Add(routeView);
+            //await MapControl1.TrySetViewBoundsAsync(routeResult.Route.BoundingBox,
+            //    null, MapAnimationKind.None);
+        }
+
         public void SetNewPosition(Geoposition geoPosition)
         {
+            //Debug.WriteLine("MainPage nieuwe locatie geset");
             CurrentPosition.Latitude = geoPosition.Coordinate.Point.Position.Latitude;
             CurrentPosition.Longitude = geoPosition.Coordinate.Point.Position.Longitude;
-            Debug.WriteLine(CurrentPosition.Latitude + " en " + CurrentPosition.Longitude);
+            //Debug.WriteLine(CurrentPosition.Latitude + " en " + CurrentPosition.Longitude);
             Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>{
             currentPosIcon.Location = new Geopoint(CurrentPosition);
             if (!scrolled)
@@ -97,7 +138,7 @@ namespace Breda_Maps.View
             this.Frame.Navigate(typeof(View.MenuPage), e);
         }
 
-        private async void Bn_Loc_Click(
+        private void Bn_Loc_Click(
             object sender, RoutedEventArgs e)
         {
             scrolled = false;            
