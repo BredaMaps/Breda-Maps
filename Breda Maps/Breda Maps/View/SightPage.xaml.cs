@@ -162,22 +162,22 @@ namespace Breda_Maps.View
 
         private void listView1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            _itemNaam = (string)ListView0.SelectedItems[1];
+            _itemNaam = (string)ListView1.SelectedItems[0];
         }
 
         private void listView2_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            _itemNaam = (string)ListView0.SelectedItems[2];
+            _itemNaam = (string)ListView2.SelectedItems[0];
         }
 
         private void listView3_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            _itemNaam = (string)ListView0.SelectedItems[3];
+            _itemNaam = (string)ListView3.SelectedItems[0];
         }
 
         private void listView4_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            _itemNaam = (string)ListView0.SelectedItems[4];
+            _itemNaam = (string)ListView4.SelectedItems[0];
         }
     }
 }
