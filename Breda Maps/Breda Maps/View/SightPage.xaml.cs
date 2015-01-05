@@ -25,6 +25,7 @@ namespace Breda_Maps.View
     /// </summary>
     public sealed partial class SightPage : GUI
     {
+        private string _itemNaam;
         public SightPage()
         {
             this.InitializeComponent();
@@ -146,6 +147,20 @@ namespace Breda_Maps.View
                 ascending select cat;
 
             return sight;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if(_itemNaam != null)
+            {
+                this.Frame.Navigate(typeof(View.InformationPage), _itemNaam);
+            }
+        }
+        private void listView0_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //WarningBlock.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            _itemNaam = (string)ListView0.SelectedItems[0];
+            //Debug.WriteLine("Route selected: " + listView.SelectedItems[0]);
         }
     }
 }
