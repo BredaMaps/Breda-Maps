@@ -119,9 +119,10 @@ namespace Breda_Maps.View
 
         public void SetNewPosition(Geoposition geoPosition)
         {
+            //Debug.WriteLine("MainPage nieuwe locatie geset");
             CurrentPosition.Latitude = geoPosition.Coordinate.Point.Position.Latitude;
             CurrentPosition.Longitude = geoPosition.Coordinate.Point.Position.Longitude;
-            Debug.WriteLine(CurrentPosition.Latitude + " en " + CurrentPosition.Longitude);
+            //Debug.WriteLine(CurrentPosition.Latitude + " en " + CurrentPosition.Longitude);
             Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>{
             currentPosIcon.Location = new Geopoint(CurrentPosition);
             if (!scrolled)

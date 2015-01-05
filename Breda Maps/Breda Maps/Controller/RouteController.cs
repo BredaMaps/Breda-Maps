@@ -61,6 +61,7 @@ namespace Breda_Maps.Controller
             {
                 if (gpsLoc.getPosition() != null)
                 {
+                    //Debug.WriteLine("Sending Location");
                     map.SetNewPosition(gpsLoc.getPosition());
                 }
             }
