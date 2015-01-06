@@ -22,13 +22,7 @@
             <ListView x:Name="ListView3" HorizontalAlignment="Left" VerticalAlignment="Top" Width="334" Margin="46,0,0,0"/>
             <CheckBox Content="Cultuur" HorizontalAlignment="Left" Margin="10,-10,0,0" VerticalAlignment="Top" Checked="Cat5_Checked" Unchecked="cat5_unchecked"/>
             <ListView x:Name="ListView4" HorizontalAlignment="Left" VerticalAlignment="Top" Width="334" Margin="46,0,0,0"/>
-            <ListView x:Name="ListView1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="380" SelectionChanged="listView1_SelectionChanged"/>
-            <CheckBox Content="Kerk" HorizontalAlignment="Left" Margin="10,-10,0,0" VerticalAlignment="Top" Checked="Cat3_Checked" Unchecked="cat3_unchecked"/>
-            <ListView x:Name="ListView2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="380" SelectionChanged="listView2_SelectionChanged"/>
-            <CheckBox Content="Park" HorizontalAlignment="Left" Margin="10,-10,0,0" VerticalAlignment="Top" Checked="Cat4_Checked" Unchecked="cat4_unchecked"/>
-            <ListView x:Name="ListView3" HorizontalAlignment="Left" VerticalAlignment="Top" Width="380" SelectionChanged="listView3_SelectionChanged"/>
-            <CheckBox Content="Cultuur" HorizontalAlignment="Left" Margin="10,-10,0,0" VerticalAlignment="Top" Checked="Cat5_Checked" Unchecked="cat5_unchecked"/>
-            <ListView x:Name="ListView4" HorizontalAlignment="Left" VerticalAlignment="Top" Width="380" SelectionChanged="listView4_SelectionChanged"/>
+           
         </StackPanel>
         <Button Content="informatie" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Button_Click"/>
         <!-- <ListView x:Name="ListView2" HorizontalAlignment="Left" Height="364" Margin="10,247,0,0" VerticalAlignment="Top" Width="380"/> -->
