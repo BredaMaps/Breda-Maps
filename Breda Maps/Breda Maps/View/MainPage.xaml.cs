@@ -89,7 +89,7 @@ namespace Breda_Maps.View
             Geopoint endpoint;
             int colorChoice = 0;
 
-            for (int i = 0; i < _rc.GetCurrentRoute().getRoute().Count - 1; i++ )
+            for (int i = 0; i < _rc.GetCurrentRoute().getRoute().Count - 2; i++ )
             {
                 startpoint = _rc.GetCurrentRoute().getRoute()[i].getLocation();
                 endpoint = _rc.GetCurrentRoute().getRoute()[i+1].getLocation();
@@ -113,8 +113,8 @@ namespace Breda_Maps.View
             routeView.OutlineColor = colors[colorChoice];
 
             MapControl1.Routes.Add(routeView);
-            await MapControl1.TrySetViewBoundsAsync(routeResult.Route.BoundingBox,
-                null, MapAnimationKind.None);
+            //await MapControl1.TrySetViewBoundsAsync(routeResult.Route.BoundingBox,
+            //    null, MapAnimationKind.None);
         }
 
         public void SetNewPosition(Geoposition geoPosition)
