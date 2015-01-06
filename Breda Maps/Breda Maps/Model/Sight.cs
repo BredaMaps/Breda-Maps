@@ -6,32 +6,46 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.Devices.Geolocation;
 using Breda_Maps.Controller.Enums;
+using SQLite;
 
 namespace Breda_Maps.Model
 {
     public class Sight : IEnumerable
     {
-        public string id { get; set; }
-        public string description { get; set; }
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
+        [Column("description")]
+        public string _description { get; set; }
+        [Column("latitude")]
         public double latitude { get; set; }
+        [Column("longitude")]
+        public double longitude { get; set; }
 
         private EnumCat _category;
 
-        private Geopoint location;
+        private Geopoint _location;
 
-        private String site;
-        private String media;
+        //private String _site;
+        //private String _media;
 
 
         public Sight(String description, Geopoint location, EnumCat category)
         {
-            this._description = description;
-            this._category = category;
-            this._location = location;
-	}
+            _description = description;
+            _category = category;
+            _location = location;
+            latitude = location.Position.Latitude;
+            longitude = location.Position.Longitude;
+	    }
+
         public EnumCat Category
         {
             get { return _category; }
+        }
+
+        public Sight()
+        {
+
         }
 
         public Geopoint getLocation()
@@ -41,13 +55,13 @@ namespace Breda_Maps.Model
 
         public String getDescription()
         {
-            return this.description;
+            return _description;
         }
 
- 	public String getMedia()
+ 	/*public String getMedia()
         {
-            return this.media;
-	}
+            return _media;
+	}*/
 
 public IEnumerator GetEnumerator()
         {
