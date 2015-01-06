@@ -142,7 +142,6 @@ namespace Breda_Maps.View
             var sight =
                 from cat in temp
                 where cat.Category == type
-                //where cat.Category == type
                 orderby cat.Category
                 ascending select cat;
 
@@ -158,9 +157,7 @@ namespace Breda_Maps.View
         }
         private void listView0_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //WarningBlock.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
             _itemNaam = (string)ListView0.SelectedItems[0];
-            //Debug.WriteLine("Route selected: " + listView.SelectedItems[0]);
         }
     }
 }
