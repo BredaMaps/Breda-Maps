@@ -150,34 +150,70 @@ namespace Breda_Maps.View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if(_itemNaam != null)
+            if (_itemNaam != null)
             {
-                this.Frame.Navigate(typeof(View.InformationPage), _itemNaam);
+                this.Frame.Navigate(typeof (View.InformationPage), _itemNaam);
             }
         }
+
         private void listView0_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            _itemNaam = (string)ListView0.SelectedItems[0];
+            if (_itemNaam == null)
+            {
+                _itemNaam = (string) ListView0.SelectedItems[0];
+            }
+            else
+            {
+                _itemNaam = _itemNaam;
+            }
         }
 
         private void listView1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            _itemNaam = (string)ListView1.SelectedItems[0];
+            if (_itemNaam == null)
+            {
+                _itemNaam = (string)ListView1.SelectedItems[0];
+            }
+            else
+            {
+                _itemNaam = _itemNaam;
+            }
         }
 
         private void listView2_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            _itemNaam = (string)ListView2.SelectedItems[0];
+            if (_itemNaam == null)
+            {
+                _itemNaam = (string)ListView2.SelectedItems[0];
+            }
+            else
+            {
+                _itemNaam = _itemNaam;
+            }
         }
 
         private void listView3_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            _itemNaam = (string)ListView3.SelectedItems[0];
+            if (_itemNaam == null)
+            {
+                _itemNaam = (string)ListView3.SelectedItems[0];
+            }
+            else
+            {
+                _itemNaam = _itemNaam;
+            }
         }
 
         private void listView4_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            _itemNaam = (string)ListView4.SelectedItems[0];
+            if (_itemNaam == null)
+            {
+                _itemNaam = (string)ListView4.SelectedItems[0];
+            }
+            else
+            {
+                _itemNaam = _itemNaam;
+            }
         }
     }
 }
