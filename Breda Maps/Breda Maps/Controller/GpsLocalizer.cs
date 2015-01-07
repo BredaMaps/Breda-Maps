@@ -25,7 +25,6 @@ namespace Breda_Maps.Controller
         {
             while (true)
             {
-                //Debug.WriteLine("Getting location");
                 geoPosition = await geo.GetGeopositionAsync();
                 mapTask.Wait(500);
             }
