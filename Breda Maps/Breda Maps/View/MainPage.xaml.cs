@@ -138,7 +138,6 @@ namespace Breda_Maps.View
         private async Task SmoothSetPosition(Geopoint pos)
         {
             await MapControl1.TrySetViewAsync(pos, MapControl1.ZoomLevel);
-            scrolled = false;
         }
 
         private void Bn_Menu_Click(object sender, RoutedEventArgs e)
@@ -150,7 +149,7 @@ namespace Breda_Maps.View
         private void Bn_Loc_Click(
             object sender, RoutedEventArgs e)
         {
-            scrolled = false;            
+            scrolled = !scrolled;            
             //Debug.WriteLine("GOTO own Location");
             //if (geo == null)
             //{
