@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -124,13 +125,15 @@ namespace Breda_Maps.View
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             //send the selected categorie positions and corresponding names
-            var allSelections = _facilities.Concat(_bars)
+            List<Sight> allSelections = _facilities.Concat(_bars)
                                     .Concat(_church)
                                     .Concat(_park)
                                     .Concat(_cultures)
                                     .ToList();
 
             _rc.SetCategories(allSelections);
+
+            this.Frame.Navigate(typeof(View.MainPage));
         }
     }
 }

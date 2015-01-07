@@ -60,7 +60,9 @@ namespace Breda_Maps.View
             MapControl1.Center = new Geopoint(StartPosition);
             MapControl1.ZoomLevel = 18;
             MapControl1.LandmarksVisible = true;
+            
             AddCurrentPositionIcon();
+            addCategoriePoints();
             Bn_Loc.Background = new SolidColorBrush(Colors.Blue);
             InitRoute();
         }
@@ -73,6 +75,18 @@ namespace Breda_Maps.View
             MapIcon1.Title = "";
             MapControl1.MapElements.Add(MapIcon1);
             MapControl1.Center = new Geopoint(StartPosition);
+        }
+
+        public void addCategoriePoints()
+        {
+            foreach (Sight points in _rc.GetCategories())
+            {
+                MapIcon categorieIcon = new MapIcon();
+                categorieIcon.Location = points.getLocation();
+                categorieIcon.NormalizedAnchorPoint = new Point(0.5,1.0);
+                categorieIcon.Title = points.getDescription();
+                MapControl1.MapElements.Add(categorieIcon);
+            } 
         }
 
         private void AddCurrentPositionIcon()
@@ -91,20 +105,22 @@ namespace Breda_Maps.View
             Geopoint startpoint;
             Geopoint endpoint;
             int colorChoice = 0;
-
-            for (int i = 0; i < _rc.GetCurrentRoute().getRoute().Count - 2; i++ )
+            if (_rc.GetCurrentRoute() != null)
             {
-                startpoint = _rc.GetCurrentRoute().getRoute()[i].getLocation();
-                endpoint = _rc.GetCurrentRoute().getRoute()[i+1].getLocation();
-                MapRouteFinderResult routeResult = await MapRouteFinder.GetWalkingRouteAsync(
-                    startpoint,
-                    endpoint
-                  );
-                DisplayRoute(routeResult, colorChoice);
-                colorChoice++;
-                if (colorChoice == colors.Length)
+                for (int i = 0; i < _rc.GetCurrentRoute().getRoute().Count - 2; i++)
                 {
-                    colorChoice = 0;
+                    startpoint = _rc.GetCurrentRoute().getRoute()[i].getLocation();
+                    endpoint = _rc.GetCurrentRoute().getRoute()[i + 1].getLocation();
+                    MapRouteFinderResult routeResult = await MapRouteFinder.GetWalkingRouteAsync(
+                        startpoint,
+                        endpoint
+                        );
+                    DisplayRoute(routeResult, colorChoice);
+                    colorChoice++;
+                    if (colorChoice == colors.Length)
+                    {
+                        colorChoice = 0;
+                    }
                 }
             }
         }
