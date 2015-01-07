@@ -83,7 +83,7 @@ namespace Breda_Maps.View
             {
                 ListView0.Items.Remove(facility.getDescription());
             }
-            // clear the list view corresponding with this checkbox
+
         }
         private void cat2_unchecked(object sender, RoutedEventArgs e)
         {
@@ -142,7 +142,6 @@ namespace Breda_Maps.View
             var sight =
                 from cat in temp
                 where cat.Category == type
-                //where cat.Category == type
                 orderby cat.Category
                 ascending select cat;
 
@@ -158,9 +157,27 @@ namespace Breda_Maps.View
         }
         private void listView0_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //WarningBlock.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
             _itemNaam = (string)ListView0.SelectedItems[0];
-            //Debug.WriteLine("Route selected: " + listView.SelectedItems[0]);
+        }
+
+        private void listView1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            _itemNaam = (string)ListView1.SelectedItems[0];
+        }
+
+        private void listView2_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            _itemNaam = (string)ListView2.SelectedItems[0];
+        }
+
+        private void listView3_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            _itemNaam = (string)ListView3.SelectedItems[0];
+        }
+
+        private void listView4_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            _itemNaam = (string)ListView4.SelectedItems[0];
         }
     }
 }
