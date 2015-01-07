@@ -1,41 +1,136 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Breda_Maps.Model;
 using Windows.Devices.Geolocation;
+using SQLite;
+using Breda_Maps.Controller.Enums;
+
 
 namespace Breda_Maps.database
 {
     class DataBase
     {
-        private TestDatabase tdb;
 
-        public DataBase()
+        /*
+     * Hoofdverantwoordelijke:  Gerjan Holsappel
+     * Beschrijving:            de connection met de database
+     * Bevat:                   methode aanroepen die de gegevens uitde data base halen
+     * Extra:                   
+     */
+
+        String dbConnection;
+
+
+        public DataBase(String inputFile)
         {
-            tdb = new TestDatabase();
+            dbConnection = String.Format("Data Source={0}", inputFile);
+
+
+            init();
         }
+
+       
 
         public List<Sight> getSights()
         {
-            return tdb.getAllSights();
+            try
+            {
+                SQLiteConnection cnn = new SQLiteConnection(dbConnection);
+
+
+                List<Sight> sights = cnn.Query<Sight>(
+                    @"SELECT * FROM sight"
+                    ).ToList();
+
+                cnn.Close();
+                return sights;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
-        public List<Route> getRoutes()
+        public string getDescription(int id)
         {
-            return tdb.getAllRoutes();
+            try
+            {
+                SQLiteConnection cnn = new SQLiteConnection(dbConnection);
+
+                string query = "SELECT description FROM sight WHERE Id = '"+id+"'";
+                List<Sight> sights = cnn.Query<Sight>(query);
+                string description = sights[0]._description;
+
+                cnn.Close();
+                return description;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
-        public Sight getsight(int ID)
+        private void init()
         {
-            return tdb.getSight(ID);
+            try
+            {
+                SQLiteConnection cnn = new SQLiteConnection(dbConnection);
+                //cnn.DropTable<Sight>();
+                cnn.Query<Sight>(@"CREATE TABLE IF NOT EXISTS
+                                sight (Id      INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+                                            description    VARCHAR( 140 ),
+                                            latitude    REAL,
+                                            longitude    REAL,
+                                            category    VARCHAR( 140 ),
+                                            site VARCHAR( 140 ),
+                                            media    VARCHAR( 140 )
+                            );");
+
+                cnn.Close();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+
+            fillDataBase();
         }
 
-        public Route getRoute(int ID)
+        private void fillDataBase()
         {
-            return tdb.getRoute(ID);
-        }
+            List<Sight> sights = new List<Sight>();
 
+            sights.Add(new Sight("VVV Breda", new Geopoint(new BasicGeoposition() { Latitude = 51.59380, Longitude = 4.77963 }), EnumCat.CULTURE));
+            sights.Add(new Sight("Liefdeszuster", new Geopoint(new BasicGeoposition() { Latitude = 51.59307, Longitude = 4.77969 }), EnumCat.CULTURE));
+            sights.Add(new Sight("Valkenberg", new Geopoint(new BasicGeoposition() { Latitude = 51.59250, Longitude = 4.77969 }), EnumCat.CULTURE));
+            sights.Add(new Sight("Nassau Baronie Monument", new Geopoint(new BasicGeoposition() { Latitude = 51.59250, Longitude = 4.77969 }), EnumCat.CULTURE));
+            sights.Add(new Sight("The Light House", new Geopoint(new BasicGeoposition() { Latitude = 51.59256, Longitude = 4.77889 }), EnumCat.CULTURE));
+            sights.Add(new Sight("1e bocht Valkenberg", new Geopoint(new BasicGeoposition() { Latitude = 51.59265, Longitude = 4.77844 }), EnumCat.ROUTEPOINT));
+            sights.Add(new Sight("2e bocht Valkenberg", new Geopoint(new BasicGeoposition() { Latitude = 51.59258, Longitude = 4.77806 }), EnumCat.ROUTEPOINT));
+            sights.Add(new Sight("Einde park", new Geopoint(new BasicGeoposition() { Latitude = 51.59059, Longitude = 4.77707 }), EnumCat.PARK));
+
+            try
+            {
+                SQLiteConnection cnn = new SQLiteConnection(dbConnection);
+                
+
+                string query = "INSERT INTO sight (description,latitude,longitude,category,site,media) VALUES ("
+                                         + "'henk'" + "," + 12 + "," + 14 + ",'" + "test" + "'," + 6 + "," + 7 + ");";
+
+               // cnn.Query<Sight>(query);
+                //cnn.Insert(new Sight("The Light House", new Geopoint(new BasicGeoposition() { Latitude = 51.59256, Longitude = 4.77889 }), EnumCat.CULTURE));
+                foreach (Sight sight in sights)
+                    cnn.Insert(sight);
+                
+                cnn.Commit();
+                cnn.Close();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+
+        }
     }
 }
