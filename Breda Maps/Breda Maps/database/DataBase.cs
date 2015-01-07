@@ -34,8 +34,6 @@ namespace Breda_Maps.database
 
         public List<Sight> getSights()
         {
-
-            //DataTable dt = new DataTable();
             try
             {
                 SQLiteConnection cnn = new SQLiteConnection(dbConnection);
@@ -52,8 +50,6 @@ namespace Breda_Maps.database
             {
                 throw new Exception(e.Message);
             }
-            //return dt;
-
         }
 
         public string getDescription(int id)

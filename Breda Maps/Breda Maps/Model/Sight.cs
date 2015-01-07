@@ -23,7 +23,6 @@ namespace Breda_Maps.Model
 
         private EnumCat _category;
 
-        private Geopoint _location;
 
         //private String _site;
         //private String _media;
@@ -33,7 +32,6 @@ namespace Breda_Maps.Model
         {
             _description = description;
             _category = category;
-            _location = location;
             latitude = location.Position.Latitude;
             longitude = location.Position.Longitude;
 	    }
@@ -50,7 +48,7 @@ namespace Breda_Maps.Model
 
         public Geopoint getLocation()
         {
-            return this._location;
+            return new Geopoint(new BasicGeoposition() { Latitude = latitude, Longitude = longitude });
         }
 
         public String getDescription()
