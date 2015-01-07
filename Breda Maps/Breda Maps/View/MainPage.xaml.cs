@@ -34,6 +34,8 @@ namespace Breda_Maps.View
     {
         private MapIcon currentPosIcon;
         private Color[] colors = new Color[]{Colors.Blue,Colors.Red, Colors.Green, Colors.Yellow, Colors.Orange};
+        private Color currentColor = Colors.Aqua;
+        private MapRouteView currentRouteView;
         BasicGeoposition StartPosition = new BasicGeoposition()
                 {
                     Latitude = 51.5938D,
@@ -65,16 +67,6 @@ namespace Breda_Maps.View
             InitRoute();
         }
 
-        private void AddStartPositionIcon(BasicGeoposition CurrentStartPosition)
-        {
-            MapIcon MapIcon1 = new MapIcon();
-            MapIcon1.Location = new Geopoint(CurrentStartPosition);
-            MapIcon1.NormalizedAnchorPoint = new Point(0.5, 1.0);
-            MapIcon1.Title = "";
-            MapControl1.MapElements.Add(MapIcon1);
-            MapControl1.Center = new Geopoint(StartPosition);
-        }
-
         private void AddCurrentPositionIcon()
         {
             currentPosIcon = new MapIcon();
@@ -85,12 +77,40 @@ namespace Breda_Maps.View
             MapControl1.Center = new Geopoint(StartPosition);
         }
 
+        public async void InitStartToRoute()
+        {
+            Geopoint endpoint = _rc.GetCurrentRoute().getRoute()[0].getLocation();
+            Geopoint currentPoint = new Geopoint(CurrentPosition);
+            MapRouteFinderResult routeResult = await MapRouteFinder.GetWalkingRouteAsync(
+                   currentPoint,
+                   endpoint
+                 );
+
+            currentRouteView = new MapRouteView(routeResult.Route);
+            currentRouteView.RouteColor = currentColor;
+            currentRouteView.OutlineColor = currentColor;
+
+            MapControl1.Routes.Add(currentRouteView);
+
+            Task updateRoute = new Task(UpdateRouteMethod);
+            updateRoute.Start();
+        }
+
+        public async void UpdateRouteMethod()
+        {
+            while (true)
+            {
+             // await Dispatcher.RunAsync(() => Debug.WriteLine(currentRouteView.Route.Path.Positions.Count));
+            }
+        }
+
         public async void InitRoute()
         {
             //Debug.WriteLine(_rc.GetCurrentRoute().getRoute()[0].getLocation().Position.Latitude);
             Geopoint startpoint;
             Geopoint endpoint;
             int colorChoice = 0;
+            
 
             for (int i = 0; i < _rc.GetCurrentRoute().getRoute().Count - 2; i++ )
             {
@@ -107,6 +127,7 @@ namespace Breda_Maps.View
                     colorChoice = 0;
                 }
             }
+            InitStartToRoute();
         }
 
         public async void DisplayRoute(MapRouteFinderResult routeResult, int colorChoice)
@@ -126,14 +147,15 @@ namespace Breda_Maps.View
             CurrentPosition.Latitude = geoPosition.Coordinate.Point.Position.Latitude;
             CurrentPosition.Longitude = geoPosition.Coordinate.Point.Position.Longitude;
             //Debug.WriteLine(CurrentPosition.Latitude + " en " + CurrentPosition.Longitude);
-            Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>{
-            currentPosIcon.Location = new Geopoint(CurrentPosition);
-            if (!_scrolled && _doneMoving)
+            Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
             {
-                SmoothSetPosition(currentPosIcon.Location);
-                _doneMoving = !_doneMoving;
-                //MapControl1.Center = new Geopoint(CurrentPosition);
-            }
+                currentPosIcon.Location = new Geopoint(CurrentPosition);
+                if (!_scrolled && _doneMoving)
+                {
+                    SmoothSetPosition(currentPosIcon.Location);
+                    _doneMoving = !_doneMoving;
+                    //MapControl1.Center = new Geopoint(CurrentPosition);
+                }
             });
         }
 
