@@ -18,7 +18,7 @@ namespace Breda_Maps.Controller
         {
             mapTask = new Task(findPosition);
             mapTask.Start();
-            geo.DesiredAccuracyInMeters = 5;
+            geo.DesiredAccuracyInMeters = 10;
         }
 
         public async void findPosition()

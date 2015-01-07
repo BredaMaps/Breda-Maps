@@ -21,6 +21,7 @@ using Windows.UI.Core;
 using Windows.Services.Maps;
 using Breda_Maps.Model;
 using Windows.UI;
+using System.Threading.Tasks;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -42,7 +43,7 @@ namespace Breda_Maps.View
             Latitude = 51.5938D,
             Longitude = 4.77963D  
         };
-        private Boolean scrolled = true;
+        private Boolean scrolled = false;
 
         public MainPage()
         {
@@ -127,9 +128,17 @@ namespace Breda_Maps.View
             currentPosIcon.Location = new Geopoint(CurrentPosition);
             if (!scrolled)
             {
-                MapControl1.Center = new Geopoint(CurrentPosition);
+                SmoothSetPosition(currentPosIcon.Location);
+                scrolled = true;
+                //MapControl1.Center = new Geopoint(CurrentPosition);
             }
             });
+        }
+
+        private async Task SmoothSetPosition(Geopoint pos)
+        {
+            await MapControl1.TrySetViewAsync(pos, MapControl1.ZoomLevel);
+            scrolled = false;
         }
 
         private void Bn_Menu_Click(object sender, RoutedEventArgs e)
