@@ -10,12 +10,12 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        
-        <CheckBox Content="Voorziening" HorizontalAlignment="Left" Margin="10,80,-0,0" VerticalAlignment="Top" Checked="Cat1_Checked"/>
-        <CheckBox Content="Café" HorizontalAlignment="Left" Margin="10,120,-0,0" VerticalAlignment="Top" Checked="Cat2_Checked"/>
-        <CheckBox Content="Kerk" HorizontalAlignment="Left" Margin="10,160,-0,0" VerticalAlignment="Top" Checked="Cat3_Checked"/>
-        <CheckBox Content="Park" HorizontalAlignment="Left" Margin="10,200,-0,0" VerticalAlignment="Top" Checked="Cat4_Checked"/>
-        <CheckBox Content="Cultuur" HorizontalAlignment="Left" Margin="10,240,-0,0" VerticalAlignment="Top" Checked="Cat5_Checked"/>
+
+        <CheckBox Content="Voorziening" HorizontalAlignment="Left" Margin="10,80,-0,0" VerticalAlignment="Top" Checked="Cat1_Checked" Unchecked="cat1_unchecked"/>
+        <CheckBox Content="Café" HorizontalAlignment="Left" Margin="10,120,-0,0" VerticalAlignment="Top" Checked="Cat2_Checked" Unchecked="cat2_unchecked"/>
+        <CheckBox Content="Kerk" HorizontalAlignment="Left" Margin="10,160,-0,0" VerticalAlignment="Top" Checked="Cat3_Checked" Unchecked="cat3_unchecked"/>
+        <CheckBox Content="Park" HorizontalAlignment="Left" Margin="10,200,-0,0" VerticalAlignment="Top" Checked="Cat4_Checked" Unchecked="cat4_unchecked"/>
+        <CheckBox Content="Cultuur" HorizontalAlignment="Left" Margin="10,240,-0,0" VerticalAlignment="Top" Checked="Cat5_Checked" Unchecked="cat5_unchecked"/>
         <Button Content="Show on map" HorizontalAlignment="Left" Margin="121,451,0,0" VerticalAlignment="Top" Click="Button_Click"/>
 
     </Grid>

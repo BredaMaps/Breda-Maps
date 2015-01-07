@@ -27,7 +27,12 @@ namespace Breda_Maps.View
     /// </summary>
     public sealed partial class CategoryPage : GUI
     {
-       
+        private List<Sight> _facilities = new List<Sight>();
+        private List<Sight> _bars = new List<Sight>();
+        private List<Sight> _church = new List<Sight>();
+        private List<Sight> _park = new List<Sight>();
+        private List<Sight> _cultures = new List<Sight>();
+
         public CategoryPage()
         {
             this.InitializeComponent();
@@ -46,31 +51,60 @@ namespace Breda_Maps.View
         {
             foreach (Sight facility in this.getCategory(EnumCat.FACILITY))
             {
-                // show the facility points to the map
-                MapIcon MapIcon1 = new MapIcon();
-                MapIcon1.Location = new Geopoint(facility.getLocation().Position);
-                MapIcon1.NormalizedAnchorPoint = new Point(0.5, 1.0);
-                MapIcon1.Title = facility.getDescription();
-                //MapControl1.MapElements.Add(MapIcon1);
+                // make a list and add all facility's with corresponding details
+                _facilities.Add(facility);
             }
         }
 
         private void Cat2_Checked(object sender, RoutedEventArgs e)
         {
-
+            foreach (Sight bar in this.getCategory(EnumCat.BAR))
+            {
+                _bars.Add(bar);
+            }
         }
 
         private void Cat3_Checked(object sender, RoutedEventArgs e)
         {
-
+            foreach (Sight church in this.getCategory(EnumCat.CHURCH))
+            {
+                _church.Add(church);
+            }
         }
         private void Cat4_Checked(object sender, RoutedEventArgs e)
         {
-
+            foreach (Sight park in this.getCategory(EnumCat.PARK))
+            {
+                _park.Add(park);
+            }
         }
         private void Cat5_Checked(object sender, RoutedEventArgs e)
         {
+            foreach (Sight culture in this.getCategory(EnumCat.CULTURE))
+            {
+                _cultures.Add(culture);
+            }
+        }
 
+        private void cat1_unchecked(object sender, RoutedEventArgs e)
+        {
+            _facilities.Clear();
+        }
+        private void cat2_unchecked(object sender, RoutedEventArgs e)
+        {
+            _bars.Clear();
+        }
+        private void cat3_unchecked(object sender, RoutedEventArgs e)
+        {
+            _church.Clear();
+        }
+        private void cat4_unchecked(object sender, RoutedEventArgs e)
+        {
+            _park.Clear();
+        }
+        private void cat5_unchecked(object sender, RoutedEventArgs e)
+        {
+            _cultures.Clear();
         }
 
         public IOrderedEnumerable<Sight> getCategory(EnumCat type)
