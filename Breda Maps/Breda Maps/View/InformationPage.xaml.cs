@@ -25,7 +25,6 @@ namespace Breda_Maps.View
         public InformationPage()
         {
             this.InitializeComponent();
-            ItemName.Text = "hallo";
         }
 
         /// <summary>
@@ -35,6 +34,8 @@ namespace Breda_Maps.View
         /// This parameter is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            string itemName = e.Parameter as string;
+            ItemName.Text = itemName;
         }
 
         public void setImage(ImageSource image)
