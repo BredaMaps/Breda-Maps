@@ -72,7 +72,6 @@ namespace Breda_Maps.Controller
             {
                 if (gpsLoc.getPosition() != null)
                 {
-                    //Debug.WriteLine("Sending Location");
                     map.SetNewPosition(gpsLoc.getPosition());
                     sendLocation.Wait(500);
                 }
@@ -91,7 +90,6 @@ namespace Breda_Maps.Controller
             {
                 if(r.GetName() == routeNaam && r != null)
                 {
-                    Debug.WriteLine("Route set");
                     _currentRoute = r;
                 }
             }
@@ -105,7 +103,6 @@ namespace Breda_Maps.Controller
             }
             else
             {
-                Debug.WriteLine("CURRENT ROUTE IS NULL");
                 return null;
             }
         }

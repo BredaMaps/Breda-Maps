@@ -61,7 +61,6 @@ namespace Breda_Maps.View
                 listView.Items.Add(r.GetName());
             }
             //listView.FontSize = 50;
-            Debug.WriteLine(listView.FontSize);
             //mainGrid.Children.Add(listView);
         }
 
@@ -85,7 +84,6 @@ namespace Breda_Maps.View
         {
             WarningBlock.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
             _routeNaam = (string)listView.SelectedItems[0];
-            Debug.WriteLine("Route selected: " + listView.SelectedItems[0]);
         }
     }
 }

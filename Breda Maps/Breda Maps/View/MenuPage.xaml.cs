@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Breda_Maps.Model;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -54,31 +55,26 @@ namespace Breda_Maps.View
 
         private void Bn_Rou_Click(object sender, RoutedEventArgs e)
         {
-            Debug.WriteLine("GOTO MainPage");
             this.Frame.Navigate(typeof(View.RoutePage), e);
         }
 
         private void Bn_Bez_Click(object sender, RoutedEventArgs e)
         {
-            Debug.WriteLine("GOTO SightPage");
             this.Frame.Navigate(typeof(View.SightPage), e);
         }
 
         private void Bn_Ins_Click(object sender, RoutedEventArgs e)
         {
-            Debug.WriteLine("GOTO SettingsPage");
             this.Frame.Navigate(typeof(View.SettingsPage), e);
         }
 
         private void Bn_Abt_Click(object sender, RoutedEventArgs e)
         {
-            Debug.WriteLine("GOTO AboutPage");
             this.Frame.Navigate(typeof(View.AboutPage), e);
         }
 
         private void Bn_Afs_Click(object sender, RoutedEventArgs e)
         {
-            Debug.WriteLine("EXIT");
             Application.Current.Exit();
         }
     }
