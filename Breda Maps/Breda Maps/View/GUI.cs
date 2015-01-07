@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Controls;
 using Breda_Maps.Controller;
+using Windows.UI.Xaml;
 
 namespace Breda_Maps.View
 {
@@ -21,7 +22,7 @@ namespace Breda_Maps.View
 
         public GUI()
         {
-            _rc = new RouteController();
+            _rc = ((App)Application.Current)._rc;
         }
 
     }

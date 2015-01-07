@@ -14,6 +14,7 @@ namespace Breda_Maps.Controller
     {
         private List<Route> routes = new List<Route>(); 
         private List<Sight> sights = new List<Sight>();
+        private List<Sight> _sightsToShow = new List<Sight>();
         private Route _currentRoute;
 
         private Task sendLocation;
@@ -48,6 +49,16 @@ namespace Breda_Maps.Controller
         {
             sendLocation = new Task(sendNewLocation);
             sendLocation.Start();
+        }
+
+        public void SetCategories(List<Sight> list)
+        {
+            _sightsToShow = list;
+        }
+
+        public List<Sight> GetCategories()
+        {
+            return _sightsToShow;
         }
 
         public void addRoute(Route route)
