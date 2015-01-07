@@ -21,6 +21,7 @@ using Windows.UI.Core;
 using Windows.Services.Maps;
 using Breda_Maps.Model;
 using Windows.UI;
+using System.Threading.Tasks;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -42,7 +43,8 @@ namespace Breda_Maps.View
             Latitude = 51.5938D,
             Longitude = 4.77963D  
         };
-        private Boolean scrolled = true;
+        private bool _scrolled = false;
+        private bool _doneMoving = true;
 
         public MainPage()
         {
@@ -59,6 +61,7 @@ namespace Breda_Maps.View
             MapControl1.ZoomLevel = 18;
             MapControl1.LandmarksVisible = true;
             AddCurrentPositionIcon();
+            Bn_Loc.Background = new SolidColorBrush(Colors.Blue);
             InitRoute();
         }
 
@@ -125,11 +128,19 @@ namespace Breda_Maps.View
             //Debug.WriteLine(CurrentPosition.Latitude + " en " + CurrentPosition.Longitude);
             Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>{
             currentPosIcon.Location = new Geopoint(CurrentPosition);
-            if (!scrolled)
+            if (!_scrolled && _doneMoving)
             {
-                MapControl1.Center = new Geopoint(CurrentPosition);
+                SmoothSetPosition(currentPosIcon.Location);
+                _doneMoving = !_doneMoving;
+                //MapControl1.Center = new Geopoint(CurrentPosition);
             }
             });
+        }
+
+        private async Task SmoothSetPosition(Geopoint pos)
+        {
+            await MapControl1.TrySetViewAsync(pos, MapControl1.ZoomLevel);
+            _doneMoving = !_doneMoving;
         }
 
         private void Bn_Menu_Click(object sender, RoutedEventArgs e)
@@ -141,7 +152,18 @@ namespace Breda_Maps.View
         private void Bn_Loc_Click(
             object sender, RoutedEventArgs e)
         {
-            scrolled = false;            
+            _scrolled = !_scrolled;
+            
+            if(_scrolled)
+            {
+                Bn_Loc.Background = new SolidColorBrush(Colors.White);
+                mapDisable.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            }
+            else
+            {
+                Bn_Loc.Background = new SolidColorBrush(Colors.Blue);
+                mapDisable.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            }
             //Debug.WriteLine("GOTO own Location");
             //if (geo == null)
             //{
@@ -154,17 +176,17 @@ namespace Breda_Maps.View
 
         private void MapScrolled(object sender, RoutedEventArgs e)
         {
-            scrolled = true;
+            _scrolled = true;
         }
 
         private void MapScrolled(MapControl sender, object args)
         {
-            scrolled = true;
+            _scrolled = true;
         }
 
         private void MapScrolled(object sender, PointerRoutedEventArgs e)
         {
-            scrolled = true;
+            _scrolled = true;
         }
 
         /// <summary>
