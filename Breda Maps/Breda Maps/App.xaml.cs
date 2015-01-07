@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Breda_Maps.Controller;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -26,7 +27,7 @@ namespace Breda_Maps
     public sealed partial class App : Application
     {
         private TransitionCollection transitions;
-
+        public RouteController _rc;
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -35,6 +36,7 @@ namespace Breda_Maps
         {
             this.InitializeComponent();
             this.Suspending += this.OnSuspending;
+
         }
 
         /// <summary>
@@ -96,7 +98,7 @@ namespace Breda_Maps
                     throw new Exception("Failed to create initial page");
                 }
             }
-            new Controller.RouteController();
+            _rc = new RouteController();
             // Ensure the current window is active
             Window.Current.Activate();
         }
