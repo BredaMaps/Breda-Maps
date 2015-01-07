@@ -175,9 +175,6 @@
     <Reference Include="SQLitePCL">
       <HintPath>..\packages\SQLitePCL.3.8.7.2\lib\wpa81\SQLitePCL.dll</HintPath>
     </Reference>
-    <Reference Include="SQLiteWinRT">
-      <HintPath>..\packages\Sqlite-Winrt.3.8.7.1\lib\wpa81\SQLiteWinRT.winmd</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
