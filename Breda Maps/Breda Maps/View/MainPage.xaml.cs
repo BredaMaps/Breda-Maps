@@ -91,7 +91,7 @@ namespace Breda_Maps.View
             currentRouteView.OutlineColor = currentColor;
 
             MapControl1.Routes.Add(currentRouteView);
-
+            Debug.WriteLine(currentRouteView.Route.Path.Positions.Count);
             Task updateRoute = new Task(UpdateRouteMethod);
             updateRoute.Start();
         }
@@ -100,7 +100,12 @@ namespace Breda_Maps.View
         {
             while (true)
             {
-             // await Dispatcher.RunAsync(() => Debug.WriteLine(currentRouteView.Route.Path.Positions.Count));
+                await Dispatcher.RunAsync(
+                    CoreDispatcherPriority.High,
+                    new DispatchedHandler(() =>
+                    {
+                            //Debug.WriteLine(currentRouteView.Route.Path.Positions.Count);
+                    }));
             }
         }
 
