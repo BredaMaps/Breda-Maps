@@ -16,7 +16,7 @@
         <CheckBox Content="Kerk" HorizontalAlignment="Left" Margin="10,160,-0,0" VerticalAlignment="Top" Checked="Cat3_Checked"/>
         <CheckBox Content="Park" HorizontalAlignment="Left" Margin="10,200,-0,0" VerticalAlignment="Top" Checked="Cat4_Checked"/>
         <CheckBox Content="Cultuur" HorizontalAlignment="Left" Margin="10,240,-0,0" VerticalAlignment="Top" Checked="Cat5_Checked"/>
-        <Button Content="Show on map" HorizontalAlignment="Left" Margin="121,451,0,0" VerticalAlignment="Top"/>
+        <Button Content="Show on map" HorizontalAlignment="Left" Margin="121,451,0,0" VerticalAlignment="Top" Click="Button_Click"/>
 
     </Grid>
 </src:GUI>
