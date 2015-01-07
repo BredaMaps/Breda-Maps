@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.Devices.Geolocation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Maps;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
@@ -42,8 +44,15 @@ namespace Breda_Maps.View
 
         private void Cat1_Checked(object sender, RoutedEventArgs e)
         {
-            getCategory(EnumCat.PARK);
-            //TODO: make categories selectable
+            foreach (Sight facility in this.getCategory(EnumCat.FACILITY))
+            {
+                // show the facility points to the map
+                MapIcon MapIcon1 = new MapIcon();
+                MapIcon1.Location = new Geopoint(facility.getLocation().Position);
+                MapIcon1.NormalizedAnchorPoint = new Point(0.5, 1.0);
+                MapIcon1.Title = facility.getDescription();
+                //MapControl1.MapElements.Add(MapIcon1);
+            }
         }
 
         private void Cat2_Checked(object sender, RoutedEventArgs e)
@@ -64,31 +73,23 @@ namespace Breda_Maps.View
 
         }
 
-        //public IOrderedEnumerable<IGrouping<EnumCat, Sight>> getAllCategories()
-        //{
-        //    var temp = _rc.getSights();
-
-        //    var categories =
-        //        from cat in temp
-        //        group cat by cat.Category
-        //        into categorie
-        //        orderby categorie
-        //        select categorie;
-
-        //    return categories;
-        //}
-
         public IOrderedEnumerable<Sight> getCategory(EnumCat type)
         {
             var temp = _rc.getSights();
 
-            var park =
+            var sight =
                 from cat in temp
                 where cat.Category == type
                 orderby cat.Category
+                ascending
                 select cat;
 
-            return park;
+            return sight;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            //send the selected categorie positions and corresponding names
         }
     }
 }
