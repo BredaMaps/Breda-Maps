@@ -12,6 +12,7 @@
     
     <Grid>
         <Maps:MapControl HorizontalAlignment="Stretch" x:Name="MapControl1" MapServiceToken="" Margin="0" PedestrianFeaturesVisible="True" LandmarksVisible="True" />
+        <Canvas Name="mapDisable" Background="Black" Visibility="Visible" Opacity="0.01" ></Canvas>
         <Button Background="White" BorderBrush="Black" Foreground="Black" Name="Bn_Menu"  Content="Menu" HorizontalAlignment="Left" Margin="0,160,0,0" VerticalAlignment="Bottom" Click="Bn_Menu_Click"/>
         <Button Background="White" BorderBrush="Black" Foreground="Black" Name="Bn_Loc"  Content="Locatie" HorizontalAlignment="Right" Margin="0,160,0,0" VerticalAlignment="Bottom" Click="Bn_Loc_Click"/>
         
