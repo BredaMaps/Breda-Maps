@@ -5,6 +5,8 @@ using Breda_Maps.Model;
 using Windows.Devices.Geolocation;
 using SQLite;
 using Breda_Maps.Controller.Enums;
+using System.IO;
+using Windows.Storage;
 
 
 namespace Breda_Maps.database
@@ -21,10 +23,13 @@ namespace Breda_Maps.database
 
         String dbConnection;
 
-
+        public static string path = Path.Combine(Path.Combine(ApplicationData.Current.LocalFolder.Path, "database"));
         public DataBase(String inputFile)
         {
-            dbConnection = String.Format("Data Source={0}", inputFile);
+            //dbConnection = String.Format("Data Source={0}", inputFile);
+            string path = Path.Combine(Path.Combine(ApplicationData.Current.LocalFolder.Path, inputFile));
+            dbConnection = String.Format("Data Source={0}", path);
+
 
 
             init();

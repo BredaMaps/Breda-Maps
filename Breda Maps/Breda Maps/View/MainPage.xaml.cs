@@ -56,7 +56,6 @@ namespace Breda_Maps.View
         {
             string routeName = e.Parameter as string;
             _rc.selectRoute(routeName);
-            Debug.WriteLine("Navigated to mainpage");
             MapControl1.Center = new Geopoint(StartPosition);
             MapControl1.ZoomLevel = 18;
             MapControl1.LandmarksVisible = true;
@@ -87,7 +86,6 @@ namespace Breda_Maps.View
 
         public async void InitRoute()
         {
-            //Debug.WriteLine(_rc.GetCurrentRoute().getRoute()[0].getLocation().Position.Latitude);
             Geopoint startpoint;
             Geopoint endpoint;
             int colorChoice = 0;
@@ -122,10 +120,8 @@ namespace Breda_Maps.View
 
         public void SetNewPosition(Geoposition geoPosition)
         {
-            //Debug.WriteLine("MainPage nieuwe locatie geset");
             CurrentPosition.Latitude = geoPosition.Coordinate.Point.Position.Latitude;
             CurrentPosition.Longitude = geoPosition.Coordinate.Point.Position.Longitude;
-            //Debug.WriteLine(CurrentPosition.Latitude + " en " + CurrentPosition.Longitude);
             Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>{
             currentPosIcon.Location = new Geopoint(CurrentPosition);
             if (!_scrolled && _doneMoving)
@@ -145,7 +141,6 @@ namespace Breda_Maps.View
 
         private void Bn_Menu_Click(object sender, RoutedEventArgs e)
         {
-            Debug.WriteLine("GOTO Menu");
             this.Frame.Navigate(typeof(View.MenuPage), e);
         }
 
@@ -164,14 +159,12 @@ namespace Breda_Maps.View
                 Bn_Loc.Background = new SolidColorBrush(Colors.Blue);
                 mapDisable.Visibility = Windows.UI.Xaml.Visibility.Visible;
             }
-            //Debug.WriteLine("GOTO own Location");
             //if (geo == null)
             //{
             //    geo = new Geolocator();
             //}
             //Geoposition pos = await geo.GetGeopositionAsync();
             //AddCurrentPositionIcon(pos.Coordinate.Point.Position.Latitude, pos.Coordinate.Point.Position.Longitude);
-            //Debug.WriteLine("Latitude: " + pos.Coordinate.Point.Position.Latitude + " Longitude: " + pos.Coordinate.Point.Position.Longitude);
         }   
 
         private void MapScrolled(object sender, RoutedEventArgs e)
