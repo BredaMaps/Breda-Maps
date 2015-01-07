@@ -74,7 +74,7 @@ namespace Breda_Maps.Controller
                 {
                     //Debug.WriteLine("Sending Location");
                     map.SetNewPosition(gpsLoc.getPosition());
-                    sendLocation.Wait(5000);
+                    sendLocation.Wait(500);
                 }
             }
         }
