@@ -138,21 +138,22 @@ namespace Breda_Maps.View
             Geopoint endpoint;
             int colorChoice = 0;
             if (_rc.GetCurrentRoute() != null)
-            for (int i = 0; i < _rc.GetCurrentRoute().getRoute().Count - 2; i++ )
             {
                 for (int i = 0; i < _rc.GetCurrentRoute().getRoute().Count - 2; i++)
                 {
-                    startpoint = _rc.GetCurrentRoute().getRoute()[i].getLocation();
-                    endpoint = _rc.GetCurrentRoute().getRoute()[i + 1].getLocation();
-                    MapRouteFinderResult routeResult = await MapRouteFinder.GetWalkingRouteAsync(
-                        startpoint,
-                        endpoint
-                        );
-                    DisplayRoute(routeResult, colorChoice);
-                    colorChoice++;
-                    if (colorChoice == colors.Length)
-                    {
-                        colorChoice = 0;
+
+                        startpoint = _rc.GetCurrentRoute().getRoute()[i].getLocation();
+                        endpoint = _rc.GetCurrentRoute().getRoute()[i + 1].getLocation();
+                        MapRouteFinderResult routeResult = await MapRouteFinder.GetWalkingRouteAsync(
+                            startpoint,
+                            endpoint
+                            );
+                        DisplayRoute(routeResult, colorChoice);
+                        colorChoice++;
+                        if (colorChoice == colors.Length)
+                        {
+                            colorChoice = 0;
+                        
                     }
                 }
             }
