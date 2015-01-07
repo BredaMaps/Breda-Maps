@@ -124,6 +124,13 @@ namespace Breda_Maps.View
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             //send the selected categorie positions and corresponding names
+            var allSelections = _facilities.Concat(_bars)
+                                    .Concat(_church)
+                                    .Concat(_park)
+                                    .Concat(_cultures)
+                                    .ToList();
+
+            _rc.SetCategories(allSelections);
         }
     }
 }
