@@ -56,7 +56,8 @@ namespace Breda_Maps.View
             this.InitializeComponent();
             _rc.SetMap(this);
 
-            CreateGeofence(StartPosition.Latitude, StartPosition.Longitude, 30);
+            
+                CreateGeofence(StartPosition.Latitude, StartPosition.Longitude, 30);
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -238,8 +239,7 @@ namespace Breda_Maps.View
 
         private void CreateGeofence(double latitude, double longitude, double radius)
         {
-            var id = string.Format("Posisition: {0}, {1}", latitude, longitude);
-
+                var id = string.Format("Posisition: {0}, {1}", latitude, longitude);
             // Sets the center of the Geofence.
             var position = new BasicGeoposition
             {
@@ -261,7 +261,9 @@ namespace Breda_Maps.View
 
             // Creates the Geofence and adds it to the GeofenceMonitor.
             var geofence = new Geofence(id, geocircle, mask, false, dwellTime);
-            GeofenceMonitor.Current.Geofences.Add(geofence);
+            GeofenceMonitor.Current.Geofences.Clear();
+                GeofenceMonitor.Current.Geofences.Add(geofence);
+            
         }
 
         private async void OnGeofenceStateChanged(GeofenceMonitor sender, object e)
