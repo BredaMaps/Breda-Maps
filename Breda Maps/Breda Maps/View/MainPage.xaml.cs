@@ -36,6 +36,7 @@ namespace Breda_Maps.View
         private Color[] colors = new Color[]{Colors.Blue,Colors.Red, Colors.Green, Colors.Yellow, Colors.Orange};
         private Color currentColor = Colors.Aqua;
         private MapRouteView currentRouteView;
+        private Boolean routeInitDone = false;
         BasicGeoposition StartPosition = new BasicGeoposition()
                 {
                     Latitude = 51.5938D,
@@ -123,6 +124,7 @@ namespace Breda_Maps.View
         {
             Geopoint startpoint;
             Geopoint endpoint;
+            routeInitDone = false;
             int colorChoice = 0;
             if (_rc.GetCurrentRoute() != null)
             {
@@ -145,6 +147,7 @@ namespace Breda_Maps.View
                 }
             }
             InitStartToRoute();
+            routeInitDone = true;
         }
 
         public async void DisplayRoute(MapRouteFinderResult routeResult, int colorChoice)
@@ -168,9 +171,9 @@ namespace Breda_Maps.View
             {
                 SmoothSetPosition(currentPosIcon.Location);
                 _doneMoving = !_doneMoving;
-                if (MapControl1.Routes.Count != 0)
+                if (MapControl1.Routes.Count != 0 && routeInitDone == true)
                 {
-                    MapControl1.Routes.RemoveAt(MapControl1.Routes.Count -2);
+                    MapControl1.Routes.RemoveAt(MapControl1.Routes.Count -1);
                     InitStartToRoute();
                     MapControl1.UpdateLayout();  
                 }
