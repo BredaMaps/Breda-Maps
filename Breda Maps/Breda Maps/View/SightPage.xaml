@@ -24,7 +24,6 @@
             <ListView x:Name="ListView4" HorizontalAlignment="Left" VerticalAlignment="Top" Width="334" SelectionChanged="listView4_SelectionChanged" Margin="46,0,0,0"/>
            
         </StackPanel>
-        <Button Content="Informatie" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Button_Click"/>
         <!-- <ListView x:Name="ListView2" HorizontalAlignment="Left" Height="364" Margin="10,247,0,0" VerticalAlignment="Top" Width="380"/> -->
 
     </StackPanel>

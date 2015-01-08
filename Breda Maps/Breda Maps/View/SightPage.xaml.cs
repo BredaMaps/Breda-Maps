@@ -161,6 +161,7 @@ namespace Breda_Maps.View
             if (_itemNaam == null)
             {
                 _itemNaam = (string) ListView0.SelectedItems[0];
+                this.Frame.Navigate(typeof(View.InformationPage), _itemNaam);
             }
         }
 
@@ -169,6 +170,7 @@ namespace Breda_Maps.View
             if (_itemNaam == null)
             {
                 _itemNaam = (string)ListView1.SelectedItems[0];
+                this.Frame.Navigate(typeof(View.InformationPage), _itemNaam);
             }
         }
 
@@ -177,6 +179,7 @@ namespace Breda_Maps.View
             if (_itemNaam == null)
             {
                 _itemNaam = (string)ListView2.SelectedItems[0];
+                this.Frame.Navigate(typeof(View.InformationPage), _itemNaam);
             }
         }
 
@@ -185,6 +188,7 @@ namespace Breda_Maps.View
             if (_itemNaam == null)
             {
                 _itemNaam = (string)ListView3.SelectedItems[0];
+                this.Frame.Navigate(typeof(View.InformationPage), _itemNaam);
             }
         }
 
@@ -193,6 +197,7 @@ namespace Breda_Maps.View
             if (_itemNaam == null)
             {
                 _itemNaam = (string)ListView4.SelectedItems[0];
+                this.Frame.Navigate(typeof(View.InformationPage), _itemNaam);
             }
         }
     }
