@@ -51,6 +51,7 @@ namespace Breda_Maps.View
         };
         private bool _scrolled = false;
         private bool _doneMoving = true;
+        private int _currentAmountOfPoints;
 
         public MainPage()
         {
@@ -58,7 +59,7 @@ namespace Breda_Maps.View
             _rc.SetMap(this);
 
             
-                CreateGeofence(StartPosition.Latitude, StartPosition.Longitude, 30);
+                CreateGeofence(StartPosition.Latitude, StartPosition.Longitude, 3);
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -99,6 +100,7 @@ namespace Breda_Maps.View
 
         public async void InitStartToRoute()
         {
+            Debug.WriteLine("Current amount of points: " + _currentAmountOfPoints);
             if (_rc.GetCurrentRoute() != null)
             {
                 Geopoint endpoint = _rc.GetCurrentRoute().getRoute()[0].getLocation();
@@ -107,7 +109,7 @@ namespace Breda_Maps.View
                     currentPoint,
                     endpoint
                     );
-                if (initRouteDone && MapControl1.Routes.Count == _rc.GetCurrentRoute().getRoute().Count + 1)
+                if (initRouteDone && MapControl1.Routes.Count == _currentAmountOfPoints)
                 {
                     MapControl1.Routes.RemoveAt(MapControl1.Routes.Count - 2);
                 }
@@ -122,6 +124,7 @@ namespace Breda_Maps.View
 
         public async void InitRoute()
         {
+            _currentAmountOfPoints = _rc.GetCurrentRoute().getRoute().Count;
             Geopoint startpoint;
             Geopoint endpoint;
             int colorChoice = 0;
@@ -281,12 +284,15 @@ namespace Breda_Maps.View
                     if (state == GeofenceState.Entered)
                     {
                         // User has entered the area.
-                        ShowMessage("you have entered the geofence");
+                        ShowMessage("you have entered the geofence, deleting point " + (MapControl1.Routes.Count-1));
+                        MapControl1.Routes.RemoveAt(0);
+                        _rc.GetCurrentRoute().getRoute().RemoveAt(0);
+                        _currentAmountOfPoints--;
                     }
                     else if (state == GeofenceState.Exited)
                     {
                         // User has exited from the area.
-                        ShowMessage("you have exited the geofence");
+                        //ShowMessage("you have exited the geofence");
                     }
                 }
             });
