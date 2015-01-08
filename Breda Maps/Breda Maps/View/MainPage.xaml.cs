@@ -116,22 +116,6 @@ namespace Breda_Maps.View
                 currentRouteView.OutlineColor = currentColor;
 
                 MapControl1.Routes.Add(currentRouteView);
-                Debug.WriteLine(currentRouteView.Route.Path.Positions.Count);
-                Task updateRoute = new Task(UpdateRouteMethod);
-                updateRoute.Start();
-            }
-        }
-
-        public async void UpdateRouteMethod()
-        {
-            while (true)
-            {
-                await Dispatcher.RunAsync(
-                    CoreDispatcherPriority.High,
-                    new DispatchedHandler(() =>
-                    {
-                            //Debug.WriteLine(currentRouteView.Route.Path.Positions.Count);
-                    }));
             }
         }
 
@@ -184,6 +168,12 @@ namespace Breda_Maps.View
             {
                 SmoothSetPosition(currentPosIcon.Location);
                 _doneMoving = !_doneMoving;
+                if (MapControl1.Routes.Count != 0)
+                {
+                    MapControl1.Routes.RemoveAt(MapControl1.Routes.Count -2);
+                    InitStartToRoute();
+                    MapControl1.UpdateLayout();  
+                }
                 //MapControl1.Center = new Geopoint(CurrentPosition);
             }
             });
