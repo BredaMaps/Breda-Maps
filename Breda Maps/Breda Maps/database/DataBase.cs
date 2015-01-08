@@ -122,22 +122,21 @@ namespace Breda_Maps.database
                 return site;
         }
 
-        public string getIdByDescription(string description){
-
-
-            return null;
-        }
-
         private List<Sight> getById(int id)
         {
             List<Sight> sights = getQueryWhere("id = '" + id + "'");
             return sights;
         }
 
-       /* public int getIdByDescription(string description)
+        public int getIdByDescription(string description)
         {
             Sight sight = getIdByQuery("description = '" + description + "'")[0];
             return sight.Id;
+        }
+
+        public int getIdByDescription()
+        {
+            return getIdByDescription("");
         }
 
         private List<Sight> getIdByQuery(string query)
@@ -156,7 +155,7 @@ namespace Breda_Maps.database
             {
                 throw new Exception(e.Message);
             }
-        }*/
+        }  //*/
 
         private List<Sight> getQueryWhere(string query)
         {
