@@ -11,6 +11,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
@@ -36,11 +37,14 @@ namespace Breda_Maps.View
         {
             string itemName = e.Parameter as string;
             ItemName.Text = itemName;
+            setImage("Havermarkt.jpg");
         }
 
-        public void setImage(ImageSource image)
+        public void setImage(String imagepath)
         {
-            mainImage.Source = image;
+            Image img = new Image();
+            img.Source = new BitmapImage(new Uri("ms-appx:///Assets/Images/" + imagepath));
+            mainImage.Source = img.Source;
         }
         public void SetInformation(String information)
         {
