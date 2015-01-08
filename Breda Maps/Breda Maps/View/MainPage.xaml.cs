@@ -116,7 +116,7 @@ namespace Breda_Maps.View
                 currentRouteView.OutlineColor = currentColor;
 
                 MapControl1.Routes.Add(currentRouteView);
-                Debug.WriteLine(currentRouteView.Route.Path.Positions.Count);
+                //Debug.WriteLine(currentRouteView.Route.Path.Positions.Count);
                 Task updateRoute = new Task(UpdateRouteMethod);
                 updateRoute.Start();
             }
