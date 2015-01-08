@@ -16,6 +16,7 @@ namespace Breda_Maps.Controller
         private List<Sight> sights = new List<Sight>();
         private List<Sight> _sightsToShow = new List<Sight>();
         private Route _currentRoute;
+        private database.DataBase db;
 
         private Task sendLocation;
         GpsLocalizer gpsLoc = new GpsLocalizer();
@@ -23,6 +24,8 @@ namespace Breda_Maps.Controller
         public RouteController()
         {
             init();
+            db = new database.DataBase("Breda_Maps.s3db",true);
+            sights = db.getSights();
         }
 
         public RouteController(MainPage mp)

@@ -30,20 +30,16 @@ namespace Breda_Maps.Model
         public string _sound { get; set; }
         [Column("site")]
         public string _site { get; set; }
-
-        private EnumCat _category;
-
-
-        //private String _site;
-        //private String _media;
-
+        [Column("category")]
+        public string _category { get; set; }
 
         public Sight(String description, Geopoint location, EnumCat category)
         {
             _description = description;
-            _category = category;
+            _category = category.ToString();
             latitude = location.Position.Latitude;
             longitude = location.Position.Longitude;
+            //_category = "PARK";
 	    }
 
         public Sight(String description, Geopoint location, string image)
@@ -54,6 +50,20 @@ namespace Breda_Maps.Model
             longitude = location.Position.Longitude;
         }
 
+        public Sight(String description, Geopoint location, EnumCat category, string image,string video,string sound,string site,string info)
+        {
+            _description = description;
+            _category = category.ToString();
+            latitude = location.Position.Latitude;
+            longitude = location.Position.Longitude;
+            _image = image;
+            _video = video;
+            _sound = sound;
+            _site = site;
+            _info = info;
+          //  string temp = _category;
+        }
+
         public Sight()
         {
 
@@ -61,7 +71,12 @@ namespace Breda_Maps.Model
 
         public EnumCat Category
         {
-            get { return _category; }
+            get { 
+                string temp1 = _category;
+                EnumCat temp =  (EnumCat)Enum.Parse(typeof(EnumCat), _category);
+                return temp;
+                //return EnumCat.PARK;}
+            }
         }
 
         public void addImagesPath(string foto)
@@ -94,11 +109,6 @@ namespace Breda_Maps.Model
         {
             return _description;
         }
-
- 	/*public String getMedia()
-        {
-            return _media;
-	}*/
 
 public IEnumerator GetEnumerator()
         {
