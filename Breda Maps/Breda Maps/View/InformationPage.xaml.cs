@@ -37,7 +37,7 @@ namespace Breda_Maps.View
         {
             string itemName = e.Parameter as string;
             ItemName.Text = itemName;
-            setImage("Logo.scale-240.png");
+            setImage("Havermarkt.jpg");
         }
 
         public void setImage(String imagepath)
