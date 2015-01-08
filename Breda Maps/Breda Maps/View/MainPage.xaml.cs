@@ -35,8 +35,6 @@ namespace Breda_Maps.View
     public sealed partial class MainPage : GUI
     {
         private MapIcon currentPosIcon;
-        private Color[] colors = new Color[]{Colors.Blue,Colors.Red, Colors.Green, Colors.Yellow, Colors.Orange};
-        private Color currentColor = Colors.Aqua;
         private MapRouteView currentRouteView;
         private Boolean initRouteDone = false;
 
@@ -115,8 +113,8 @@ namespace Breda_Maps.View
                 }
                 initRouteDone = true;
                 currentRouteView = new MapRouteView(routeResult.Route);
-                currentRouteView.RouteColor = currentColor;
-                currentRouteView.OutlineColor = currentColor;
+                currentRouteView.RouteColor = Colors.Blue;
+                currentRouteView.OutlineColor = Colors.Blue;
 
                 MapControl1.Routes.Add(currentRouteView);
             }
@@ -127,7 +125,6 @@ namespace Breda_Maps.View
             _currentAmountOfPoints = _rc.GetCurrentRoute().getRoute().Count;
             Geopoint startpoint;
             Geopoint endpoint;
-            int colorChoice = 0;
             if (_rc.GetCurrentRoute() != null)
             {
                 for (int i = 0; i < _rc.GetCurrentRoute().getRoute().Count - 2; i++)
@@ -139,23 +136,17 @@ namespace Breda_Maps.View
                             startpoint,
                             endpoint
                             );
-                        DisplayRoute(routeResult, colorChoice);
-                        colorChoice++;
-                        if (colorChoice == colors.Length)
-                        {
-                            colorChoice = 0;
-                        
-                    }
+                        DisplayRoute(routeResult);
                 }
             }
             InitStartToRoute();
         }
 
-        public async void DisplayRoute(MapRouteFinderResult routeResult, int colorChoice)
+        public async void DisplayRoute(MapRouteFinderResult routeResult)
         {
             MapRouteView routeView = new MapRouteView(routeResult.Route);
-            routeView.RouteColor = colors[colorChoice];
-            routeView.OutlineColor = colors[colorChoice];
+            routeView.RouteColor = Colors.Blue;
+            routeView.OutlineColor = Colors.Blue;
 
             MapControl1.Routes.Add(routeView);
             //await MapControl1.TrySetViewBoundsAsync(routeResult.Route.BoundingBox,
