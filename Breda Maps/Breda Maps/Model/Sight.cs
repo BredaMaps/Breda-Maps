@@ -16,10 +16,20 @@ namespace Breda_Maps.Model
         public int Id { get; set; }
         [Column("description")]
         public string _description { get; set; }
+        [Column("info")]
+        public string _info { get; set; }
         [Column("latitude")]
         public double latitude { get; set; }
         [Column("longitude")]
         public double longitude { get; set; }
+        [Column("image")]
+        public string _image { get; set; }
+        [Column("video")]
+        public string _video { get; set; }
+        [Column("sound")]
+        public string _sound { get; set; }
+        [Column("site")]
+        public string _site { get; set; }
 
         private EnumCat _category;
 
@@ -36,14 +46,43 @@ namespace Breda_Maps.Model
             longitude = location.Position.Longitude;
 	    }
 
-        public EnumCat Category
+        public Sight(String description, Geopoint location, string image)
         {
-            get { return _category; }
+            _description = description;
+            _image = image;
+            latitude = location.Position.Latitude;
+            longitude = location.Position.Longitude;
         }
 
         public Sight()
         {
 
+        }
+
+        public EnumCat Category
+        {
+            get { return _category; }
+        }
+
+        public void addImagesPath(string foto)
+        {
+            if (_image==null)
+                _image += ";";
+            _image += foto;
+        }
+
+        public void addVideoPath(string video)
+        {
+            if (_video == null)
+                _video += ";";
+            _video += video;
+        }
+
+        public void addGeluidPath(string geluid)
+        {
+            if (_sound == null)
+                _sound += ";";
+            _sound += geluid;
         }
 
         public Geopoint getLocation()
