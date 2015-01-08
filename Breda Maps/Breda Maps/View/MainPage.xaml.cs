@@ -122,13 +122,15 @@ namespace Breda_Maps.View
 
         public async void InitRoute()
         {
-            _currentAmountOfPoints = _rc.GetCurrentRoute().getRoute().Count;
-            Geopoint startpoint;
-            Geopoint endpoint;
             if (_rc.GetCurrentRoute() != null)
             {
-                for (int i = 0; i < _rc.GetCurrentRoute().getRoute().Count - 2; i++)
+                _currentAmountOfPoints = _rc.GetCurrentRoute().getRoute().Count;
+                Geopoint startpoint;
+                Geopoint endpoint;
+                if (_rc.GetCurrentRoute() != null)
                 {
+                    for (int i = 0; i < _rc.GetCurrentRoute().getRoute().Count - 2; i++)
+                    {
 
                         startpoint = _rc.GetCurrentRoute().getRoute()[i].getLocation();
                         endpoint = _rc.GetCurrentRoute().getRoute()[i + 1].getLocation();
@@ -137,9 +139,10 @@ namespace Breda_Maps.View
                             endpoint
                             );
                         DisplayRoute(routeResult);
+                    }
                 }
+                InitStartToRoute();
             }
-            InitStartToRoute();
         }
 
         public async void DisplayRoute(MapRouteFinderResult routeResult)
