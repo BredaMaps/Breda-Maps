@@ -72,16 +72,6 @@ namespace Breda_Maps.View
             InitRoute();
         }
 
-        private void AddStartPositionIcon(BasicGeoposition CurrentStartPosition)
-        {
-            MapIcon MapIcon1 = new MapIcon();
-            MapIcon1.Location = new Geopoint(CurrentStartPosition);
-            MapIcon1.NormalizedAnchorPoint = new Point(0.5, 1.0);
-            MapIcon1.Title = "";
-            MapControl1.MapElements.Add(MapIcon1);
-            MapControl1.Center = new Geopoint(StartPosition);
-        }
-
         public void addCategoriePoints()
         {
             foreach (Sight points in _rc.GetCategories())
@@ -120,6 +110,7 @@ namespace Breda_Maps.View
                 currentRouteView.OutlineColor = currentColor;
 
                 MapControl1.Routes.Add(currentRouteView);
+
             }
         }
 
