@@ -37,15 +37,14 @@ namespace Breda_Maps.View
         {
             string itemName = e.Parameter as string;
             ItemName.Text = itemName;
-            setImage("Assets/Logo.scale-240.png");
+            setImage("Logo.scale-240.png");
         }
 
-        public void setImage(String imagepath) //Assets/Logo.scale-240.png"
+        public void setImage(String imagepath)
         {
             Image img = new Image();
-            img.Source = new BitmapImage(new Uri("ms-appx:///" + imagepath));
+            img.Source = new BitmapImage(new Uri("ms-appx:///Assets/Images/" + imagepath));
             mainImage.Source = img.Source;
-            //mainImage.Source = image;
         }
         public void SetInformation(String information)
         {
