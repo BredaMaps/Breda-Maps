@@ -134,7 +134,7 @@ namespace Breda_Maps.database
             return sights;
         }
 
-        public int getIdByDescription(string description)
+       /* public int getIdByDescription(string description)
         {
             Sight sight = getIdByQuery("description = '" + description + "'")[0];
             return sight.Id;
@@ -156,7 +156,7 @@ namespace Breda_Maps.database
             {
                 throw new Exception(e.Message);
             }
-        }
+        }*/
 
         private List<Sight> getQueryWhere(string query)
         {
