@@ -162,10 +162,6 @@ namespace Breda_Maps.View
             {
                 _itemNaam = (string) ListView0.SelectedItems[0];
             }
-            else
-            {
-                _itemNaam = _itemNaam;
-            }
         }
 
         private void listView1_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -173,10 +169,6 @@ namespace Breda_Maps.View
             if (_itemNaam == null)
             {
                 _itemNaam = (string)ListView1.SelectedItems[0];
-            }
-            else
-            {
-                _itemNaam = _itemNaam;
             }
         }
 
@@ -186,10 +178,6 @@ namespace Breda_Maps.View
             {
                 _itemNaam = (string)ListView2.SelectedItems[0];
             }
-            else
-            {
-                _itemNaam = _itemNaam;
-            }
         }
 
         private void listView3_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -198,10 +186,6 @@ namespace Breda_Maps.View
             {
                 _itemNaam = (string)ListView3.SelectedItems[0];
             }
-            else
-            {
-                _itemNaam = _itemNaam;
-            }
         }
 
         private void listView4_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -209,10 +193,6 @@ namespace Breda_Maps.View
             if (_itemNaam == null)
             {
                 _itemNaam = (string)ListView4.SelectedItems[0];
-            }
-            else
-            {
-                _itemNaam = _itemNaam;
             }
         }
     }

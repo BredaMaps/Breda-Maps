@@ -26,13 +26,19 @@ namespace Breda_Maps.database
         public static string path = Path.Combine(Path.Combine(ApplicationData.Current.LocalFolder.Path, "database"));
         public DataBase(String inputFile)
         {
-            //dbConnection = String.Format("Data Source={0}", inputFile);
+            dbConnection = String.Format("Data Source={0}", inputFile);
             string path = Path.Combine(Path.Combine(ApplicationData.Current.LocalFolder.Path, inputFile));
-            dbConnection = String.Format("Data Source={0}", path);
+           // dbConnection = String.Format("Data Source={0}", path);
 
+        }
 
-
-            init();
+        public DataBase(string inputFile, bool create)
+        {
+            dbConnection = String.Format("Data Source={0}", inputFile);
+            if (create)
+            {
+                init();
+            }
         }
 
        
@@ -42,11 +48,9 @@ namespace Breda_Maps.database
             try
             {
                 SQLiteConnection cnn = new SQLiteConnection(dbConnection);
-
-
                 List<Sight> sights = cnn.Query<Sight>(
                     @"SELECT * FROM sight"
-                    ).ToList();
+                    );
 
                 cnn.Close();
                 return sights;
@@ -59,16 +63,96 @@ namespace Breda_Maps.database
 
         public string getDescription(int id)
         {
+            List<Sight> sights = getById(id);
+                string description = sights[0]._description;
+
+                return description;
+        }
+
+        public string[] getImages(int id)
+        {
+            List<Sight> sights = getById(id);
+                string[] image = new string[1];
+                if (sights[0]._image == null) { image[0] = ""; }
+                else {
+                    image = sights[0]._image.Split(';');
+                }
+
+                return image;
+        }
+
+        public string[] getVideo(int id)
+        {
+            List<Sight> sights = getById(id);
+                string[] video = new string[1];
+                if (sights[0]._video == null) { video[0] = ""; }
+                else
+                {
+                    video = sights[0]._image.Split(';');
+                }
+                return video;
+        }
+
+        public string[] getsound(int id)
+        {
+            List<Sight> sights = getById(id);
+                string[] sound = new string[1];
+                if (sights[0]._sound == null) { sound[0] = ""; }
+                else
+                {
+                    sound = sights[0]._sound.Split(';');
+                }
+
+                return sound;
+        }
+
+        public string getInfo(int id)
+        {
+            List<Sight> sights = getById(id);
+                string info = sights[0]._info;
+
+                return info;
+        }
+
+        public string getSite(int id)
+        {
+                List<Sight> sights = getById(id);
+                string site = sights[0]._site;
+
+                return site;
+        }
+
+        public string getIdByDescription(string description){
+
+
+            return null;
+        }
+
+        private List<Sight> getById(int id)
+        {
+            List<Sight> sights = getQueryWhere("id = '" + id + "'");
+            return sights;
+        }
+
+        public int getIdByDescription(string description)
+        {
+            Sight sight = getIdByQuery("description = '" + description + "'")[0];
+            return sight.Id;
+        }
+
+        
+
+        private List<Sight> getQueryWhere(string query)
+        {
             try
             {
                 SQLiteConnection cnn = new SQLiteConnection(dbConnection);
 
-                string query = "SELECT description FROM sight WHERE Id = '"+id+"'";
-                List<Sight> sights = cnn.Query<Sight>(query);
-                string description = sights[0]._description;
+                string totalquery = "SELECT * FROM sight WHERE "+query;
+                List<Sight> sights = cnn.Query<Sight>(totalquery);
 
                 cnn.Close();
-                return description;
+                return sights;
             }
             catch (Exception e)
             {
@@ -81,7 +165,7 @@ namespace Breda_Maps.database
             try
             {
                 SQLiteConnection cnn = new SQLiteConnection(dbConnection);
-                //cnn.DropTable<Sight>();
+                cnn.DropTable<Sight>();
                 cnn.Query<Sight>(@"CREATE TABLE IF NOT EXISTS
                                 sight (Id      INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
                                             description    VARCHAR( 140 ),
@@ -89,7 +173,10 @@ namespace Breda_Maps.database
                                             longitude    REAL,
                                             category    VARCHAR( 140 ),
                                             site VARCHAR( 140 ),
-                                            media    VARCHAR( 140 )
+                                            image    VARCHAR( 140 ),
+                                            video    VARCHAR( 140 ),
+                                            sound     VARCHAR( 140 ),
+                                            info    VARCHAR(140)
                             );");
 
                 cnn.Close();
@@ -106,7 +193,9 @@ namespace Breda_Maps.database
         {
             List<Sight> sights = new List<Sight>();
 
+            sights.Add(new Sight("VVV Breda", new Geopoint(new BasicGeoposition() { Latitude = 51.59380, Longitude = 4.77963 }), "test.test;test2.henk;test3"));
             sights.Add(new Sight("VVV Breda", new Geopoint(new BasicGeoposition() { Latitude = 51.59380, Longitude = 4.77963 }), EnumCat.CULTURE));
+            sights[1].addImagesPath("test.test");
             sights.Add(new Sight("Liefdeszuster", new Geopoint(new BasicGeoposition() { Latitude = 51.59307, Longitude = 4.77969 }), EnumCat.CULTURE));
             sights.Add(new Sight("Valkenberg", new Geopoint(new BasicGeoposition() { Latitude = 51.59250, Longitude = 4.77969 }), EnumCat.CULTURE));
             sights.Add(new Sight("Nassau Baronie Monument", new Geopoint(new BasicGeoposition() { Latitude = 51.59250, Longitude = 4.77969 }), EnumCat.CULTURE));
@@ -119,12 +208,6 @@ namespace Breda_Maps.database
             {
                 SQLiteConnection cnn = new SQLiteConnection(dbConnection);
                 
-
-                string query = "INSERT INTO sight (description,latitude,longitude,category,site,media) VALUES ("
-                                         + "'henk'" + "," + 12 + "," + 14 + ",'" + "test" + "'," + 6 + "," + 7 + ");";
-
-               // cnn.Query<Sight>(query);
-                //cnn.Insert(new Sight("The Light House", new Geopoint(new BasicGeoposition() { Latitude = 51.59256, Longitude = 4.77889 }), EnumCat.CULTURE));
                 foreach (Sight sight in sights)
                     cnn.Insert(sight);
                 
