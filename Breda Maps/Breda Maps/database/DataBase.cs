@@ -140,7 +140,23 @@ namespace Breda_Maps.database
             return sight.Id;
         }
 
-        
+        private List<Sight> getIdByQuery(string query)
+        {
+            try
+            {
+                SQLiteConnection cnn = new SQLiteConnection(dbConnection);
+
+                string totalquery = "SELECT id FROM sight WHERE " + query;
+                List<Sight> sights = cnn.Query<Sight>(totalquery);
+
+                cnn.Close();
+                return sights;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
 
         private List<Sight> getQueryWhere(string query)
         {
