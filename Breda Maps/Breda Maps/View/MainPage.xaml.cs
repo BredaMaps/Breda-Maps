@@ -102,21 +102,24 @@ namespace Breda_Maps.View
 
         public async void InitStartToRoute()
         {
-            Geopoint endpoint = _rc.GetCurrentRoute().getRoute()[0].getLocation();
-            Geopoint currentPoint = new Geopoint(CurrentPosition);
-            MapRouteFinderResult routeResult = await MapRouteFinder.GetWalkingRouteAsync(
-                   currentPoint,
-                   endpoint
-                 );
+            if (_rc.GetCurrentRoute() != null)
+            {
+                Geopoint endpoint = _rc.GetCurrentRoute().getRoute()[0].getLocation();
+                Geopoint currentPoint = new Geopoint(CurrentPosition);
+                MapRouteFinderResult routeResult = await MapRouteFinder.GetWalkingRouteAsync(
+                    currentPoint,
+                    endpoint
+                    );
 
-            currentRouteView = new MapRouteView(routeResult.Route);
-            currentRouteView.RouteColor = currentColor;
-            currentRouteView.OutlineColor = currentColor;
+                currentRouteView = new MapRouteView(routeResult.Route);
+                currentRouteView.RouteColor = currentColor;
+                currentRouteView.OutlineColor = currentColor;
 
-            MapControl1.Routes.Add(currentRouteView);
-            Debug.WriteLine(currentRouteView.Route.Path.Positions.Count);
-            Task updateRoute = new Task(UpdateRouteMethod);
-            updateRoute.Start();
+                MapControl1.Routes.Add(currentRouteView);
+                Debug.WriteLine(currentRouteView.Route.Path.Positions.Count);
+                Task updateRoute = new Task(UpdateRouteMethod);
+                updateRoute.Start();
+            }
         }
 
         public async void UpdateRouteMethod()
