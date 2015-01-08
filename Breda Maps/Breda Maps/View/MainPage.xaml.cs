@@ -110,7 +110,6 @@ namespace Breda_Maps.View
                 if (initRouteDone && MapControl1.Routes.Count == _rc.GetCurrentRoute().getRoute().Count + 1)
                 {
                     MapControl1.Routes.RemoveAt(MapControl1.Routes.Count - 2);
-                    busyDeleting = true;
                 }
                 initRouteDone = true;
                 currentRouteView = new MapRouteView(routeResult.Route);
@@ -173,7 +172,6 @@ namespace Breda_Maps.View
                 if (MapControl1.Routes.Count != 0 && initRouteDone)
                 {
                     InitStartToRoute();
-                    busyDeleting = false;
                   //  MapControl1.UpdateLayout();  
                 }
                 //MapControl1.Center = new Geopoint(CurrentPosition);
