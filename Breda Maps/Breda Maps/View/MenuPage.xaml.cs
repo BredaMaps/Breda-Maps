@@ -63,11 +63,6 @@ namespace Breda_Maps.View
             this.Frame.Navigate(typeof(View.SightPage), e);
         }
 
-        private void Bn_Ins_Click(object sender, RoutedEventArgs e)
-        {
-            this.Frame.Navigate(typeof(View.SettingsPage), e);
-        }
-
         private void Bn_Abt_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(View.AboutPage), e);
