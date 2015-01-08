@@ -35,8 +35,6 @@ namespace Breda_Maps.View
     public sealed partial class MainPage : GUI
     {
         private MapIcon currentPosIcon;
-        private Color[] colors = new Color[]{Colors.Blue,Colors.Red, Colors.Green, Colors.Yellow, Colors.Orange};
-        private Color currentColor = Colors.Aqua;
         private MapRouteView currentRouteView;
         private Boolean initRouteDone = false;
 
@@ -51,6 +49,7 @@ namespace Breda_Maps.View
         };
         private bool _scrolled = false;
         private bool _doneMoving = true;
+        private int _currentAmountOfPoints;
 
         public MainPage()
         {
@@ -58,7 +57,7 @@ namespace Breda_Maps.View
             _rc.SetMap(this);
 
             
-                CreateGeofence(StartPosition.Latitude, StartPosition.Longitude, 30);
+                CreateGeofence(StartPosition.Latitude, StartPosition.Longitude, 3);
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -99,6 +98,7 @@ namespace Breda_Maps.View
 
         public async void InitStartToRoute()
         {
+            Debug.WriteLine("Current amount of points: " + _currentAmountOfPoints);
             if (_rc.GetCurrentRoute() != null)
             {
                 Geopoint endpoint = _rc.GetCurrentRoute().getRoute()[0].getLocation();
@@ -107,14 +107,14 @@ namespace Breda_Maps.View
                     currentPoint,
                     endpoint
                     );
-                if (initRouteDone && MapControl1.Routes.Count == _rc.GetCurrentRoute().getRoute().Count + 1)
+                if (initRouteDone && MapControl1.Routes.Count == _currentAmountOfPoints)
                 {
                     MapControl1.Routes.RemoveAt(MapControl1.Routes.Count - 2);
                 }
                 initRouteDone = true;
                 currentRouteView = new MapRouteView(routeResult.Route);
-                currentRouteView.RouteColor = currentColor;
-                currentRouteView.OutlineColor = currentColor;
+                currentRouteView.RouteColor = Colors.Blue;
+                currentRouteView.OutlineColor = Colors.Blue;
 
                 MapControl1.Routes.Add(currentRouteView);
             }
@@ -122,9 +122,9 @@ namespace Breda_Maps.View
 
         public async void InitRoute()
         {
+            _currentAmountOfPoints = _rc.GetCurrentRoute().getRoute().Count;
             Geopoint startpoint;
             Geopoint endpoint;
-            int colorChoice = 0;
             if (_rc.GetCurrentRoute() != null)
             {
                 for (int i = 0; i < _rc.GetCurrentRoute().getRoute().Count - 2; i++)
@@ -136,23 +136,17 @@ namespace Breda_Maps.View
                             startpoint,
                             endpoint
                             );
-                        DisplayRoute(routeResult, colorChoice);
-                        colorChoice++;
-                        if (colorChoice == colors.Length)
-                        {
-                            colorChoice = 0;
-                        
-                    }
+                        DisplayRoute(routeResult);
                 }
             }
             InitStartToRoute();
         }
 
-        public async void DisplayRoute(MapRouteFinderResult routeResult, int colorChoice)
+        public async void DisplayRoute(MapRouteFinderResult routeResult)
         {
             MapRouteView routeView = new MapRouteView(routeResult.Route);
-            routeView.RouteColor = colors[colorChoice];
-            routeView.OutlineColor = colors[colorChoice];
+            routeView.RouteColor = Colors.Blue;
+            routeView.OutlineColor = Colors.Blue;
 
             MapControl1.Routes.Add(routeView);
             //await MapControl1.TrySetViewBoundsAsync(routeResult.Route.BoundingBox,
@@ -281,12 +275,15 @@ namespace Breda_Maps.View
                     if (state == GeofenceState.Entered)
                     {
                         // User has entered the area.
-                        ShowMessage("you have entered the geofence");
+                        ShowMessage("you have entered the geofence, deleting point " + (MapControl1.Routes.Count-1));
+                        MapControl1.Routes.RemoveAt(0);
+                        _rc.GetCurrentRoute().getRoute().RemoveAt(0);
+                        _currentAmountOfPoints--;
                     }
                     else if (state == GeofenceState.Exited)
                     {
                         // User has exited from the area.
-                        ShowMessage("you have exited the geofence");
+                        //ShowMessage("you have exited the geofence");
                     }
                 }
             });
