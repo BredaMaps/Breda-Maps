@@ -148,14 +148,6 @@ namespace Breda_Maps.View
             return sight;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            if (_itemNaam != null)
-            {
-                this.Frame.Navigate(typeof (View.InformationPage), _itemNaam);
-            }
-        }
-
         private void listView0_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (_itemNaam == null)
