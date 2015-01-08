@@ -23,7 +23,8 @@ namespace Breda_Maps.View
     public sealed partial class AboutPage : GUI
     {
         private string aboutString =
-            "Breda Maps\n\n" +
+            "Breda Maps\n" +
+            "Versie 1.0\n\n" +
             "In opdracht van:\n" +
             "Adaptive Guiding Systems (AGS) voor VVV Breda\n\n" +
             "Geprogrammeerd door:\n" +
