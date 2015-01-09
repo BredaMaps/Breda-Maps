@@ -118,7 +118,6 @@ namespace Breda_Maps.View
 
         public async void InitStartToRoute()
         {
-            Debug.WriteLine("Current amount of points: " + _currentAmountOfPoints);
             if (_rc.GetCurrentRoute() != null)
             {
                 Geopoint endpoint = _rc.GetCurrentRoute().getRoute()[0].getLocation();
