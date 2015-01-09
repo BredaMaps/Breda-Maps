@@ -9,22 +9,25 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+    <ScrollViewer VerticalScrollMode="Enabled">
     <StackPanel Height="Auto">
         <TextBlock HorizontalAlignment="Center" Margin="0,10,0,0" TextWrapping="Wrap" Text="SightPage" VerticalAlignment="Top"/>
-        <StackPanel>
-            <CheckBox Content="Voorziening" HorizontalAlignment="Left" Margin="10,-10,0,0" VerticalAlignment="Top" Checked="Cat1_Checked" Unchecked="cat1_unchecked"/>
+        <StackPanel >
+
+            <CheckBox Content="Voorziening" HorizontalAlignment="Left" Margin="10,60,-0,0" VerticalAlignment="Top" Checked="Cat1_Checked" Unchecked="cat1_unchecked"/>
             <ListView x:Name="ListView0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="334" SelectionChanged="listView0_SelectionChanged" Margin="46,0,0,0"/>
-            <CheckBox Content="Café" HorizontalAlignment="Left" Margin="10,-10,0,0" VerticalAlignment="Top" Checked="Cat2_Checked" Unchecked="cat2_unchecked"/>
+            <CheckBox Content="Café" HorizontalAlignment="Left" Margin="10,-20,-0,0" VerticalAlignment="Top" Checked="Cat2_Checked" Unchecked="cat2_unchecked"/>
             <ListView x:Name="ListView1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="334" SelectionChanged="listView1_SelectionChanged" Margin="46,0,0,0"/>
-            <CheckBox Content="Kerk" HorizontalAlignment="Left" Margin="10,-10,0,0" VerticalAlignment="Top" Checked="Cat3_Checked" Unchecked="cat3_unchecked"/>
+            <CheckBox Content="Kerk" HorizontalAlignment="Left" Margin="10,-20,-0,0" VerticalAlignment="Top" Checked="Cat3_Checked" Unchecked="cat3_unchecked"/>
             <ListView x:Name="ListView2" HorizontalAlignment="Right" VerticalAlignment="Top" Width="334" SelectionChanged="listView2_SelectionChanged" Margin="0,0,20,0"/>
-            <CheckBox Content="Park" HorizontalAlignment="Left" Margin="10,-10,0,0" VerticalAlignment="Top" Checked="Cat4_Checked" Unchecked="cat4_unchecked"/>
+            <CheckBox Content="Park" HorizontalAlignment="Left" Margin="10,-20,0,0" VerticalAlignment="Top" Checked="Cat4_Checked" Unchecked="cat4_unchecked"/>
             <ListView x:Name="ListView3" HorizontalAlignment="Left" VerticalAlignment="Top" Width="334" SelectionChanged="listView3_SelectionChanged" Margin="46,0,0,0"/>
-            <CheckBox Content="Cultuur" HorizontalAlignment="Left" Margin="10,-10,0,0" VerticalAlignment="Top" Checked="Cat5_Checked" Unchecked="cat5_unchecked"/>
+            <CheckBox Content="Cultuur" HorizontalAlignment="Left" Margin="10,-20,0,0" VerticalAlignment="Top" Checked="Cat5_Checked" Unchecked="cat5_unchecked"/>
             <ListView x:Name="ListView4" HorizontalAlignment="Left" VerticalAlignment="Top" Width="334" SelectionChanged="listView4_SelectionChanged" Margin="46,0,0,0"/>
            
         </StackPanel>
         <!-- <ListView x:Name="ListView2" HorizontalAlignment="Left" Height="364" Margin="10,247,0,0" VerticalAlignment="Top" Width="380"/> -->
 
     </StackPanel>
+    </ScrollViewer>
 </src:GUI>

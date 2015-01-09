@@ -41,8 +41,7 @@ namespace Breda_Maps.View
             int itemId = _rc.getIdFromDescription(itemName);
             string[] imageID = _rc.getImagesFromId(itemId);
             setImage(imageID[0]);
-
-            //setImage("Havermarkt.jpg");
+            mainInformation.Text = _rc.getInfoFromId(itemId) +"\n" +  _rc.getSiteFromId(itemId);
         }
 
         public void setImage(String imagepath)
@@ -54,11 +53,6 @@ namespace Breda_Maps.View
         public void SetInformation(String information)
         {
             mainInformation.Text = information;
-        }
-
-        private void Sight_Sel_Click(object sender, RoutedEventArgs e)
-        {
-            this.Frame.Navigate(typeof(View.SightPage), e);
         }
     }
 }
