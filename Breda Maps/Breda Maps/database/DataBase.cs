@@ -216,6 +216,8 @@ namespace Breda_Maps.database
             sights.Add(new Sight("1e bocht Valkenberg", new Geopoint(new BasicGeoposition() { Latitude = 51.59265, Longitude = 4.77844 }), EnumCat.ROUTEPOINT, "", "", "", "http//testtest/henk", "info"));
             sights.Add(new Sight("2e bocht Valkenberg", new Geopoint(new BasicGeoposition() { Latitude = 51.59258, Longitude = 4.77806 }), EnumCat.ROUTEPOINT, "", "", "", "http//testtest/henk", "info"));
             sights.Add(new Sight("Einde park", new Geopoint(new BasicGeoposition() { Latitude = 51.59059, Longitude = 4.77707 }), EnumCat.PARK, "", "", "", "http//testtest/henk", "info"));
+            sights.Add(new Sight("Kasteel van Breda", new Geopoint(new BasicGeoposition() { Latitude = 51.59061, Longitude = 4.77624 }), EnumCat.CULTURE, "KasteelBreda1.jpg", "", "", "http//testtest/henk", "info"));
+            sights.Add(new Sight("Stadhouderspoort", new Geopoint(new BasicGeoposition() { Latitude = 51.58992, Longitude = 4.77634 }), EnumCat.CULTURE, "Stadhouderspoort1.jpg", "", "", "http//testtest/henk", "info"));
 
             try
             {
