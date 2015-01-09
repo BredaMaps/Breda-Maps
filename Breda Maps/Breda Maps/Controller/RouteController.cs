@@ -35,6 +35,29 @@ namespace Breda_Maps.Controller
             initLocation();
         }
 
+        public int getIdFromDescription(String itemDescription)
+        {
+            int temp = db.getIdByDescription(itemDescription);
+            return temp;
+        }
+
+        public string[] getImagesFromId(int id)
+        {
+            string[] temp = db.getImages(id);
+            return temp;
+        }
+
+        public string getInfoFromId(int id)
+        {
+            string temp = db.getInfo(id);
+            return temp;
+        }
+
+        public string getSiteFromId(int id)
+        {
+            string temp = db.getSite(id);
+            return temp;
+        }
         public void SetMap(MainPage mp)
         {
             map = mp;
