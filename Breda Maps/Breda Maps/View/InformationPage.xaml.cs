@@ -41,7 +41,7 @@ namespace Breda_Maps.View
             int itemId = _rc.getIdFromDescription(itemName);
             string[] imageID = _rc.getImagesFromId(itemId);
             setImage(imageID[0]);
-            mainInformation.Text = _rc.getInfoFromId(itemId) +"\n" +  _rc.getSiteFromId(itemId);
+            mainInformation.Text = _rc.getInfoFromId(itemId) +"\n" + "\n" +  _rc.getSiteFromId(itemId);
         }
 
         public void setImage(String imagepath)

@@ -28,6 +28,12 @@ namespace Breda_Maps.View
     {
         List<Route> _routes;
         private string _routeNaam;
+        private List<Sight> _facilities = new List<Sight>();
+        private List<Sight> _bars = new List<Sight>();
+        private List<Sight> _church = new List<Sight>();
+        private List<Sight> _park = new List<Sight>();
+        private List<Sight> _cultures = new List<Sight>();
+
         //ListView listView;
         public RoutePage()
         {
@@ -71,8 +77,38 @@ namespace Breda_Maps.View
         }
         private void Bn_Sta_Click(object sender, RoutedEventArgs e)
         {
+            foreach (Sight facility in this.getCategory(EnumCat.FACILITY))
+            {
+                // make a list and add all facility's with corresponding details
+                _facilities.Add(facility);
+            }
+            foreach (Sight bar in this.getCategory(EnumCat.BAR))
+            {
+                _bars.Add(bar);
+            }
+            foreach (Sight church in this.getCategory(EnumCat.CHURCH))
+            {
+                _church.Add(church);
+            }
+            foreach (Sight park in this.getCategory(EnumCat.PARK))
+            {
+                _park.Add(park);
+            }
+
+            foreach (Sight culture in this.getCategory(EnumCat.CULTURE))
+            {
+                _cultures.Add(culture);
+            }
+
             if(_routeNaam != null)
             {
+                List<Sight> allSelections = _facilities.Concat(_bars)
+                        .Concat(_church)
+                        .Concat(_park)
+                        .Concat(_cultures)
+                        .ToList();
+
+                _rc.setAllIconLocations(allSelections);
                 this.Frame.Navigate(typeof(View.MainPage), _routeNaam);
             }
             else
@@ -87,25 +123,18 @@ namespace Breda_Maps.View
             _routeNaam = (string)listView.SelectedItems[0];
         }
 
-        public IOrderedEnumerable<IGrouping<EnumCat, Sight>> getAllCategories()
+        public IOrderedEnumerable<Sight> getCategory(EnumCat type)
         {
             var temp = _rc.getSights();
-            foreach (Sight s in temp)
-            {
-                if (s.Category == EnumCat.ROUTEPOINT)
-                {
-                    temp.Remove(s);
-                }
-            }
 
-            var categories =
+            var sight =
                 from cat in temp
-                group cat by cat.Category
-                    into categorie
-                    orderby categorie
-                    select categorie;
+                where cat.Category == type
+                orderby cat.Category
+                ascending
+                select cat;
 
-            return categories;
+            return sight;
         }
     }
 }
