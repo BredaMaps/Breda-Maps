@@ -26,6 +26,13 @@ namespace Breda_Maps.Controller
             init();
             db = new database.DataBase("Breda_Maps.s3db",true);
             sights = db.getSights();
+            Route route = new Route("deze moet je hebben flapdrol");
+            foreach (Sight s in sights )
+            {
+                route.addpoint(s);
+            }
+            routes.Add(route);
+
         }
 
         public RouteController(MainPage mp)
