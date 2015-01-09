@@ -19,6 +19,7 @@ using System.Diagnostics;
 using Windows.Storage.Streams;
 using Windows.UI.Core;
 using Windows.Services.Maps;
+using Breda_Maps.Controller.Enums;
 using Breda_Maps.Model;
 using Windows.UI;
 using System.Threading.Tasks;
@@ -70,6 +71,7 @@ namespace Breda_Maps.View
             
             AddCurrentPositionIcon();
             addCategoriePoints();
+            addAllIconPoints();
             Bn_Loc.Background = new SolidColorBrush(Colors.Blue);
             InitRoute();
         }
@@ -84,6 +86,18 @@ namespace Breda_Maps.View
                 categorieIcon.Title = points.getDescription();
                 MapControl1.MapElements.Add(categorieIcon);
             } 
+        }
+
+        public void addAllIconPoints()
+        {
+            foreach (Sight points in _rc.GetIconLocations())
+            {
+                MapIcon Icon = new MapIcon();
+                Icon.Location = points.getLocation();
+                Icon.NormalizedAnchorPoint = new Point(0.5, 1.0);
+                Icon.Title = points.getDescription();
+                MapControl1.MapElements.Add(Icon);
+            }
         }
 
         private void AddCurrentPositionIcon()
@@ -298,4 +312,5 @@ namespace Breda_Maps.View
         }
 
     }
+
 }

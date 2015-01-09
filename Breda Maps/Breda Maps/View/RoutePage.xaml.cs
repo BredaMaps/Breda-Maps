@@ -1,4 +1,5 @@
-﻿using Breda_Maps.Model;
+﻿using Breda_Maps.Controller.Enums;
+using Breda_Maps.Model;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -84,6 +85,27 @@ namespace Breda_Maps.View
         {
             WarningBlock.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
             _routeNaam = (string)listView.SelectedItems[0];
+        }
+
+        public IOrderedEnumerable<IGrouping<EnumCat, Sight>> getAllCategories()
+        {
+            var temp = _rc.getSights();
+            foreach (Sight s in temp)
+            {
+                if (s.Category == EnumCat.ROUTEPOINT)
+                {
+                    temp.Remove(s);
+                }
+            }
+
+            var categories =
+                from cat in temp
+                group cat by cat.Category
+                    into categorie
+                    orderby categorie
+                    select categorie;
+
+            return categories;
         }
     }
 }
