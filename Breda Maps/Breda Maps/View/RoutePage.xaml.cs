@@ -33,6 +33,7 @@ namespace Breda_Maps.View
         private List<Sight> _church = new List<Sight>();
         private List<Sight> _park = new List<Sight>();
         private List<Sight> _cultures = new List<Sight>();
+        private List<Sight> _allSelections = new List<Sight>(); 
 
         //ListView listView;
         public RoutePage()
@@ -73,7 +74,15 @@ namespace Breda_Maps.View
 
         private void Bn_Cat_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(View.CategoryPage), e);
+            if (_allSelections == null)
+            {
+                this.Frame.Navigate(typeof(View.CategoryPage), e);
+            }
+            else
+            {
+                _allSelections.Clear();
+                this.Frame.Navigate(typeof(View.CategoryPage), e);
+            }
         }
         private void Bn_Sta_Click(object sender, RoutedEventArgs e)
         {
@@ -102,13 +111,13 @@ namespace Breda_Maps.View
 
             if(_routeNaam != null)
             {
-                List<Sight> allSelections = _facilities.Concat(_bars)
+                _allSelections = _facilities.Concat(_bars)
                         .Concat(_church)
                         .Concat(_park)
                         .Concat(_cultures)
                         .ToList();
 
-                _rc.setAllIconLocations(allSelections);
+                _rc.setAllIconLocations(_allSelections);
                 this.Frame.Navigate(typeof(View.MainPage), _routeNaam);
             }
             else
