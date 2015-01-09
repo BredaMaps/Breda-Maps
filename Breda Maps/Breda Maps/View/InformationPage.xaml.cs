@@ -41,7 +41,7 @@ namespace Breda_Maps.View
             int itemId = _rc.getIdFromDescription(itemName);
             string[] imageID = _rc.getImagesFromId(itemId);
             setImage(imageID[0]);
-            if (_rc.getInfoFromId(itemId) == "")
+           if (_rc.getInfoFromId(itemId) == "")
             {
                 mainInformation.Text = "geen informatie beschikbaar";
             }
