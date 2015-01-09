@@ -41,7 +41,23 @@ namespace Breda_Maps.View
             int itemId = _rc.getIdFromDescription(itemName);
             string[] imageID = _rc.getImagesFromId(itemId);
             setImage(imageID[0]);
-            mainInformation.Text = _rc.getInfoFromId(itemId) +"\n" +  _rc.getSiteFromId(itemId);
+            if (_rc.getInfoFromId(itemId) == "")
+            {
+                mainInformation.Text = "geen informatie beschikbaar";
+            }
+            else
+            {
+                mainInformation.Text = _rc.getInfoFromId(itemId);
+            }
+
+            if (_rc.getSiteFromId(itemId) == "")
+            {
+
+            }
+            else
+            {
+                mainInformation.Text += "\n" + "\n" + _rc.getSiteFromId(itemId);
+            }
         }
 
         public void setImage(String imagepath)
