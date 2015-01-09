@@ -78,25 +78,31 @@ namespace Breda_Maps.View
 
         public void addCategoriePoints()
         {
-            foreach (Sight points in _rc.GetCategories())
+            if (_rc.GetCategories() != null)
             {
-                MapIcon categorieIcon = new MapIcon();
-                categorieIcon.Location = points.getLocation();
-                categorieIcon.NormalizedAnchorPoint = new Point(0.5,1.0);
-                categorieIcon.Title = points.getDescription();
-                MapControl1.MapElements.Add(categorieIcon);
-            } 
+                foreach (Sight points in _rc.GetCategories())
+                {
+                    MapIcon categorieIcon = new MapIcon();
+                    categorieIcon.Location = points.getLocation();
+                    categorieIcon.NormalizedAnchorPoint = new Point(0.5, 1.0);
+                    categorieIcon.Title = points.getDescription();
+                    MapControl1.MapElements.Add(categorieIcon);
+                }
+            }
         }
 
         public void addAllIconPoints()
         {
-            foreach (Sight points in _rc.GetIconLocations())
+            if (_rc.GetIconLocations() != null)
             {
-                MapIcon Icon = new MapIcon();
-                Icon.Location = points.getLocation();
-                Icon.NormalizedAnchorPoint = new Point(0.5, 1.0);
-                Icon.Title = points.getDescription();
-                MapControl1.MapElements.Add(Icon);
+                foreach (Sight points in _rc.GetIconLocations())
+                {
+                    MapIcon Icon = new MapIcon();
+                    Icon.Location = points.getLocation();
+                    Icon.NormalizedAnchorPoint = new Point(0.5, 1.0);
+                    Icon.Title = points.getDescription();
+                    MapControl1.MapElements.Add(Icon);
+                }
             }
         }
 
