@@ -265,11 +265,11 @@ Leeuw van Nassau die boven alles uittorent met koningskroon,
 zwaard en wapenschild. In de drie reliëfs is de 'blijde incomste'
 van Graaf Engelbert en zijn gemalin afgebeeld. De poorters
 bieden de sleutel van de stad aan."));
-            sights.Add(new Sight("The Light House", new Geopoint(new BasicGeoposition() { Latitude = 51.59256, Longitude = 4.77889 }), EnumCat.CULTURE, "Lighthouse.jpg", "", "", "http//testtest/henk", ""));
+            sights.Add(new Sight("The Light House", new Geopoint(new BasicGeoposition() { Latitude = 51.59256, Longitude = 4.77889 }), EnumCat.CULTURE, "Lighthouse.jpg", "", "", "", ""));
             sights.Add(new Sight("1e bocht Valkenberg", new Geopoint(new BasicGeoposition() { Latitude = 51.59265, Longitude = 4.77844 }), EnumCat.ROUTEPOINT, "", "", "", "", ""));
             sights.Add(new Sight("2e bocht Valkenberg", new Geopoint(new BasicGeoposition() { Latitude = 51.59258, Longitude = 4.77806 }), EnumCat.ROUTEPOINT, "", "", "", "", ""));
             sights.Add(new Sight("Einde park", new Geopoint(new BasicGeoposition() { Latitude = 51.59059, Longitude = 4.77707 }), EnumCat.ROUTEPOINT, "", "", "", "", ""));
-            sights.Add(new Sight("Kasteel van Breda", new Geopoint(new BasicGeoposition() { Latitude = 51.59061, Longitude = 4.77624 }), EnumCat.CULTURE, "KasteelBreda1.jpg", "", "", "http//testtest/henk", @"
+            sights.Add(new Sight("Kasteel van Breda", new Geopoint(new BasicGeoposition() { Latitude = 51.59061, Longitude = 4.77624 }), EnumCat.CULTURE, "KasteelBreda1.jpg", "", "", "", @"
 Aan het einde van het park
 loopt u langs het poortgebouw 
 van het kasteel; links kijkt u op het kasteelplein.
@@ -316,12 +316,12 @@ werd gebouwd in 1867. Het maakt thans ook deel uit van het
 KMA gebouwen complex.
 Meer geschiedenis schuilt et achter de witte pui van het gebouw
 "));
-            sights.Add(new Sight("Stadhouderspoort", new Geopoint(new BasicGeoposition() { Latitude = 51.58992, Longitude = 4.77634 }), EnumCat.CULTURE, "Stadhouderspoort1.jpg", "", "", "http//testtest/henk", ""));
-            sights.Add(new Sight("Kruising Kasteelplein/Cingelstraat", new Geopoint(new BasicGeoposition() { Latitude = 51.59033, Longitude = 4.77623 }), EnumCat.ROUTEPOINT, "", "", "", "http//testtest/henk", ""));
-            sights.Add(new Sight("Huis van Brecht", new Geopoint(new BasicGeoposition() { Latitude = 51.59043, Longitude = 4.77518 }), EnumCat.CULTURE, "HuisvanBrecht1.jpg", "", "", "http//testtest/henk", ""));
+            sights.Add(new Sight("Stadhouderspoort", new Geopoint(new BasicGeoposition() { Latitude = 51.58992, Longitude = 4.77634 }), EnumCat.CULTURE, "Stadhouderspoort1.jpg", "", "", "", ""));
+            sights.Add(new Sight("Kruising Kasteelplein/Cingelstraat", new Geopoint(new BasicGeoposition() { Latitude = 51.59033, Longitude = 4.77623 }), EnumCat.ROUTEPOINT, "", "", "", "", ""));
+            sights.Add(new Sight("Huis van Brecht", new Geopoint(new BasicGeoposition() { Latitude = 51.59043, Longitude = 4.77518 }), EnumCat.CULTURE, "HuisvanBrecht1.jpg", "", "", "", ""));
             sights.Add(new Sight("2e bocht Cingelstraat", new Geopoint(new BasicGeoposition() { Latitude = 51.59000, Longitude = 4.77429 }), EnumCat.ROUTEPOINT, "", "", "", "", ""));
-            sights.Add(new Sight("Spanjaardsgat", new Geopoint(new BasicGeoposition() { Latitude = 51.59010, Longitude = 4.77336 }), EnumCat.CULTURE, "Spanjaardsgat2.jpg", "", "", "http//testtest/henk", ""));
-            sights.Add(new Sight("Vismarkt", new Geopoint(new BasicGeoposition() { Latitude = 51.58982, Longitude = 4.77321 }), EnumCat.FACILITY, "Vismarkt2.jpg", "", "", "http//testtest/henk", @"
+            sights.Add(new Sight("Spanjaardsgat", new Geopoint(new BasicGeoposition() { Latitude = 51.59010, Longitude = 4.77336 }), EnumCat.CULTURE, "Spanjaardsgat2.jpg", "", "", "", ""));
+            sights.Add(new Sight("Vismarkt", new Geopoint(new BasicGeoposition() { Latitude = 51.58982, Longitude = 4.77321 }), EnumCat.FACILITY, "Vismarkt2.jpg", "", "", "", @"
 Bij de Vishal gaat u de Vismarktstraat in; deze straat komt uit op de Havermarkt.
 
 Van de plaats waar de vishal (1725) nog aangeeft dat hier vroeger een levendige handel in zeevis werd bedreven, wandelen we door de Vismarktstraat naar de Havermarkt. Deze markt is vanaf de jaren zestig tot op de dag van vandaag het uitgaanscentrum van Breda.
@@ -335,16 +335,16 @@ Tegenover u op de Havermarkt bevinden zich nog twee panden die uw aandacht verdi
 Voor het beeldje 'De Troubadour', dat aan het eind van de Havermarkt prijkt, zijn vier exemplaren vervaardigd. De andere drie werden onthuld in Diest, Orange en Dillenburg, de zustersteden van Breda in de in 1963 tot stand gekomen Unie van Oranjesteden.
 Een stukje verder in de Visserstraat (nr. 31), aan de rechterkant, staat een fraai bakstenen huis uit de 17e eeuw met overblijfselen van een zestiende eeuwse gothische woning, de Drie Moren geheten.
 "));
-            sights.Add(new Sight("Havermarkt", new Geopoint(new BasicGeoposition() { Latitude = 51.58932, Longitude = 4.77444 }), EnumCat.FACILITY, "Havermarkt2.jpg", "", "", "http//testtest/henk", ""));
+            sights.Add(new Sight("Havermarkt", new Geopoint(new BasicGeoposition() { Latitude = 51.58932, Longitude = 4.77444 }), EnumCat.FACILITY, "Havermarkt2.jpg", "", "", "", ""));
             sights.Add(new Sight("Driehoek Kerkplein 1", new Geopoint(new BasicGeoposition() { Latitude = 51.58872, Longitude = 4.77501 }), EnumCat.ROUTEPOINT, "", "", "", "", ""));
-            sights.Add(new Sight("Grote of Onze Lieve Vrouwekerk", new Geopoint(new BasicGeoposition() { Latitude = 51.58878, Longitude = 4.77549 }), EnumCat.CHURCH, "LieveVrouwekerk2.jpg", "", "", "http//testtest/henk", ""));
+            sights.Add(new Sight("Grote of Onze Lieve Vrouwekerk", new Geopoint(new BasicGeoposition() { Latitude = 51.58878, Longitude = 4.77549 }), EnumCat.CHURCH, "LieveVrouwekerk2.jpg", "", "", "", ""));
             sights.Add(new Sight("Driehoek Kerkplein 3", new Geopoint(new BasicGeoposition() { Latitude = 51.58864, Longitude = 4.77501 }), EnumCat.ROUTEPOINT, "", "", "", "", ""));
-            sights.Add(new Sight("Het poortje", new Geopoint(new BasicGeoposition() { Latitude = 51.58822, Longitude = 4.77525 }), EnumCat.CULTURE, "Poortje.jpg", "", "", "http//testtest/henk", ""));
+            sights.Add(new Sight("Het poortje", new Geopoint(new BasicGeoposition() { Latitude = 51.58822, Longitude = 4.77525 }), EnumCat.CULTURE, "Poortje.jpg", "", "", "", ""));
             sights.Add(new Sight("Ridderstraat", new Geopoint(new BasicGeoposition() { Latitude = 51.58716, Longitude = 4.77582 }), EnumCat.ROUTEPOINT, "", "", "", "", ""));
-            sights.Add(new Sight("Grote Markt", new Geopoint(new BasicGeoposition() { Latitude = 51.58747, Longitude = 4.77662 }), EnumCat.FACILITY, "", "", "", "http//testtest/henk", ""));
-            sights.Add(new Sight("Het Wit Lam", new Geopoint(new BasicGeoposition() { Latitude = 51.58771, Longitude = 4.77652 }), EnumCat.CULTURE, "Witlam.jpg", "", "", "http//testtest/henk", ""));
-            sights.Add(new Sight("Bevrijdingsmonument", new Geopoint(new BasicGeoposition() { Latitude = 51.58797, Longitude = 4.77638 }), EnumCat.CULTURE, "Bevrijdingsmonument1.jpg", "", "", "http//testtest/henk", ""));
-            sights.Add(new Sight("Stadshuis", new Geopoint(new BasicGeoposition() { Latitude = 51.58885, Longitude = 4.77616 }), EnumCat.FACILITY, "", "", "", "http//testtest/henk", @"
+            sights.Add(new Sight("Grote Markt", new Geopoint(new BasicGeoposition() { Latitude = 51.58747, Longitude = 4.77662 }), EnumCat.FACILITY, "", "", "", "", ""));
+            sights.Add(new Sight("Het Wit Lam", new Geopoint(new BasicGeoposition() { Latitude = 51.58771, Longitude = 4.77652 }), EnumCat.CULTURE, "Witlam.jpg", "", "", "", ""));
+            sights.Add(new Sight("Bevrijdingsmonument", new Geopoint(new BasicGeoposition() { Latitude = 51.58797, Longitude = 4.77638 }), EnumCat.CULTURE, "Bevrijdingsmonument1.jpg", "", "", "", ""));
+            sights.Add(new Sight("Stadshuis", new Geopoint(new BasicGeoposition() { Latitude = 51.58885, Longitude = 4.77616 }), EnumCat.FACILITY, "", "", "", "", @"
 Schuin aan de overkant op de Grote Markt vindt u het stadhuis van Breda 
 en tevens de dependance van de VVV.
 
@@ -380,7 +380,7 @@ replica)."));
             sights.Add(new Sight("Achterkant stadshuis", new Geopoint(new BasicGeoposition() { Latitude = 51.58889, Longitude = 4.77659 }), EnumCat.ROUTEPOINT, "", "", "", "", ""));
             sights.Add(new Sight("Kruising Grote Markt / Stadserf (terug gaan)", new Geopoint(new BasicGeoposition() { Latitude = 51.58883, Longitude = 4.77617 }), EnumCat.ROUTEPOINT, "", "", "", "", ""));
             sights.Add(new Sight("Terug naar begin Grote Markt", new Geopoint(new BasicGeoposition() { Latitude = 51.58747, Longitude = 4.77662 }), EnumCat.ROUTEPOINT, "", "", "", "", ""));
-            sights.Add(new Sight("Antonius van Paduakerk", new Geopoint(new BasicGeoposition() { Latitude = 51.58761, Longitude = 4.77712 }), EnumCat.CHURCH, "", "", "", "http//testtest/henk", @"
+            sights.Add(new Sight("Antonius van Paduakerk", new Geopoint(new BasicGeoposition() { Latitude = 51.58761, Longitude = 4.77712 }), EnumCat.CHURCH, "", "", "", "", @"
 U loopt via het poortje weer terug naar de Grote Markt en gaat linksaf. 
 De tweede straat links is de St. Janstraat. Hier gaat u in.
 
@@ -423,7 +423,7 @@ kleur van dit huis (na de restauratie aangebracht) zal door de loop der
 jaren een mooie grijs rode kleur krijgen.
 "));
             sights.Add(new Sight("Kruising St. Jansstraat / Molenstraat", new Geopoint(new BasicGeoposition() { Latitude = 51.58828, Longitude = 4.77858 }), EnumCat.ROUTEPOINT, "", "", "", "", ""));
-            sights.Add(new Sight("Bibliotheek", new Geopoint(new BasicGeoposition() { Latitude = 51.58773, Longitude = 4.77948 }), EnumCat.FACILITY, "", "", "", "http//testtest/henk", @"
+            sights.Add(new Sight("Bibliotheek", new Geopoint(new BasicGeoposition() { Latitude = 51.58773, Longitude = 4.77948 }), EnumCat.FACILITY, "", "", "", "", @"
 Aan het eind van de St. Jansstraat gaat u rechtsaf de Molenstraat in.
 
 In de Molenstraat ziet u recht de Bibliotheek, ontworpen door architect 
@@ -435,7 +435,7 @@ zwaarst gestraften werden ondergebracht. De plaats is nog met keitjes in het
 asfalt aangegeven; de asfaltweg is de plaats van de oude stadsgracht.
 "));
             sights.Add(new Sight("Kruising Molenstraat / Kloosterplein", new Geopoint(new BasicGeoposition() { Latitude = 51.58752, Longitude = 4.77994 }), EnumCat.ROUTEPOINT, "", "", "", "", ""));
-            sights.Add(new Sight("Kloosterkazerne", new Geopoint(new BasicGeoposition() { Latitude = 51.58794, Longitude = 4.78105 }), EnumCat.CULTURE, "", "", "", "http//testtest/henk", @"
+            sights.Add(new Sight("Kloosterkazerne", new Geopoint(new BasicGeoposition() { Latitude = 51.58794, Longitude = 4.78105 }), EnumCat.CULTURE, "", "", "", "", @"
 Op de hoek Molenstraat en de Oude Vest gaat u linksaf.
 
 Op deze hoek ziet u aan de overkant een voornaam monument uit de 
@@ -444,19 +444,19 @@ zusterklooster St. Catharinadal, dat hier sinds 1295 gevestigd was. Het
 huidige gebouw dateert uit 1504. In 1645 werden de zusters Norbertinessen 
 vanuit Breda naar Oosterhout verdreven.
 "));
-            sights.Add(new Sight("Chasse Theater", new Geopoint(new BasicGeoposition() { Latitude = 51.58794, Longitude = 4.78218 }), EnumCat.CULTURE, "", "", "", "http//testtest/henk", "geen informatie beschikbaar."));
+            sights.Add(new Sight("Chasse Theater", new Geopoint(new BasicGeoposition() { Latitude = 51.58794, Longitude = 4.78218 }), EnumCat.CULTURE, "", "", "", "", "geen informatie beschikbaar."));
             sights.Add(new Sight("1e bocht Kloosterplein / Begin Vlaszak", new Geopoint(new BasicGeoposition() { Latitude = 51.58794, Longitude = 4.78105 }), EnumCat.ROUTEPOINT, "", "", "", "", ""));
-            sights.Add(new Sight("Binding van Isaäc", new Geopoint(new BasicGeoposition() { Latitude = 51.58862, Longitude = 4.78079 }), EnumCat.CULTURE, "", "", "", "http//testtest/henk", ""));
+            sights.Add(new Sight("Binding van Isaäc", new Geopoint(new BasicGeoposition() { Latitude = 51.58862, Longitude = 4.78079 }), EnumCat.CULTURE, "", "", "", "", ""));
             sights.Add(new Sight("Einde Vlaszak / Begin Boschstraat", new Geopoint(new BasicGeoposition() { Latitude = 51.58955, Longitude = 4.78038 }), EnumCat.ROUTEPOINT, "", "", "", "", ""));
-            sights.Add(new Sight("Beyerd", new Geopoint(new BasicGeoposition() { Latitude = 51.58966, Longitude = 4.78076 }), EnumCat.BAR, "", "", "", "http//testtest/henk", ""));
-            sights.Add(new Sight("Gasthuispoort", new Geopoint(new BasicGeoposition() { Latitude = 51.58939, Longitude = 4.77982 }), EnumCat.CULTURE, "", "", "", "http//testtest/henk", ""));
+            sights.Add(new Sight("Beyerd", new Geopoint(new BasicGeoposition() { Latitude = 51.58966, Longitude = 4.78076 }), EnumCat.BAR, "", "", "", "", ""));
+            sights.Add(new Sight("Gasthuispoort", new Geopoint(new BasicGeoposition() { Latitude = 51.58939, Longitude = 4.77982 }), EnumCat.CULTURE, "", "", "", "", ""));
             sights.Add(new Sight("2e bocht Veemarktstraat", new Geopoint(new BasicGeoposition() { Latitude = 51.58905, Longitude = 4.77981 }), EnumCat.ROUTEPOINT, "", "", "", "", ""));
             sights.Add(new Sight("Kruising St. Annastraat / Veemarktstraat", new Geopoint(new BasicGeoposition() { Latitude = 51.58846, Longitude = 4.77830 }), EnumCat.ROUTEPOINT, "", "", "", "", ""));
-            sights.Add(new Sight("Willem Merkxtuin", new Geopoint(new BasicGeoposition() { Latitude = 51.58905, Longitude = 4.77801 }), EnumCat.PARK, "", "", "", "http//testtest/henk", ""));
+            sights.Add(new Sight("Willem Merkxtuin", new Geopoint(new BasicGeoposition() { Latitude = 51.58905, Longitude = 4.77801 }), EnumCat.PARK, "", "", "", "", ""));
             sights.Add(new Sight("Binnen Willem Merkxtuin", new Geopoint(new BasicGeoposition() { Latitude = 51.58918, Longitude = 4.77841 }), EnumCat.ROUTEPOINT, "", "", "", "", ""));
             sights.Add(new Sight("Uitgang Willem Merkxtuin", new Geopoint(new BasicGeoposition() { Latitude = 51.58905, Longitude = 4.77801 }), EnumCat.ROUTEPOINT, "", "", "", "", ""));
             sights.Add(new Sight("Kruising Catharinastraat / St. Annastraat", new Geopoint(new BasicGeoposition() { Latitude = 51.58960, Longitude = 4.77770 }), EnumCat.ROUTEPOINT, "", "", "", "", ""));
-            sights.Add(new Sight("Begijnenhof", new Geopoint(new BasicGeoposition() { Latitude = 51.58965, Longitude = 4.77830 }), EnumCat.PARK, "", "", "", "http//testtest/henk", ""));
+            sights.Add(new Sight("Begijnenhof", new Geopoint(new BasicGeoposition() { Latitude = 51.58965, Longitude = 4.77830 }), EnumCat.PARK, "", "", "", "", ""));
             sights.Add(new Sight("Binnen Begijnenhof", new Geopoint(new BasicGeoposition() { Latitude = 51.58997, Longitude = 4.77810 }), EnumCat.ROUTEPOINT, "", "", "", "", ""));
             sights.Add(new Sight("Uitgang Begijnenhof", new Geopoint(new BasicGeoposition() { Latitude = 51.58965, Longitude = 4.77830 }), EnumCat.ROUTEPOINT, "", "", "", "", ""));
             sights.Add(new Sight("Eindpunt stadswandeling", new Geopoint(new BasicGeoposition() { Latitude = 51.58950, Longitude = 4.77649 }), EnumCat.ROUTEPOINT, "", "", "", "", ""));
