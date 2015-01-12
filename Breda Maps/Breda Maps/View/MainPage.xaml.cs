@@ -84,7 +84,7 @@ namespace Breda_Maps.View
                 {
                     MapIcon categorieIcon = new MapIcon();
                     categorieIcon.Location = points.getLocation();
-                    categorieIcon.NormalizedAnchorPoint = new Point(0.5, 1.0);
+                    categorieIcon.NormalizedAnchorPoint = new Point(1.5,1.5);
                     categorieIcon.Title = points.getDescription();
                     MapControl1.MapElements.Add(categorieIcon);
                 }
@@ -99,7 +99,7 @@ namespace Breda_Maps.View
                 {
                     MapIcon Icon = new MapIcon();
                     Icon.Location = points.getLocation();
-                    Icon.NormalizedAnchorPoint = new Point(0.5, 1.0);
+                    Icon.NormalizedAnchorPoint = new Point(1.5, 1.5);
                     Icon.Title = points.getDescription();
                     MapControl1.MapElements.Add(Icon);
                 }
