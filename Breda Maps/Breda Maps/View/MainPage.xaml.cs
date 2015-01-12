@@ -42,11 +42,12 @@ namespace Breda_Maps.View
         BasicGeoposition StartPosition = new BasicGeoposition()
                 {
                     Latitude = 51.5938D,
-                    Longitude = 4.77963D            
+                    Longitude = 4.77963D
                 };
-        BasicGeoposition CurrentPosition = new BasicGeoposition(){
+        BasicGeoposition CurrentPosition = new BasicGeoposition()
+        {
             Latitude = 51.5938D,
-            Longitude = 4.77963D  
+            Longitude = 4.77963D
         };
         private bool _scrolled = false;
         private bool _doneMoving = true;
@@ -56,26 +57,44 @@ namespace Breda_Maps.View
         {
             this.InitializeComponent();
             _rc.SetMap(this);
-
-            
-                CreateGeofence(StartPosition.Latitude, StartPosition.Longitude, 3);
+            //init();
+            //CreateGeofence(StartPosition.Latitude, StartPosition.Longitude, 3, "me");
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        private void init()
         {
-            string routeName = e.Parameter as string;
-            _rc.selectRoute(routeName);
+            Debug.WriteLine("init()");
             MapControl1.Center = new Geopoint(StartPosition);
             MapControl1.ZoomLevel = 18;
             MapControl1.LandmarksVisible = true;
-            
+
             AddCurrentPositionIcon();
-            addCategoriePoints();
             addAllIconPoints();
+            addCategoriePoints();
             Bn_Loc.Background = new SolidColorBrush(Colors.Blue);
             InitRoute();
         }
 
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            this.navigationHelper.OnNavigatedTo(e);
+            if (_rc.GetCurrentRoute() == null)
+            {
+                Debug.WriteLine("route geselecteerd");
+                string routeName = e.Parameter as string;
+                _rc.selectRoute(routeName);
+                init();
+            }
+            else
+            {
+                //_rc.GetMap().Frame.Navigate();
+            }
+        }
+
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            this.navigationHelper.OnNavigatedFrom(e);
+        }
         public void addCategoriePoints()
         {
             if (_rc.GetCategories() != null)
@@ -84,7 +103,7 @@ namespace Breda_Maps.View
                 {
                     MapIcon categorieIcon = new MapIcon();
                     categorieIcon.Location = points.getLocation();
-                    categorieIcon.NormalizedAnchorPoint = new Point(1.5,1.5);
+                    categorieIcon.NormalizedAnchorPoint = new Point(1.5, 1.5);
                     categorieIcon.Title = points.getDescription();
                     MapControl1.MapElements.Add(categorieIcon);
                 }
@@ -93,6 +112,7 @@ namespace Breda_Maps.View
 
         public void addAllIconPoints()
         {
+            GeofenceMonitor.Current.Geofences.Clear();
             if (_rc.GetIconLocations() != null)
             {
                 foreach (Sight points in _rc.GetIconLocations())
@@ -102,8 +122,11 @@ namespace Breda_Maps.View
                     Icon.NormalizedAnchorPoint = new Point(1.5, 1.5);
                     Icon.Title = points.getDescription();
                     MapControl1.MapElements.Add(Icon);
+                    CreateGeofence(points.latitude, points.longitude, 10, points._description);
                 }
+                Debug.WriteLine("Geofences added");
             }
+
         }
 
         private void AddCurrentPositionIcon()
@@ -179,19 +202,20 @@ namespace Breda_Maps.View
         {
             CurrentPosition.Latitude = geoPosition.Coordinate.Point.Position.Latitude;
             CurrentPosition.Longitude = geoPosition.Coordinate.Point.Position.Longitude;
-            Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>{
-            currentPosIcon.Location = new Geopoint(CurrentPosition);
-            if (!_scrolled && _doneMoving)
+            Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
             {
-                SmoothSetPosition(currentPosIcon.Location);
-                _doneMoving = !_doneMoving;
-                if (MapControl1.Routes.Count != 0 && initRouteDone)
+                currentPosIcon.Location = new Geopoint(CurrentPosition);
+                if (!_scrolled && _doneMoving)
                 {
-                    InitStartToRoute();
-                  //  MapControl1.UpdateLayout();  
+                    SmoothSetPosition(currentPosIcon.Location);
+                    _doneMoving = !_doneMoving;
+                    if (MapControl1.Routes.Count != 0 && initRouteDone)
+                    {
+                        InitStartToRoute();
+                        //  MapControl1.UpdateLayout();  
+                    }
+                    //MapControl1.Center = new Geopoint(CurrentPosition);
                 }
-                //MapControl1.Center = new Geopoint(CurrentPosition);
-            }
             });
             GeofenceMonitor.Current.GeofenceStateChanged += OnGeofenceStateChanged;
         }
@@ -211,8 +235,8 @@ namespace Breda_Maps.View
             object sender, RoutedEventArgs e)
         {
             _scrolled = !_scrolled;
-            
-            if(_scrolled)
+
+            if (_scrolled)
             {
                 Bn_Loc.Background = new SolidColorBrush(Colors.White);
                 mapDisable.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
@@ -228,7 +252,7 @@ namespace Breda_Maps.View
             //}
             //Geoposition pos = await geo.GetGeopositionAsync();
             //AddCurrentPositionIcon(pos.Coordinate.Point.Position.Latitude, pos.Coordinate.Point.Position.Longitude);
-        }   
+        }
 
         private void MapScrolled(object sender, RoutedEventArgs e)
         {
@@ -254,9 +278,9 @@ namespace Breda_Maps.View
         //{
         //}
 
-        private void CreateGeofence(double latitude, double longitude, double radius)
+        private void CreateGeofence(double latitude, double longitude, double radius, string name)
         {
-                var id = string.Format("Posisition: {0}, {1}", latitude, longitude);
+            var id = string.Format(name);
             // Sets the center of the Geofence.
             var position = new BasicGeoposition
             {
@@ -278,9 +302,9 @@ namespace Breda_Maps.View
 
             // Creates the Geofence and adds it to the GeofenceMonitor.
             var geofence = new Geofence(id, geocircle, mask, false, dwellTime);
-            GeofenceMonitor.Current.Geofences.Clear();
-                GeofenceMonitor.Current.Geofences.Add(geofence);
-            
+            //GeofenceMonitor.Current.Geofences.Clear();
+            GeofenceMonitor.Current.Geofences.Add(geofence);
+
         }
 
         private async void OnGeofenceStateChanged(GeofenceMonitor sender, object e)
@@ -293,14 +317,18 @@ namespace Breda_Maps.View
                 {
                     var state = report.NewState;
                     var geofence = report.Geofence;
+                    GeofenceMonitor.Current.Geofences.Remove(geofence);
+                    Debug.WriteLine("geofenceid = " + geofence.Id);
 
                     if (state == GeofenceState.Entered)
                     {
                         // User has entered the area.
-                        ShowMessage("you have entered the geofence, deleting point " + (MapControl1.Routes.Count-1));
+                        //ShowMessage("you have entered the geofence, deleting point " + (MapControl1.Routes.Count-1));
                         MapControl1.Routes.RemoveAt(0);
                         _rc.GetCurrentRoute().getRoute().RemoveAt(0);
                         _currentAmountOfPoints--;
+                        this.Frame.Navigate(typeof(View.InformationPage), geofence.Id);
+                        GeofenceMonitor.Current.Geofences.Remove(geofence);
                     }
                     else if (state == GeofenceState.Exited)
                     {

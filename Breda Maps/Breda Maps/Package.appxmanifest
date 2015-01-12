@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest" xmlns:m3="http://schemas.microsoft.com/appx/2014/manifest" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest">
   <Identity Name="3c79abcd-3a13-45e0-973a-507f9318aedd" Publisher="CN=Rudy" Version="1.0.0.0" />
-  <mp:PhoneIdentity PhoneProductId="3c79abcd-3a13-45e0-973a-507f9318aedd" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+  <mp:PhoneIdentity PhoneProductId="63402e07-1296-44b1-b1b6-5e29521a74c3" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>Breda Maps</DisplayName>
     <PublisherDisplayName>Rudy</PublisherDisplayName>

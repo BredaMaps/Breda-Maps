@@ -163,6 +163,10 @@ namespace Breda_Maps.Controller
             return sights;
         }
 
+        public MainPage GetMap()
+        {
+            return map;
+        }
 #region TEST
         //private void TestFillRoutes()
         //{

@@ -52,10 +52,16 @@ namespace Breda_Maps.View
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             LoadRoutes();
+            this.navigationHelper.OnNavigatedTo(e);
         }
 
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            this.navigationHelper.OnNavigatedFrom(e);
+        }
         private void LoadRoutes()
         {
+            listView.Items.Clear();
             //listView.FontSize = 50;
             _routes = _rc.GetRoutes();
             //TextBox tb1 = new TextBox();

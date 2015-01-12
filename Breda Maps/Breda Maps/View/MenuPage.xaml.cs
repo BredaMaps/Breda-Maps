@@ -1,4 +1,5 @@
-﻿using Breda_Maps.Model;
+﻿using Breda_Maps.Common;
+using Breda_Maps.Model;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -28,8 +29,7 @@ namespace Breda_Maps.View
         public MenuPage()
         {
             this.InitializeComponent();
-            this.NavigationCacheMode = NavigationCacheMode.Required;
-            HardwareButtons.BackPressed += HardwareButtons_BackPressed;
+            //HardwareButtons.BackPressed += HardwareButtons_BackPressed;
         }
 
         private void HardwareButtons_BackPressed(object sender, BackPressedEventArgs e)
@@ -43,14 +43,6 @@ namespace Breda_Maps.View
             {
                 Application.Current.Exit();
             }
-        }
-        /// <summary>
-        /// Invoked when this page is about to be displayed in a Frame.
-        /// </summary>
-        /// <param name="e">Event data that describes how this page was reached.
-        /// This parameter is typically used to configure the page.</param>
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
         }
 
         private void Bn_Rou_Click(object sender, RoutedEventArgs e)

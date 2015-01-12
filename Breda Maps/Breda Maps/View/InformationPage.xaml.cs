@@ -35,6 +35,7 @@ namespace Breda_Maps.View
         /// This parameter is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            this.navigationHelper.OnNavigatedTo(e);
             string itemName = e.Parameter as string;
             ItemName.Text = itemName;
 
@@ -58,6 +59,10 @@ namespace Breda_Maps.View
             {
                 mainInformation.Text += "\n" + "\n" + _rc.getSiteFromId(itemId);
             }
+        }
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            this.navigationHelper.OnNavigatedFrom(e);
         }
 
         public void setImage(String imagepath)

@@ -46,8 +46,13 @@ namespace Breda_Maps.View
         /// This parameter is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            this.navigationHelper.OnNavigatedTo(e);
         }
 
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            this.navigationHelper.OnNavigatedFrom(e);
+        }
         private void Cat1_Checked(object sender, RoutedEventArgs e)
         {
             foreach (Sight facility in this.getCategory(EnumCat.FACILITY))
