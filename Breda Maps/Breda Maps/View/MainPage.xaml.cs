@@ -70,6 +70,7 @@ namespace Breda_Maps.View
 
             AddCurrentPositionIcon();
             addAllIconPoints();
+          //  CreateGeofence(51.5938D, 4.77963D, 5000, "bredaCheck");
             addCategoriePoints();
             Bn_Loc.Background = new SolidColorBrush(Colors.Blue);
             InitRoute();
@@ -124,6 +125,7 @@ namespace Breda_Maps.View
                     MapControl1.MapElements.Add(Icon);
                     CreateGeofence(points.latitude, points.longitude, 10, points._description);
                 }
+                CreateGeofence(51.5938D, 4.77963D, 7500, "bredaCheck");
                 Debug.WriteLine("Geofences added");
             }
 
@@ -317,10 +319,23 @@ namespace Breda_Maps.View
                 {
                     var state = report.NewState;
                     var geofence = report.Geofence;
-                    GeofenceMonitor.Current.Geofences.Remove(geofence);
+                   // GeofenceMonitor.Current.Geofences.Remove(geofence);
                     Debug.WriteLine("geofenceid = " + geofence.Id);
 
-                    if (state == GeofenceState.Entered)
+                    if (geofence.Id.Equals("bredaCheck"))
+                    {
+                        Debug.WriteLine("werkt");
+                        if (state == GeofenceState.Exited)
+                        {
+                            await ShowMessage("U begeeft zich buiten Breda");
+                        }
+                        else if (state == GeofenceState.Entered)
+                        {
+                            await ShowMessage("U bevind zich in breda");
+                        }
+                    }
+
+                    else if (state == GeofenceState.Entered)
                     {
                         // User has entered the area.
                         //ShowMessage("you have entered the geofence, deleting point " + (MapControl1.Routes.Count-1));
