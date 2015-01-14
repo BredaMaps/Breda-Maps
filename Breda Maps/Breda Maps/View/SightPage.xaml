@@ -11,7 +11,7 @@
 
     <ScrollViewer VerticalScrollMode="Enabled">
     <StackPanel Height="Auto">
-        <TextBlock HorizontalAlignment="Center" Margin="0,10,0,0" TextWrapping="Wrap" Text="SightPage" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
         <StackPanel >
 
             <CheckBox Content="Voorziening" HorizontalAlignment="Left" Margin="10,60,-0,0" VerticalAlignment="Top" Checked="Cat1_Checked" Unchecked="cat1_unchecked"/>

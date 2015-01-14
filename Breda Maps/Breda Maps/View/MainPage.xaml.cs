@@ -123,7 +123,7 @@ namespace Breda_Maps.View
                     Icon.NormalizedAnchorPoint = new Point(1.5, 1.5);
                     Icon.Title = points.getDescription();
                     MapControl1.MapElements.Add(Icon);
-                    CreateGeofence(points.latitude, points.longitude, 10, points._description);
+                    CreateGeofence(points.latitude, points.longitude, 15, points._description);
                 }
                 CreateGeofence(51.5938D, 4.77963D, 7500, "bredaCheck");
                 Debug.WriteLine("Geofences added");

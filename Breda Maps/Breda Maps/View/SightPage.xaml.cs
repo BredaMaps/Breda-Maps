@@ -39,6 +39,7 @@ namespace Breda_Maps.View
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             this.navigationHelper.OnNavigatedTo(e);
+            _itemNaam = null;
         }
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
@@ -157,7 +158,7 @@ namespace Breda_Maps.View
         {
             if (_itemNaam == null)
             {
-                _itemNaam = (string) ListView0.SelectedItems[0];
+                HandleListSelection(ListView0);
                 this.Frame.Navigate(typeof(View.InformationPage), _itemNaam);
             }
         }
@@ -166,7 +167,7 @@ namespace Breda_Maps.View
         {
             if (_itemNaam == null)
             {
-                _itemNaam = (string)ListView1.SelectedItems[0];
+                HandleListSelection(ListView1);
                 this.Frame.Navigate(typeof(View.InformationPage), _itemNaam);
             }
         }
@@ -175,7 +176,7 @@ namespace Breda_Maps.View
         {
             if (_itemNaam == null)
             {
-                _itemNaam = (string)ListView2.SelectedItems[0];
+                HandleListSelection(ListView2);
                 this.Frame.Navigate(typeof(View.InformationPage), _itemNaam);
             }
         }
@@ -184,7 +185,7 @@ namespace Breda_Maps.View
         {
             if (_itemNaam == null)
             {
-                _itemNaam = (string)ListView3.SelectedItems[0];
+                HandleListSelection(ListView3);
                 this.Frame.Navigate(typeof(View.InformationPage), _itemNaam);
             }
         }
@@ -193,9 +194,18 @@ namespace Breda_Maps.View
         {
             if (_itemNaam == null)
             {
-                _itemNaam = (string)ListView4.SelectedItems[0];
+                HandleListSelection(ListView4);
                 this.Frame.Navigate(typeof(View.InformationPage), _itemNaam);
             }
+        }
+
+        private void HandleListSelection(ListView list)
+        {
+            int index;
+            _itemNaam = (string)list.SelectedItems[0];
+            index = list.Items.IndexOf(list.SelectedItems[0]);
+            list.Items.Remove(list.SelectedItems[0]);
+            list.Items.Insert(index, _itemNaam);
         }
     }
 }
