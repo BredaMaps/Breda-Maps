@@ -335,7 +335,7 @@ namespace Breda_Maps.View
                         }
                     }
 
-                    else if (state == GeofenceState.Entered)
+                    if (state == GeofenceState.Entered && !geofence.Id.Equals("bredaCheck"))
                     {
                         // User has entered the area.
                         //ShowMessage("you have entered the geofence, deleting point " + (MapControl1.Routes.Count-1));
