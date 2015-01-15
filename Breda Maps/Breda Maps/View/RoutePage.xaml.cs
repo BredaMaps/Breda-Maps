@@ -51,8 +51,9 @@ namespace Breda_Maps.View
         /// This parameter is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            LoadRoutes();
             this.navigationHelper.OnNavigatedTo(e);
+            this.InitializeComponent();
+            LoadRoutes();
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
@@ -135,7 +136,8 @@ namespace Breda_Maps.View
         private void listView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             WarningBlock.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-            _routeNaam = (string)listView.SelectedItems[0];
+            if(listView.SelectedItems.Count > 0)
+                _routeNaam = (string)listView.SelectedItems[0];
         }
 
         public IOrderedEnumerable<Sight> getCategory(EnumCat type)
