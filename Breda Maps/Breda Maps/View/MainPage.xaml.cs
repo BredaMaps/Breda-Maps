@@ -70,10 +70,45 @@ namespace Breda_Maps.View
 
             AddCurrentPositionIcon();
             addAllIconPoints();
-          //  CreateGeofence(51.5938D, 4.77963D, 5000, "bredaCheck");
             addCategoriePoints();
             Bn_Loc.Background = new SolidColorBrush(Colors.Blue);
+            if (GetDistanceTo(CurrentPosition, 51.5938D, 4.77963D) > 7500)
+            {
+                ShowMessage("U bevind zich buiten Breda");
+            }
             InitRoute();
+        }
+
+        public static int GetDistanceTo(BasicGeoposition one, Double CoordinateOne, Double CoordinateTwo)
+        {
+            BasicGeoposition two = new BasicGeoposition();
+            two.Latitude = CoordinateOne;
+            two.Longitude = CoordinateTwo;
+            if (double.IsNaN(one.Latitude) || double.IsNaN(one.Longitude) || double.IsNaN(two.Latitude) || double.IsNaN(two.Longitude))
+            {
+                throw new ArgumentException(("Argument_LatitudeOrLongitudeIsNotANumber"));
+            }
+            else
+            {
+                double latitude = one.Latitude * 0.0174532925199433;
+                double longitude = one.Longitude * 0.0174532925199433;
+                double num = two.Latitude * 0.0174532925199433;
+                double longitude1 = two.Longitude * 0.0174532925199433;
+                double num1 = longitude1 - longitude;
+                double num2 = num - latitude;
+                double num3 = Math.Pow(Math.Sin(num2 / 2), 2) + Math.Cos(latitude) * Math.Cos(num) * Math.Pow(Math.Sin(num1 / 2), 2);
+                double num4 = 2 * Math.Atan2(Math.Sqrt(num3), Math.Sqrt(1 - num3));
+                double num5 = 6376500 * num4;
+                int intdist = Convert.ToInt16(num5);
+                return (RoundNum(intdist));
+            }
+        }
+
+        public static int RoundNum(int num)
+        {
+            num = num * 2;
+            int rem = num % 10;
+            return (rem >= 5 ? (num - rem + 10) : (num - rem)) / 2;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
